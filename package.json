@@ -16,6 +16,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^8.56.0",
+		"@types/node": "^20.12.12",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
 		"autoprefixer": "^10.4.19",
@@ -35,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"mysql": "^2.18.1",
 		"mysql2": "^3.9.7"
 	}
 }
