@@ -1,12 +1,13 @@
-import { connection } from '$lib/db/mysql';
+import { GetCars } from '$lib/server/GetCars';
+import { GetUsers } from '$lib/server/GetUsers';
 
-export async function load() {
-	let results = await connection.query('SELECT * FROM user').then(function ([rows, fields]) {
-		//console.log(rows);
-		return rows;
-	});
+(async () => {
+	try {
+		let carInfo = await GetCars();
+		console.log(carInfo);
+	} catch (error) {
+		console.error('Error fetching car data:', error);
+	}
+})();
 
-	return {
-		body: results
-	};
-}
+
