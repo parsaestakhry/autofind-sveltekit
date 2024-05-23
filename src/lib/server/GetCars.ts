@@ -7,7 +7,7 @@ export type Car = {
 	model: string;
 	make: string;
 	milage: number;
-	make_date: Date;
+	year_make: number;
 	date_added: Date;
 	engine_model: string;
 	gearbox: string;
