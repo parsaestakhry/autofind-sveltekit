@@ -5,13 +5,13 @@
     export let color;
     export let fuel_type;
     export let year_make;
-    
 </script>
 
 
 
+
 <div class="card w-96 glass mx-2 mb-2 ">
-  <figure><img src="" alt="car!"/></figure>
+  <figure><enhanced:img src="" alt="car!"/></figure>
   <div class="card-body">
     <h2 class="card-title text-slate-50 text-2xl">{make}</h2>
     <h3 class=" text-slate-50 text-xl">{model}</h3>
