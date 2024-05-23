@@ -2,28 +2,17 @@ import { GetCars } from '$lib/server/GetCars';
 import { GetUsers } from '$lib/server/GetUsers';
 import type { PageServerLoad } from './$types';
 
-export type Car = {
-	type : string,
-	Color : string,
-	fuel_type : string,
-	id : number,
-	model : string,
-	make : string,
-	milage : number,
-	make_date : Date,
-	date_added : Date,
-	engine_model : string,
-	gearbox : string
 
-}
 
 export const load: PageServerLoad = async () => {
-    const cars = await GetCars();
+    
 	try {
 		// Return the fetched cars data as a property to be used in the component
+		const cars = await GetCars();
+		const carArray = cars.results;
 		return {
 			props: {
-				data:cars
+				data:carArray
 			}
 		};
 	} catch (error) {
