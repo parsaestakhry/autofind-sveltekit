@@ -37,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/sveltekit": "^1.1.0",
 		"mysql": "^2.18.1",
 		"mysql2": "^3.9.7"
 	}
