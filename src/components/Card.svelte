@@ -1,17 +1,33 @@
-<script>
+
+<script lang="ts">
     export let model;
     export let make;
     export let milage;
     export let color;
     export let fuel_type;
     export let year_make;
+
+    
+    let carImage : string
+    
+
+    // Dynamically import the image based on the make
+    import(`../assets/images/${make}.jpg`)
+        .then(image => {
+            carImage = image.default;
+        })
+        .catch(error => {
+            console.error(`Failed to load image for make '${make}':`, error);
+            // Handle error, for example, by setting a default image
+            carImage = '../assets/images/default.jpg';
+        });
 </script>
 
 
 
 
 <div class="card w-96 glass mx-2 mb-2 ">
-  <figure><enhanced:img src="" alt="car!"/></figure>
+  <figure><img src={carImage} alt={make}/></figure>
   <div class="card-body">
     <h2 class="card-title text-slate-50 text-2xl">{make}</h2>
     <h3 class=" text-slate-50 text-xl">{model}</h3>
