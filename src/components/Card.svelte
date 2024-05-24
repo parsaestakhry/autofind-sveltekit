@@ -6,8 +6,6 @@
     export let color;
     export let fuel_type;
     export let year_make;
-
-    
     let carImage : string
     
 
