@@ -1,13 +1,15 @@
 <script>
 	import Drawer from "./Drawer.svelte";
-
+  import  CarBattery  from "phosphor-svelte/lib/CarBattery";
 </script>
 <div class="navbar bg-black rounded-md">
   <div class="flex-none">
     <Drawer/>
   </div>
   <div class="flex-1">
-    <a href="/" class="btn btn-ghost text-xl">autofind</a>
+    <a href="/" class="btn btn-ghost text-xl font-sans text-slate-100">Autofind <CarBattery size={25} class="mt-1"/><div>
+      
+    </div> </a>
     
   </div>
   <div class="flex-none">
