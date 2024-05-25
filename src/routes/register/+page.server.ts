@@ -7,15 +7,14 @@ export const actions = {
 		// TODO log the user in
 		const body = await event.request.formData();
 		const infoArray = [...body];
-		const email = infoArray[0][1];
-		const username = infoArray[1][1];
-		const firstname = infoArray[2][1];
-		const lastname = infoArray[3][1];
+		const email = infoArray[0][1].toString();
+		const username = infoArray[1][1].toString();
+		const firstname = infoArray[2][1].toString();
+		const lastname = infoArray[3][1].toString();
 		let password = infoArray[4][1];
 		password = password.toString();
 		const hash = await saltAndHashPassword(password);
-		
-
-		
+		const result = await RegisterUser(email, username, firstname, lastname, hash);
+		console.log(result)
 	}
 } satisfies Actions;
