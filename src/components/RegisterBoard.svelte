@@ -1,21 +1,21 @@
 <script lang="ts">
 	import CarBattery from 'phosphor-svelte/lib/CarBattery';
-    
-	let email: string;
-	let password: string;
-	let passwordConfirm: string;
-	let firstName: string;
-	let lastName: string;
+	import { email, password, passwordConfirm, firstName, lastName } from '../store/store';
+	let userEmail: string;
+	let userPassword: string;
+	let userPasswordConfirm: string;
+	let userFirstName: string;
+	let userLastName: string;
 </script>
 
 <section class="bg-gray-50 dark:bg-gray-900">
-	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-		<a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+		<a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white my-10">
 			<CarBattery size={38} class="mx-2" />
 			Autofind
 		</a>
 		<div
-			class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
+			class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mb-10"
 		>
 			<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
 				<h1
@@ -24,12 +24,12 @@
 					Create an account
 				</h1>
 				<form class="space-y-4 md:space-y-6" action="#">
-					<div>
+					<div class="mb-10">
 						<label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							>Your email</label
 						>
 						<input
-							bind:value={email}
+							bind:value={userEmail}
 							type="email"
 							name="email"
 							id="email"
@@ -43,7 +43,7 @@
 							>First Name</label
 						>
 						<input
-							bind:value={firstName}
+							bind:value={userFirstName}
 							type="text"
 							name="email"
 							id="first"
@@ -57,7 +57,7 @@
 							>Last Name</label
 						>
 						<input
-							bind:value={lastName}
+							bind:value={userLastName}
 							type="text"
 							name="text"
 							id="text"
@@ -72,7 +72,7 @@
 							class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label
 						>
 						<input
-							bind:value={password}
+							bind:value={userPassword}
 							type="password"
 							name="password"
 							id="password"
@@ -88,7 +88,7 @@
 							>Confirm password</label
 						>
 						<input
-							bind:value={passwordConfirm}
+							bind:value={userPasswordConfirm}
 							type="confirm-password"
 							name="confirm-password"
 							id="confirm-password"
