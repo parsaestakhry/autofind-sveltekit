@@ -1,10 +1,12 @@
 <!-- CarPage.svelte -->
 <script lang="ts">
+    import { email, password, passwordConfirm, firstName, lastName } from '../store/store';
 	import type { Car } from '$lib/server/GetCars';
 	import Card from '../components/Card.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const carArray: Car[] | undefined = data.props?.data;
+    
 </script>
 
 
