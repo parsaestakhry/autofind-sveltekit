@@ -14,7 +14,7 @@ export const actions = {
 		let password = infoArray[4][1];
 		password = password.toString();
 		const hash = await saltAndHashPassword(password);
-		const result = await RegisterUser(email, username, firstname, lastname, hash);
-		console.log(result)
+		await RegisterUser(email, username, firstname, lastname, hash);
+		
 	}
 } satisfies Actions;
