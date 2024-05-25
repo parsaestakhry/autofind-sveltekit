@@ -23,7 +23,7 @@
 				>
 					Create an account
 				</h1>
-				<form method="POST" class="space-y-4 md:space-y-6" action="#">
+				<form method="POST" class="space-y-4 md:space-y-6" >
 					<div>
 						<label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							>Your email</label
@@ -45,7 +45,7 @@
 						<input
 							bind:value={userName}
 							type="text"
-							name="email"
+							name="username"
 							id="first"
 							class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							placeholder="username"
@@ -59,7 +59,7 @@
 						<input
 							bind:value={userFirstName}
 							type="text"
-							name="email"
+							name="firstName"
 							id="first"
 							class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							placeholder="first name"
@@ -73,7 +73,7 @@
 						<input
 							bind:value={userLastName}
 							type="text"
-							name="text"
+							name="lastname"
 							id="text"
 							class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							placeholder="last name"
