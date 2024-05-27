@@ -11,8 +11,9 @@
   </div> 
   <div class="drawer-side">
     <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu p-4 w-96 min-h-full bg-base-200 text-base-content">
-      <li><a class="button btn-ghost bg-black" href="/register">Register</a></li>      
+    <ul class="menu p-4 w-96 min-h-full bg-base-200 text-base-content space-y-2">
+      <li><a class="button btn-ghost bg-black" href="/register">Register</a></li>
+      <li><a class="button btn-ghost bg-black" href="/login">Login</a></li>       
     </ul>
   </div>
 </div>
