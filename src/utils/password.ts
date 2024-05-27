@@ -1,16 +1,16 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export function saltAndHashPassword(password: string): Promise<string> {
-	const saltRounds = 10;
-	const myPlaintextPassword = password;
-
 	return new Promise((resolve, reject) => {
-		bcrypt.hash(myPlaintextPassword, saltRounds, function (err: any, hash: string) {
-			if (err) {
-				reject(err);
-			} else {
-				resolve(hash);
-			}
+		bcrypt.genSalt(10, function (err, salt) {
+			bcrypt.hash(password, salt, function (err, hash) {
+				if (err) {
+					reject(err)
+				}
+				else {
+					resolve(hash)
+				}
+			});
 		});
 	});
 }
