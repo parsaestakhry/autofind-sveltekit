@@ -1,5 +1,5 @@
 import { RegisterUser } from '$lib/server/RegisterUser';
-import { saltAndHashPassword } from '../../utils/password';
+import { saltAndHashPassword } from '../../utils/GenPassword';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -15,6 +15,5 @@ export const actions = {
 		password = password.toString();
 		const hash = await saltAndHashPassword(password);
 		await RegisterUser(email, username, firstname, lastname, hash);
-		
 	}
 } satisfies Actions;
