@@ -1,4 +1,5 @@
 import { getUserFromDb } from '$lib/server/GetUserDb';
+import { checkPassword } from '../../utils/CheckPassword';
 import { saltAndHashPassword } from '../../utils/GenPassword';
 import type { PageServerLoad } from './$types';
 
@@ -10,6 +11,7 @@ export const actions = {
 		const password = infoArray[1][1].toString();
 		const pwHash = await saltAndHashPassword(password);
 		const result = await getUserFromDb(username, pwHash);
-		console.log(pwHash);
-	}
+		const compareResult = await checkPassword(password, pwHash)
+		
+	}	
 };
