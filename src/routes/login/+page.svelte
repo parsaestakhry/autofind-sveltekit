@@ -7,7 +7,7 @@
 	let username: string = '';
 	let password: string = '';
 	let showToast = false;
-	$: console.log(form);
+	//$: console.log(form);
 	
 </script>
 
