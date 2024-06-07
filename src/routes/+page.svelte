@@ -1,24 +1,30 @@
-<!-- CarPage.svelte -->
-<script lang="ts">
-    import { email, password, passwordConfirm, firstName, lastName } from '../store/store';
-	import type { Car } from '$lib/server/GetCars';
-	import Card from '../components/Card.svelte';
-	import type { PageData } from './$types';
-	export let data: PageData;
-	const carArray: Car[] | undefined = data.props?.data;
-    
+<script>
+	import intropic from '../assets/images/intro-pic.jpg';
 </script>
 
-
-
-{#if carArray && carArray.length > 0}
-    <ul class="flex flex-wrap justify-center mt-2">
-        {#each carArray as car}
-            <li>
-                <Card model={car.model} make={car.make} milage={car.milage} color={car.Color} fuel_type={car.fuel_type} year_make={car.year_make}/>
-            </li>
-        {/each}
-    </ul>
-{:else}
-    <p>No cars available.</p>
-{/if}
+<div class="relative w-screen sm:h-64 h-80 overflow-hidden">
+	<img class="object-cover object-center w-full h-full" src={intropic} alt="family-car" />
+	<div class="absolute inset-0 font-bold items-center justify-start ml-5">
+		<h1 class="text-white sm:text-7xl sm:mt-10 text-6xl mt-16">Your Next Car is Here.</h1>
+        <div class="sm:hidden justify-end flex-col items-end mr-20 mt-3 space-y-2 ">
+			<button
+				class="btn  text-slate-50 text-xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				>Buy a Car</button
+			>
+			<button
+				class="btn  text-slate-50 text-xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				>Sell My Car</button
+			>
+		</div>
+		<div class="sm:flex justify-end flex-col items-end mr-20 -mt-10 space-y-2 hidden">
+			<button
+				class="btn w-48 h-18 text-slate-50 text-3xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				>Buy a Car</button
+			>
+			<button
+				class="btn w-48 h-18 text-slate-50 text-3xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				>Sell My Car</button
+			>
+		</div>
+	</div>
+</div>
