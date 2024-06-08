@@ -8,7 +8,7 @@
 	import carKey from '../assets/svg/car-key-svgrepo-com.svg';
 </script>
 
-<div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex mx-20">
+<div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex sm:mx-20">
 	<div class="flex space-x-4">
 		<div class="carousel-item">
 			<CarouselCard name={'Hatchback'} pic={hatchback} />
