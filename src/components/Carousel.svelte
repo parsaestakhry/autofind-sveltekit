@@ -9,21 +9,21 @@
 
 <div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex sm:mx-20 mb-10">
 	<div class="flex space-x-4">
-		<div class="carousel-item">
+		<a href="/cars/categories/hatchback" class="carousel-item">
 			<CarouselCard name={'Hatchback'} pic={hatchback} />
-		</div>
-		<div class="carousel-item">
+		</a>
+		<a href="/cars/categories/sedan"  class="carousel-item">
 			<CarouselCard name={'Sedan'} pic={sedan} />
-		</div>
-		<div class="carousel-item">
+		</a>
+		<a href="/cars/categories/coupe" class="carousel-item">
 			<CarouselCard name={'Coupe'} pic={coupe} />
-		</div>
-		<div class="carousel-item">
+		</a>
+		<a href="/cars/categories/wagon" class="carousel-item">
 			<CarouselCard name={'Wagon'} pic={wagon} />
-		</div>
+		</a>
 
-		<div class="carousel-item">
+		<a href="/cars/categories/truck" class="carousel-item">
 			<CarouselCard name={'Truck'} pic={truck} />
-		</div>
+		</a>
 	</div>
 </div>
