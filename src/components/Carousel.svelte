@@ -4,7 +4,8 @@
 	import coupe from '../assets/images/coupe.jpg';
 	import sedan from '../assets/images/sedan.jpg';
 	import wagon from '../assets/images/wagon.jpg';
-	import truck from '../assets/images/truck.jpg'
+	import truck from '../assets/images/truck.jpg';
+	import carKey from '../assets/svg/car-key-svgrepo-com.svg';
 </script>
 
 <div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex mx-20">
