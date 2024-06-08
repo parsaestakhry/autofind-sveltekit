@@ -2,7 +2,7 @@
 	import List from 'phosphor-svelte/lib/List';
 </script>
 
-<div class="drawer drawer-end  z-50" data-theme="nord">
+<div class="drawer drawer-end  z-50" >
 	<input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col items-center justify-center">
 		<!-- Page content here -->
