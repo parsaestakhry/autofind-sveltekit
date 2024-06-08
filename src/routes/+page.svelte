@@ -34,8 +34,8 @@
 		</div>
 	</div>
 </div>
-<div class="flex justify-center items-center mt-6 space-x-4">
-    <div class="text-center mr-10">
+<div class="flex justify-center items-center mt-6 sm:space-x-4">
+    <div class="text-center sm:mr-10 justify-center mx-10">
 		<CarProfile class="mx-auto" size={72} color="#fafafa" />
         <h2 class="text-3xl font-bold mb-3 text-slate-50">We have what you are looking are for.</h2>
 		<p></p>
