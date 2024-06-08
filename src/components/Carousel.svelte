@@ -1,17 +1,29 @@
 <script>
-	import CarouselCard from "./CarouselCard.svelte";
-
+	import CarouselCard from './CarouselCard.svelte';
+	import hatchback from '../assets/images/hatchback.jpg';
+	import coupe from '../assets/images/coupe.jpg';
+	import sedan from '../assets/images/sedan.jpg';
+	import wagon from '../assets/images/wagon.jpg';
+	import truck from '../assets/images/truck.jpg'
 </script>
-<div class="carousel carousel-center p-4 space-x-4 bg-ghost rounded-box mx-40">
+
+<div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex mx-20">
 	<div class="flex space-x-4">
 		<div class="carousel-item">
-			<CarouselCard/>
+			<CarouselCard name={'Hatchback'} pic={hatchback} />
 		</div>
 		<div class="carousel-item">
-			<img
-				src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg"
-				class="rounded-box"
-			/>
+			<CarouselCard name={'Sedan'} pic={sedan} />
+		</div>
+		<div class="carousel-item">
+			<CarouselCard name={'Coupe'} pic={coupe} />
+		</div>
+		<div class="carousel-item">
+			<CarouselCard name={'Wagon'} pic={wagon} />
+		</div>
+
+		<div class="carousel-item">
+			<CarouselCard name={'Truck'} pic={truck} />
 		</div>
 	</div>
 </div>
