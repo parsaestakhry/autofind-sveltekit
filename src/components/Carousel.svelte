@@ -5,10 +5,9 @@
 	import sedan from '../assets/images/sedan.jpg';
 	import wagon from '../assets/images/wagon.jpg';
 	import truck from '../assets/images/truck.jpg';
-	import carKey from '../assets/svg/car-key-svgrepo-com.svg';
 </script>
 
-<div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex sm:mx-20">
+<div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex sm:mx-20 mb-10">
 	<div class="flex space-x-4">
 		<div class="carousel-item">
 			<CarouselCard name={'Hatchback'} pic={hatchback} />
