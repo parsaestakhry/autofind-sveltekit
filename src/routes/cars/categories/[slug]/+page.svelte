@@ -30,15 +30,15 @@
 </script>
 
 <div class="relative sm:h-64 h-80">
-	<img class="object-cover object-center w-screen h-28 sm:h-72" src={pic} alt="family-car" />
-	<div class="absolute inset-0 font-bold text-center">
+	<img class="object-cover object-center w-screen h-56 sm:h-72" src={pic} alt="family-car" />
+	<div class="absolute inset-0 font-bold text-center mt-10">
 		<h1 class="text-white sm:text-7xl text-5xl mt-10 sm:mt-16">{data.slug.toUpperCase()}S</h1>
 	</div>
 </div>
 
-<div class="sm:mt-10">
+<div class="sm:mt-10 -mt-10 ">
 	{#if cars && cars.length > 0}
-		<ul class="flex flex-wrap justify-center mt-2">
+		<ul class="flex flex-wrap justify-center mt-2 mb-5">
 			{#each cars as car}
 				<li>
 					<Card
@@ -48,6 +48,7 @@
 						color={car.Color}
 						fuel_type={car.fuel_type}
 						year_make={car.year_make}
+						price={car.price}
 					/>
 				</li>
 			{/each}
