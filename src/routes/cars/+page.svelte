@@ -14,7 +14,7 @@
     <ul class="flex flex-wrap justify-center mt-2">
         {#each carArray as car}
             <li>
-                <Card model={car.model} make={car.make} milage={car.milage} color={car.Color} fuel_type={car.fuel_type} year_make={car.year_make}/>
+                <Card model={car.model} make={car.make} milage={car.milage} color={car.Color} fuel_type={car.fuel_type} year_make={car.year_make} price={car.price}/>
             </li>
         {/each}
     </ul>
