@@ -7,7 +7,7 @@
 	export let year_make;
 	export let price;
 	let carImage: string;
-
+	import defaultJPG from '../assets/images/default.jpg'
 	// Dynamically import the image based on the make
 	import(`../assets/images/${make}.jpg`)
 		.then((image) => {
@@ -16,7 +16,7 @@
 		.catch((error) => {
 			console.error(`Failed to load image for make '${make}':`, error);
 			// Handle error, for example, by setting a default image
-			carImage = '../assets/images/default.jpg';
+			carImage = defaultJPG;
 		});
 </script>
 
@@ -26,10 +26,10 @@
 		<h2 class="card-title text-slate-50 text-2xl">{make}</h2>
 		<h3 class=" text-slate-50 text-xl">{model}</h3>
 		<div class="space-y-2">
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg ">milage : {milage}</div>
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg">year : {year_make}</div>
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg">color : {color}</div>
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg">fuel : {fuel_type}</div>
+			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Milage: {milage}</div>
+			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Year: {year_make}</div>
+			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Color: {color}</div>
+			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Fuel: {fuel_type}</div>
 		</div>
 		<div class="card-actions justify-start">
 			<button class="btn bg-orange-600 border-none text-slate-100 mt-2 h-14 text-md">{price ? price : 'contact dealer'}</button>

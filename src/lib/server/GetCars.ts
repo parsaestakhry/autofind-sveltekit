@@ -15,7 +15,7 @@ export type Car = {
 };
 export const GetCars = async () => {
 	let results: Car[] = await connection.query('SELECT * FROM car LIMIT 10').then(function ([rows, fields]) {
-        console.log(rows)
+        //console.log(rows)
 		return rows as Car[];
 	});
 
