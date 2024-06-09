@@ -6,9 +6,7 @@ import { goto } from '$app/navigation';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { redirect } from '@sveltejs/kit';
-import type { load } from '../proxy+page.server';
-import type Toast from '../../components/Toast.svelte';
-import { isLoggedIn } from '../../store/store';
+
 dotenv.config();
 
 export const actions = {
