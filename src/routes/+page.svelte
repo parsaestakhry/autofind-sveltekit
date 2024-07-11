@@ -10,39 +10,38 @@
 		<h1 class="text-white sm:text-7xl sm:mt-14 text-6xl mt-16">Your Next Car is Here.</h1>
 		<div class="sm:hidden justify-end flex-col items-end mr-20 mt-3 space-y-2">
 			<button
-				class="btn text-slate-50 text-xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				class="btn text-slate-50 text-xl bg-orange-600 hover:bg-orange-600 border-none font-bold"
 			>
 				Buy a Car
 			</button>
 			<button
-				class="btn text-slate-50 text-xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				class="btn text-slate-50 text-xl bg-orange-600 hover:bg-orange-600 border-none font-bold"
 			>
 				Sell My Car
 			</button>
 		</div>
 		<div class="sm:flex justify-end flex-col items-end mr-20 -mt-10 space-y-3 hidden">
 			<button
-				class="btn w-48 h-18 text-slate-50 text-3xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				class="btn w-48 h-18 text-slate-900 text-2xl bg-orange-600 hover:bg-orange-700 border-none font-bold"
 			>
 				Buy a Car
 			</button>
 			<button
-				class="btn w-48 h-18 text-slate-50 text-3xl bg-orange-500 hover:bg-orange-600 border-none font-bold"
+				class="btn w-48 h-18 text-slate-900 text-2xl bg-orange-600 hover:bg-orange-700 border-none font-bold"
 			>
-				Sell My Car
+				Sell my Car
 			</button>
 		</div>
 	</div>
 </div>
 <div class="flex justify-center items-center mt-6 sm:space-x-4">
-    <div class="text-center sm:mr-10 justify-center mx-10">
+	<div class="text-center sm:mr-10 justify-center mx-10">
 		<CarProfile class="mx-auto" size={72} color="#fafafa" />
-        <h2 class="text-3xl font-bold mb-3 text-slate-50">We have what you are looking are for.</h2>
+		<h2 class="text-3xl font-bold mb-3 text-slate-50">We have what you are looking are for.</h2>
 		<p></p>
-    </div>
-    
+	</div>
 </div>
 
 <div>
-    <Carousel />
+	<Carousel />
 </div>
