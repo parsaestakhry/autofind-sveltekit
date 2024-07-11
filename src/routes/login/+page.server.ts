@@ -1,22 +1,17 @@
 import { getUserFromDb } from '$lib/server/GetUserDb';
 import { checkPassword } from '../../utils/CheckPassword';
-import { saltAndHashPassword } from '../../utils/GenPassword';
-import type { PageServerLoad } from './$types';
-import { goto } from '$app/navigation';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import { redirect } from '@sveltejs/kit';
 
 dotenv.config();
 
 export const actions = {
 	default: async (event: any) => {
-		let show = false
+		let show = false;
 		try {
 			const body = await event.request.formData();
 			const username = body.get('username')?.toString();
 			const password = body.get('password')?.toString();
-			
 
 			if (!username || !password) {
 				console.log('Username or password missing');
@@ -45,11 +40,11 @@ export const actions = {
 						httpOnly: true, // To prevent XSS attacks
 						secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
 						maxAge: 30 * 24 * 60 * 60, // Token expires in 1 hour
-						path: '/login'
+						path: '/'
 					});
 
 					if (accessToken) {
-						show = true
+						show = true;
 					}
 				} else {
 					console.log('Incorrect password');
@@ -61,7 +56,8 @@ export const actions = {
 			console.error('Internal Server Error', error);
 		}
 		return {
-			show : show
+			show: show
 		};
-	}
+	},
+	
 };
