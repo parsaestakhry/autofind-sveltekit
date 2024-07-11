@@ -2,6 +2,7 @@
 	import Drawer from './Drawer.svelte';
 	import CarBattery from 'phosphor-svelte/lib/CarBattery';
 	import SignIn from 'phosphor-svelte/lib/SignIn';
+	export let username;
 </script>
 
 <div class="navbar bg-orange-600">
@@ -12,7 +13,7 @@
 			<div></div>
 		</a>
 	</div>
-	
+	<button class="btn flex text-lg font-semibold text-slate-100">Welcome {username} </button>
 	<div class="flex-none">
 		<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
 		<Drawer />
