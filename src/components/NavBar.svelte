@@ -8,12 +8,13 @@
 <div class="navbar bg-orange-600">
 	<div class="flex-none"></div>
 	<div class="flex-1">
-		<a href="/" class="btn btn-ghost text-2xl font-bold text-slate-800 ml-10"
+		<a href="/" class="btn btn-ghost text-2xl font-bold text-slate-800 ml-4"
 			>Autofind <CarBattery size={25} class="mt-1" />
 			<div></div>
 		</a>
 	</div>
-	<button class="btn flex text-lg font-semibold text-slate-100">Welcome {username} </button>
+	<button class="btn hidden sm:flex font-semibold text-xl  text-slate-100">Welcome {username} </button>
+	<button class="sm:hidden btn w-24 font-semibold text-slate-100">Welcome {username} </button>
 	<div class="flex-none">
 		<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
 		<Drawer />
