@@ -7,7 +7,7 @@
 	import truck from '../assets/images/truck.jpg';
 </script>
 
-<div class="carousel carousel-center p-3 space-x-4 bg-ghost rounded-box flex sm:mx-20 mb-10">
+<div class="carousel carousel-center p-7 space-x-4 bg-ghost rounded-box flex sm:mx-20 mb-10">
 	<div class="flex space-x-4">
 		<a href="/cars/categories/hatchback" class="carousel-item">
 			<CarouselCard name={'Hatchback'} pic={hatchback} />
