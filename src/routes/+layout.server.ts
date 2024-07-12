@@ -1,17 +1,20 @@
 import jwt from 'jsonwebtoken';
 import { ACCESS_TOKEN_SECRET } from '$env/static/private';
+
 interface TokenPayload {
 	username: string;
 	// Add other properties if your token payload includes more
 }
+
 export async function load({ cookies }) {
-	const token: any = await new Promise((resolve, reject) => {
-		if (cookies.get('access_token') !== undefined) {
-			resolve(cookies.get('access_token'));
+	const token: string | undefined = await new Promise<string | undefined>((resolve) => {
+		const cookie = cookies.get('access_token');
+		if (cookie !== undefined) {
+			resolve(cookie);
+		} else {
+			resolve(undefined); // Explicitly resolve to undefined if there is no token
 		}
 	});
-
-	//console.log(ACCESS_TOKEN_SECRET)
 
 	if (token) {
 		try {
@@ -22,6 +25,13 @@ export async function load({ cookies }) {
 			};
 		} catch (error) {
 			console.error('Invalid token:', error);
+			return {
+				username: null // Return null username if the token is invalid
+			};
 		}
 	}
+
+	return {
+		username: '' // Return null username if there is no token
+	};
 }
