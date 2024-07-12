@@ -2,6 +2,11 @@
 	import intropic from '../assets/images/intro-pic.jpg';
 	import Carousel from '../components/Carousel.svelte';
 	import CarProfile from 'phosphor-svelte/lib/CarProfile';
+	import { goto } from '$app/navigation';
+
+	function goTo() {
+		goto('/buy')
+	}
 </script>
 
 <div class="relative sm:h-64 h-80">
@@ -22,6 +27,7 @@
 		</div>
 		<div class="sm:flex justify-end flex-col items-end mr-20 -mt-10 space-y-3 hidden">
 			<button
+				on:click={goTo}
 				class="btn w-48 h-18 text-slate-900 text-2xl bg-orange-600 hover:bg-orange-700 border-none font-bold"
 			>
 				Buy a Car
