@@ -13,10 +13,15 @@
 			<div></div>
 		</a>
 	</div>
-	<button class="btn hidden sm:flex font-semibold text-xl  text-slate-100">Welcome {username} </button>
+	<button class="btn hidden sm:flex font-semibold text-xl text-slate-100"
+		>Welcome {username}
+	</button>
 	<button class="sm:hidden btn w-24 font-semibold text-slate-100">Welcome {username} </button>
 	<div class="flex-none">
-		<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
+		{#if username === ''}
+			<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
+		{/if}
+
 		<Drawer />
 	</div>
 </div>
