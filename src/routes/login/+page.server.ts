@@ -2,6 +2,7 @@ import { getUserFromDb } from '$lib/server/GetUserDb';
 import { checkPassword } from '../../utils/CheckPassword';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import { redirect } from '@sveltejs/kit';
 
 dotenv.config();
 
@@ -58,6 +59,6 @@ export const actions = {
 		return {
 			show: show
 		};
-	},
+	}
 	
 };

@@ -2,13 +2,15 @@
 	import CarBattery from 'phosphor-svelte/lib/CarBattery';
 	import { isLoggedIn } from '../../store/store';
 	import Toast from '../../components/Toast.svelte';
-    import UnsuccessfulLogin from '../../components/UnsuccesfulLogin.svelte'
+	import UnsuccessfulLogin from '../../components/UnsuccesfulLogin.svelte';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	export let form;
 	let username: string = '';
 	let password: string = '';
 	let showToast = false;
-	//$: console.log(form);
-	
+
+	// Reactive statement to handle redirection
 </script>
 
 <section class="bg-gray-50 dark:bg-gray-900">
@@ -97,8 +99,13 @@
 
 {#if form}
 	{#if form.show === true}
-        <Toast/>
-        {:else}
-        <UnsuccessfulLogin/>
-    {/if}
+		<Toast />
+		{onMount(() => {
+			setTimeout(() => {
+				window.location.href = '/';
+			}, 100);
+		})}
+	{:else}
+		<UnsuccessfulLogin />
+	{/if}
 {/if}
