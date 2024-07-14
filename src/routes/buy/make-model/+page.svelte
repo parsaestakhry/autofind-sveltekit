@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
 	// @ts-nocheck
 
 	import nissan from '../../../assets/images/pngimg.com - nissan_PNG52.png';
 	import ArrowDown from 'phosphor-svelte/lib/ArrowDown';
 	import ArrowUp from 'phosphor-svelte/lib/ArrowUp';
+	import 'car-makes-icons/dist/style.css';
 	let flag = false;
 	function toggleArrow() {
 		flag = !flag;
@@ -466,6 +467,12 @@
 			name: 'Zil'
 		}
 	];
+
+	let makeChoice = '';
+
+	function handleClick(name: string) {
+		makeChoice = name;
+	}
 </script>
 
 <div>
@@ -487,15 +494,20 @@
 				<button
 					class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
 					onclick="my_modal_5.showModal()"
-					>Made By
+					>Made By {makeChoice}
 				</button>
 				<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
 					<div class="modal-box">
-						
-						<h3 class="text-lg font-bold">Manufacturers List :</h3>
-						<ul class="menu dropdown-content bg-orange-700 rounded-box z-[1] p-2 shadow space-y-2">
-							{#each makeList as make }
-								<li class="btn"> {make.name}  </li>
+						<h3 class="font-bold mb-5 text-2xl">Manufacturers List :</h3>
+						<ul class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2">
+							{#each makeList as make}
+								<button
+									type="button"
+									class="btn text-lg text-slate-200 font-semibold"
+									on:click={() => handleClick(make.name)}
+								>
+									{make.name}
+								</button>
 							{/each}
 						</ul>
 						<p class="py-4">Press ESC key or click the button below to close</p>
@@ -508,7 +520,7 @@
 					</div>
 				</dialog>
 				<a
-					href="#"
+					href="/"
 					class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
 				>
 					Speak to Sales
