@@ -7,6 +7,6 @@ export default {
 	daisyui:{
 		themes:["dim"]
 	},
-	plugins: [require('daisyui')]
+	plugins: [require('daisyui'), require('tailwind-scrollbar')]
 };
 
