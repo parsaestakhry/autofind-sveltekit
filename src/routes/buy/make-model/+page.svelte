@@ -156,7 +156,7 @@
 		},
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/10/hennessey.png',
-			name: 'Hennessey logo'
+			name: 'Hennessey'
 		},
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/10/holden.png',
