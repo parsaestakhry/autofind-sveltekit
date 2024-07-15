@@ -13,7 +13,7 @@
 			<div></div>
 		</a>
 	</div>
-	<button class="btn hidden sm:flex font-semibold text-xl text-slate-100"
+	<button class="btn hidden sm:flex font-bold text-xl text-slate-100 btn-ghost"
 		>Welcome {username}
 	</button>
 	<button class="sm:hidden btn w-24 font-semibold text-slate-100">Welcome {username} </button>
