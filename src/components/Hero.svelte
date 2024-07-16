@@ -8,7 +8,7 @@
 	import  Gear  from 'phosphor-svelte/lib/Gear';
 </script>
 
-<div class="hero h-96  bg-black">
+<div class="hero h-60  bg-black">
 	<div class="hero-overlay bg-opacity-70"></div>
 	<div class="hero-content text-neutral-content text-center">
 		<div class="max-w-lg">
@@ -16,7 +16,7 @@
 			<p class="mb-5 text-slate-200 text-lg font-bold">
 				now it's time to find what model you like:
 			</p>
-			<div class="navbar bg-ghost text-primary-content rounded-lg">
+			<!-- <div class="navbar bg-ghost text-primary-content rounded-lg">
 				<div class="flex flex-wrap justify-center">
 					<div class="dropdown">
 						<div
@@ -126,7 +126,9 @@
 					</ul>
 				</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>
+
+
