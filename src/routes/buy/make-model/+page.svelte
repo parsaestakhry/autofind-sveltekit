@@ -472,6 +472,7 @@
 
 	function handleClick(name: string) {
 		makeChoice = name;
+		console.log(makeChoice)
 	}
 </script>
 
@@ -502,14 +503,14 @@
 						<h3 class="font-bold mb-5 text-2xl">Manufacturers List :</h3>
 						<ul class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2">
 							{#each makeList as make}
-								<a
+								<button
 									class="btn text-lg text-slate-200 font-semibold"
 									on:click={() => handleClick(make.name)}
 									onclick="my_modal_5.close()"
-									href={`/buy/make-model/${make.name}`}
+									
 								>
 									{make.name}
-								</a>
+								</button>
 							{/each}
 						</ul>
 						<p class="py-4">Press ESC key or click the button below to close</p>
