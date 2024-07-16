@@ -6,3 +6,4 @@ export const passwordConfirm = writable<string>('');
 export const firstName = writable<string>('');
 export const lastName = writable<string>();
 export const isLoggedIn = writable<boolean>(false);
+export const selectedItems = writable<string[]>([]);
