@@ -5,7 +5,7 @@
 	export let username;
 </script>
 
-<div class="navbar bg-orange-600">
+<div class="navbar bg-orange-600 ">
 	<div class="flex-none"></div>
 	<div class="flex-1">
 		<a href="/" class="btn btn-ghost text-2xl font-bold text-slate-800 ml-4"
@@ -16,7 +16,6 @@
 	<button class="btn hidden sm:flex font-bold text-xl text-slate-100 btn-ghost"
 		>Welcome {username}
 	</button>
-	<button class="sm:hidden btn w-24 font-semibold text-slate-100">Welcome {username} </button>
 	<div class="flex-none">
 		{#if username === ''}
 			<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
@@ -25,3 +24,6 @@
 		<Drawer />
 	</div>
 </div>
+
+
+
