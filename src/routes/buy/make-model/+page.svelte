@@ -7,6 +7,7 @@
 	import 'car-makes-icons/dist/style.css';
 	import M5 from '../../../assets/images/BMW-M5-PNG-Image.png';
 	import Card from '../../../components/Card.svelte';
+	import CarProfile from 'phosphor-svelte/lib/CarProfile';
 	let flag = false;
 	function toggleArrow() {
 		flag = !flag;
@@ -471,10 +472,11 @@
 	];
 
 	let makeChoice = '';
+	let modelChoice = '';
 	let cars: Car[] = [];
 	let showText = false;
 
-	async function handleClick(name: string) {
+	async function handleClickMake(name: string) {
 		showText = true;
 		makeChoice = name;
 		const response = await fetch('/api/make-model', {
@@ -486,6 +488,11 @@
 		});
 		cars = await response.json();
 		//console.log(data)
+	}
+
+	async function HandleClickModel(model:string){
+		modelChoice = model;
+		
 	}
 </script>
 
@@ -511,6 +518,42 @@
 					>Made By {makeChoice}
 				</button>
 
+				{#if cars.length > 0}
+					<button
+						class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
+						onclick="my_modal_5.showModal()"
+						>The Model  {modelChoice}
+					</button>
+					<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+						<div class="modal-box">
+							<h3 class="font-bold mb-5 text-2xl">Models List :</h3>
+							<ul
+								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
+							>
+								{#each cars as car}
+									{#if car.make === makeChoice}
+										
+										<button
+											class="btn text-lg text-slate-200 font-semibold"
+											onclick="my_modal_5.close()"
+											on:click={() =>  HandleClickModel(car.model)}
+										>
+											{car.model}
+										</button>
+									{/if}
+								{/each}
+							</ul>
+							<p class="py-4">Press ESC key or click the button below to close</p>
+							<div class="modal-action">
+								<form method="dialog">
+									<!-- if there is a button in form, it will close the modal -->
+									<button class="btn">Close</button>
+								</form>
+							</div>
+						</div>
+					</dialog>
+				{/if}
+
 				<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
 					<div class="modal-box">
 						<h3 class="font-bold mb-5 text-2xl">Manufacturers List :</h3>
@@ -518,7 +561,7 @@
 							{#each makeList as make}
 								<button
 									class="btn text-lg text-slate-200 font-semibold"
-									on:click={() => handleClick(make.name)}
+									on:click={() => handleClickMake(make.name)}
 									onclick="my_modal_5.close()"
 								>
 									{make.name}
@@ -540,7 +583,7 @@
 			</div>
 			{#if showText && cars.length > 0}
 				<h4
-					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5 "
+					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5"
 				>
 					All the cars made by {makeChoice}
 				</h4>
@@ -555,8 +598,6 @@
 			{/if}
 		</div>
 		<div class="p-10">
-			
-
 			{#if cars && cars.length > 0}
 				<ul class="flex flex-wrap justify-center">
 					{#each cars as car}
