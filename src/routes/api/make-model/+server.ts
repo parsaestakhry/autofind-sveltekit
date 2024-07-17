@@ -6,7 +6,7 @@ export async function POST(event: any) {
 	//console.log('request body: ', body);
 	const choice = body.makeChoice;
 	//console.log(choice);
-
+	const modelQuery = `SELECT * FROM car WHERE make = "${choice}" AND model = "${""}`
 	let results: Car[] | null = await connection
 		.query(`SELECT * FROM car WHERE make = "${choice}" `)
 		.then(function ([rows, fields]) {
