@@ -5,6 +5,7 @@
 	import ArrowDown from 'phosphor-svelte/lib/ArrowDown';
 	import ArrowUp from 'phosphor-svelte/lib/ArrowUp';
 	import 'car-makes-icons/dist/style.css';
+	import M5 from '../../../assets/images/BMW-M5-PNG-Image.png'
 	let flag = false;
 	function toggleArrow() {
 		flag = !flag;
@@ -533,7 +534,7 @@
 				</dialog>
 			</div>
 			<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-				<img src={nissan} alt="mockup" />
+				<img src={M5} alt="mockup" />
 			</div>
 		</div>
 	</section>
