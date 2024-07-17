@@ -82,7 +82,7 @@
 		},
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/09/citroen.png',
-			name: 'Citroën'
+			name: 'Citroen'
 		},
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/09/corvette.png',
@@ -475,7 +475,7 @@
 	let showText = false;
 
 	async function handleClick(name: string) {
-		showText = !showText;
+		showText = true;
 		makeChoice = name;
 		const response = await fetch('/api/make-model', {
 			method: 'POST',
@@ -538,17 +538,27 @@
 			<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
 				<img src={M5} alt="mockup" />
 			</div>
-			<div class="grid">
 			{#if showText && cars.length > 0}
 				<h4
-					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5 mx-5"
+					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5 "
 				>
 					All the cars made by {makeChoice}
 				</h4>
 			{/if}
+			{#if cars.length == 0 && showText == true}
+				<h4
+					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-wrap mt-5"
+				>
+					Sorry we currently don't have any cars made by {makeChoice}
+					<h4>:(</h4>
+				</h4>
+			{/if}
+		</div>
+		<div class="p-10">
+			
 
 			{#if cars && cars.length > 0}
-				<ul class="flex flex-wrap ">
+				<ul class="flex flex-wrap justify-center">
 					{#each cars as car}
 						<li>
 							<Card
@@ -564,7 +574,6 @@
 					{/each}
 				</ul>
 			{/if}
-		</div>
 		</div>
 	</section>
 </div>
