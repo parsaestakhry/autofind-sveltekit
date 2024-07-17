@@ -7,7 +7,8 @@
 	export let year_make;
 	export let price;
 	let carImage: string;
-	import defaultJPG from '../assets/images/default.jpg'
+	import defaultJPG from '../assets/images/default.jpg';
+	import { Calendar, CurrencyDollar, GasPump, Palette, Phone, PhoneCall, RoadHorizon } from 'phosphor-svelte';
 	// Dynamically import the image based on the make
 	import(`../assets/images/${make}.jpg`)
 		.then((image) => {
@@ -20,19 +21,41 @@
 		});
 </script>
 
-<div class="card sm:w-96 w-81 glass mt-5 mx-5">
-	<figure><img src={carImage} alt={make} /></figure>
+<div class="card sm:w-96 w-81 bg-orange-600 mt-5 mx-5">
+	<figure><img src={defaultJPG} alt={make} /></figure>
 	<div class="card-body">
-		<h2 class="card-title text-slate-50 text-2xl">{make}</h2>
-		<h3 class=" text-slate-50 text-xl">{model}</h3>
+		<h2 class="card-title text-slate-800 text-2xl font-extrabold tracking-wide">{make}</h2>
+		<h3 class=" text-slate-800 text-xl font-bold">{model}</h3>
 		<div class="space-y-2">
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Milage: {milage}</div>
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Year: {year_make}</div>
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Color: {color}</div>
-			<div class="badge bg-slate-500 border-none text-slate-50 text-lg badge-lg font-semibold">Fuel: {fuel_type}</div>
+			<div class="badge bg-slate-800 border-none text-slate-50 text-md badge-lg font-semibold p-4">
+				Milage : {milage} <RoadHorizon class="ml-3" size={20} weight="bold" />
+			</div>
+			<div class="badge bg-slate-800 border-none text-slate-50 text-md badge-lg font-semibold p-4">
+				Year : {year_make} <Calendar class="ml-3" size={20} weight="bold" />
+			</div>
+			<div class="badge bg-slate-800 border-none text-slate-50 text-md badge-lg font-semibold p-4">
+				Color : {color} <Palette class="ml-2" size={20} weight="bold" />
+			</div>
+			<div class="badge bg-slate-800 border-none text-slate-50 text-md badge-lg font-semibold p-4">
+				Fuel: {fuel_type} <GasPump class="ml-2" size={20} weight="bold" />
+			</div>
 		</div>
-		<div class="card-actions justify-start">
-			<button class="btn bg-orange-600 border-none text-slate-100 mt-2 h-14 text-md">{price ? price : 'contact dealer'}</button>
-		</div>
+		{#if price}
+			<div class="card-actions justify-start">
+				<button
+					class="btn bg-orange-600 border-none text-slate-800 mt-2 h-14 text-lg hover:bg-orange-700"
+				>
+					<CurrencyDollar size={23} weight="bold" />
+				</button>
+			</div>
+		{:else}
+			<div class="card-actions justify-start">
+				<button
+					class="btn bg-orange-600 border-none text-slate-800  h-14 text-lg hover:bg-orange-700 font-bold"
+				>
+					Contact Dealer <PhoneCall size={23} weight="bold" />
+				</button>
+			</div>
+		{/if}
 	</div>
 </div>
