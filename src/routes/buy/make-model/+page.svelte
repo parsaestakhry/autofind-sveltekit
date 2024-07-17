@@ -490,9 +490,16 @@
 		//console.log(data)
 	}
 
-	async function HandleClickModel(model:string){
+	async function HandleClickModel(model: string) {
 		modelChoice = model;
-		
+		const response = await fetch('/api/make-model', {
+			method: 'POST',
+			body: JSON.stringify({ makeChoice, modelChoice }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		cars = await response.json();
 	}
 </script>
 
@@ -512,48 +519,12 @@
 				</p>
 
 				<!-- Open the modal using ID.showModal() method -->
+
 				<button
 					class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
 					onclick="my_modal_5.showModal()"
 					>Made By {makeChoice}
 				</button>
-
-				{#if cars.length > 0}
-					<button
-						class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
-						onclick="my_modal_5.showModal()"
-						>The Model  {modelChoice}
-					</button>
-					<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-						<div class="modal-box">
-							<h3 class="font-bold mb-5 text-2xl">Models List :</h3>
-							<ul
-								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
-							>
-								{#each cars as car}
-									{#if car.make === makeChoice}
-										
-										<button
-											class="btn text-lg text-slate-200 font-semibold"
-											onclick="my_modal_5.close()"
-											on:click={() =>  HandleClickModel(car.model)}
-										>
-											{car.model}
-										</button>
-									{/if}
-								{/each}
-							</ul>
-							<p class="py-4">Press ESC key or click the button below to close</p>
-							<div class="modal-action">
-								<form method="dialog">
-									<!-- if there is a button in form, it will close the modal -->
-									<button class="btn">Close</button>
-								</form>
-							</div>
-						</div>
-					</dialog>
-				{/if}
-
 				<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
 					<div class="modal-box">
 						<h3 class="font-bold mb-5 text-2xl">Manufacturers List :</h3>
@@ -577,16 +548,58 @@
 						</div>
 					</div>
 				</dialog>
+				{#if cars.length > 0}
+					<button
+						class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
+						onclick="my_modal_6.showModal()"
+						>The Model {modelChoice}
+					</button>
+					<dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
+						<div class="modal-box">
+							<h3 class="font-bold mb-5 text-2xl">Models List :</h3>
+							<ul
+								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
+							>
+								{#each cars as car}
+									{#if car.make === makeChoice}
+										<button
+											class="btn text-lg text-slate-200 font-semibold"
+											onclick="my_modal_6.close()"
+											on:click={() => HandleClickModel(car.model)}
+										>
+											{car.model}
+										</button>
+									{/if}
+								{/each}
+							</ul>
+							<p class="py-4">Press ESC key or click the button below to close</p>
+							<div class="modal-action">
+								<form method="dialog">
+									<!-- if there is a button in form, it will close the modal -->
+									<button class="btn">Close</button>
+								</form>
+							</div>
+						</div>
+					</dialog>
+				{/if}
 			</div>
 			<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
 				<img src={M5} alt="mockup" />
 			</div>
 			{#if showText && cars.length > 0}
-				<h4
-					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5"
-				>
-					All the cars made by {makeChoice}
-				</h4>
+				{#if modelChoice !== ''}
+					<h4
+						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap  mt-5"
+					>
+						{makeChoice} {modelChoice}s are here!
+					</h4>
+				{:else}
+					<h4
+						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5"
+					>
+						All the cars made by {makeChoice}
+					</h4>
+				{/if}
 			{/if}
 			{#if cars.length == 0 && showText == true}
 				<h4
