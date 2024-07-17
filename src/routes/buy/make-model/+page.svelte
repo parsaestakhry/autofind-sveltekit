@@ -472,8 +472,10 @@
 
 	let makeChoice = '';
 	let cars: Car[] = [];
+	let showText = false;
 
 	async function handleClick(name: string) {
+		showText = !showText;
 		makeChoice = name;
 		const response = await fetch('/api/make-model', {
 			method: 'POST',
@@ -536,26 +538,33 @@
 			<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
 				<img src={M5} alt="mockup" />
 			</div>
+			<div class="grid">
+			{#if showText && cars.length > 0}
+				<h4
+					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5 mx-5"
+				>
+					All the cars made by {makeChoice}
+				</h4>
+			{/if}
+
+			{#if cars && cars.length > 0}
+				<ul class="flex flex-wrap ">
+					{#each cars as car}
+						<li>
+							<Card
+								model={car.model}
+								make={car.make}
+								milage={car.milage}
+								color={car.Color}
+								fuel_type={car.fuel_type}
+								year_make={car.year_make}
+								price={car.price}
+							/>
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</div>
-		{#if cars && cars.length > 0}
-		<ul class="flex flex-wrap justify-center mt-2">
-			{#each cars as car}
-				<li>
-					<Card
-						model={car.model}
-						make={car.make}
-						milage={car.milage}
-						color={car.Color}
-						fuel_type={car.fuel_type}
-						year_make={car.year_make}
-						price={car.price}
-					/>
-				</li>
-			{/each}
-		</ul>
-	{:else}
-		<p>No cars available.</p>
-	{/if}
+		</div>
 	</section>
-	
 </div>
