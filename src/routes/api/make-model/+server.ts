@@ -4,11 +4,22 @@ import type { Car } from '$lib/server/GetCars';
 export async function POST(event: any) {
 	const body = await event.request.json();
 	//console.log('request body: ', body);
-	const choice = body.makeChoice;
+	const make = body.makeChoice;
+	const model = body.modelChoice
+	console.log(model)
+	console.log(make)
+	let query = ``
 	//console.log(choice);
-	const modelQuery = `SELECT * FROM car WHERE make = "${choice}" AND model = "${""}`
+	const modelQuery = `SELECT * FROM car WHERE make = "${make}" AND model = "${model}"`
+	const makeQuery = `SELECT * FROM car WHERE make = "${make}" `;
+	if (model !== undefined) {
+		query = modelQuery
+	} else {
+		query = makeQuery
+	}
+
 	let results: Car[] | null = await connection
-		.query(`SELECT * FROM car WHERE make = "${choice}" `)
+		.query(query)
 		.then(function ([rows, fields]) {
 			//console.log(rows)
 			return rows as Car[];
