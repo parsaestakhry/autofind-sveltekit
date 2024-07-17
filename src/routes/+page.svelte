@@ -14,11 +14,11 @@
 	<div class="absolute inset-0 font-bold items-center justify-start ml-5">
 		<h1 class="text-white sm:text-7xl sm:mt-14 text-6xl mt-16">Your Next Car is Here.</h1>
 		<div class="sm:hidden justify-end flex-col items-end mr-20 mt-3 space-y-2">
-			<button on:click={goTo}
+			<a href="/buy"
 				class="btn text-slate-900 text-xl bg-orange-600 hover:bg-orange-600 border-none font-bold"
 			>
 				Buy a Car
-			</button>
+			</a>
 			<button
 				class="btn text-slate-900 text-xl bg-orange-600 hover:bg-orange-600 border-none font-bold"
 			>
