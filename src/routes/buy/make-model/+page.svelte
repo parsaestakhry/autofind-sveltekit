@@ -475,6 +475,7 @@
 	let modelChoice = '';
 	let cars: Car[] = [];
 	let showText = false;
+	let carModels = [];
 
 	async function handleClickMake(name: string) {
 		showText = true;
@@ -488,7 +489,10 @@
 		});
 		cars = await response.json();
 		//console.log(data)
+		carModels = [...new Set(cars.map((car) => car.model))];
 	}
+
+	
 
 	async function HandleClickModel(model: string) {
 		modelChoice = model;
@@ -500,7 +504,10 @@
 			}
 		});
 		cars = await response.json();
+		
 	}
+
+
 </script>
 
 <div>
@@ -560,16 +567,14 @@
 							<ul
 								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
 							>
-								{#each cars as car}
-									{#if car.make === makeChoice}
+								{#each carModels as model}
 										<button
 											class="btn text-lg text-slate-200 font-semibold"
 											onclick="my_modal_6.close()"
-											on:click={() => HandleClickModel(car.model)}
+											on:click={() => HandleClickModel(model)}
 										>
-											{car.model}
+											{model}
 										</button>
-									{/if}
 								{/each}
 							</ul>
 							<p class="py-4">Press ESC key or click the button below to close</p>
@@ -589,9 +594,10 @@
 			{#if showText && cars.length > 0}
 				{#if modelChoice !== ''}
 					<h4
-						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap  mt-5"
+						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5"
 					>
-						{makeChoice} {modelChoice}s are here!
+						{makeChoice}'s
+						{modelChoice}s are here!
 					</h4>
 				{:else}
 					<h4
