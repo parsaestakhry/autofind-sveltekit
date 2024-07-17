@@ -616,7 +616,7 @@
 				</h4>
 			{/if}
 		</div>
-		<div class="p-10">
+		<div class="sm:p-10 p-5">
 			{#if cars && cars.length > 0}
 				<ul class="flex flex-wrap justify-center">
 					{#each cars as car}
