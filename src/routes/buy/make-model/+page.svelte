@@ -1,11 +1,12 @@
 <script lang="ts">
 	// @ts-nocheck
-
+	import type { Car } from '$lib/server/GetCars';
 	import nissan from '../../../assets/images/pngimg.com - nissan_PNG52.png';
 	import ArrowDown from 'phosphor-svelte/lib/ArrowDown';
 	import ArrowUp from 'phosphor-svelte/lib/ArrowUp';
 	import 'car-makes-icons/dist/style.css';
-	import M5 from '../../../assets/images/BMW-M5-PNG-Image.png'
+	import M5 from '../../../assets/images/BMW-M5-PNG-Image.png';
+	import Card from '../../../components/Card.svelte';
 	let flag = false;
 	function toggleArrow() {
 		flag = !flag;
@@ -470,6 +471,7 @@
 	];
 
 	let makeChoice = '';
+	let cars: Car[] = [];
 
 	async function handleClick(name: string) {
 		makeChoice = name;
@@ -480,10 +482,8 @@
 				'Content-Type': 'application/json'
 			}
 		});
-		const data = await response.json()
-		
-
-		
+		cars = await response.json();
+		//console.log(data)
 	}
 </script>
 
@@ -537,5 +537,25 @@
 				<img src={M5} alt="mockup" />
 			</div>
 		</div>
+		{#if cars && cars.length > 0}
+		<ul class="flex flex-wrap justify-center mt-2">
+			{#each cars as car}
+				<li>
+					<Card
+						model={car.model}
+						make={car.make}
+						milage={car.milage}
+						color={car.Color}
+						fuel_type={car.fuel_type}
+						year_make={car.year_make}
+						price={car.price}
+					/>
+				</li>
+			{/each}
+		</ul>
+	{:else}
+		<p>No cars available.</p>
+	{/if}
 	</section>
+	
 </div>
