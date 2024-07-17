@@ -6,8 +6,6 @@ export async function POST(event: any) {
 	//console.log('request body: ', body);
 	const make = body.makeChoice;
 	const model = body.modelChoice
-	console.log(model)
-	console.log(make)
 	let query = ``
 	//console.log(choice);
 	const modelQuery = `SELECT * FROM car WHERE make = "${make}" AND model = "${model}"`
