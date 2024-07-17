@@ -470,9 +470,19 @@
 
 	let makeChoice = '';
 
-	function handleClick(name: string) {
+	async function handleClick(name: string) {
 		makeChoice = name;
-		console.log(makeChoice)
+		const response = await fetch('/api/make-model', {
+			method: 'POST',
+			body: JSON.stringify({ makeChoice }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		const data = await response.json()
+		
+
+		
 	}
 </script>
 
@@ -507,7 +517,6 @@
 									class="btn text-lg text-slate-200 font-semibold"
 									on:click={() => handleClick(make.name)}
 									onclick="my_modal_5.close()"
-									
 								>
 									{make.name}
 								</button>
@@ -522,12 +531,6 @@
 						</div>
 					</div>
 				</dialog>
-				<a
-					href="/"
-					class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-				>
-					Speak to Sales
-				</a>
 			</div>
 			<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
 				<img src={nissan} alt="mockup" />
