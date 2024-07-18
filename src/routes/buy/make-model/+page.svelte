@@ -492,6 +492,8 @@
 		cars = await response.json();
 		//console.log(data)
 		carModels = [...new Set(cars.map((car) => car.model))];
+		modelChoice = ''
+		yearChoice = ''
 	}
 
 	async function HandleClickModel(model: string) {
