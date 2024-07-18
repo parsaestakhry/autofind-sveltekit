@@ -473,9 +473,11 @@
 
 	let makeChoice = '';
 	let modelChoice = '';
+	let yearChoice = 0;
 	let cars: Car[] = [];
 	let showText = false;
 	let carModels = [];
+	let carYears = [];
 
 	async function handleClickMake(name: string) {
 		showText = true;
@@ -492,8 +494,6 @@
 		carModels = [...new Set(cars.map((car) => car.model))];
 	}
 
-	
-
 	async function HandleClickModel(model: string) {
 		modelChoice = model;
 		const response = await fetch('/api/make-model', {
@@ -504,10 +504,21 @@
 			}
 		});
 		cars = await response.json();
-		
+		carYears = [...new Set(cars.map((car) => car.year_make))];
 	}
 
-
+	async function HandleClickYear(year: number) {
+		yearChoice = year;
+		const response = await fetch('/api/make-model', {
+			method: 'POST',
+			body: JSON.stringify({ makeChoice, modelChoice, yearChoice }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		cars = await response.json();
+		console.log(carYears);
+	}
 </script>
 
 <div>
@@ -568,13 +579,45 @@
 								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
 							>
 								{#each carModels as model}
-										<button
-											class="btn text-lg text-slate-200 font-semibold"
-											onclick="my_modal_6.close()"
-											on:click={() => HandleClickModel(model)}
-										>
-											{model}
-										</button>
+									<button
+										class="btn text-lg text-slate-200 font-semibold"
+										onclick="my_modal_6.close()"
+										on:click={() => HandleClickModel(model)}
+									>
+										{model}
+									</button>
+								{/each}
+							</ul>
+							<p class="py-4">Press ESC key or click the button below to close</p>
+							<div class="modal-action">
+								<form method="dialog">
+									<!-- if there is a button in form, it will close the modal -->
+									<button class="btn">Close</button>
+								</form>
+							</div>
+						</div>
+					</dialog>
+				{/if}
+				{#if carYears.length > 0}
+					<button
+						class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
+						onclick="my_modal_7.showModal()"
+						>The Year {yearChoice}
+					</button>
+					<dialog id="my_modal_7" class="modal modal-bottom sm:modal-middle">
+						<div class="modal-box">
+							<h3 class="font-bold mb-5 text-2xl">Enter year :</h3>
+							<ul
+								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
+							>
+								{#each carYears as year}
+									<button
+										class="btn text-lg text-slate-200 font-semibold"
+										onclick="my_modal_7.close()"
+										on:click={() => HandleClickYear(year)}
+									>
+										{year}
+									</button>
 								{/each}
 							</ul>
 							<p class="py-4">Press ESC key or click the button below to close</p>
