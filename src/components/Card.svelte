@@ -10,15 +10,15 @@
 	import defaultJPG from '../assets/images/default.jpg';
 	import { Calendar, CurrencyDollar, GasPump, Info, Palette, Phone, PhoneCall, RoadHorizon } from 'phosphor-svelte';
 	// Dynamically import the image based on the make
-	import(`../assets/images/${make}.jpg`)
-		.then((image) => {
-			carImage = image.default;
-		})
-		.catch((error) => {
-			console.error(`Failed to load image for make '${make}':`, error);
-			// Handle error, for example, by setting a default image
-			carImage = defaultJPG;
-		});
+	// import(`../assets/images/${make}.jpg`)
+	// 	.then((image) => {
+	// 		carImage = image.default;
+	// 	})
+	// 	.catch((error) => {
+	// 		console.error(`Failed to load image for make '${make}':`, error);
+	// 		// Handle error, for example, by setting a default image
+	// 		carImage = defaultJPG;
+	// 	});
 </script>
 
 <div class="card sm:w-[28rem] w-81 bg-orange-600 mt-5 mx-5 mb-10 ">
@@ -41,11 +41,16 @@
 			</div>
 		</div>
 		{#if price}
-			<div class="card-actions justify-start">
+			<div class="card-actions justify-center">
 				<button
-					class="btn bg-orange-600 border-none text-slate-800 mt-2 h-14 text-lg hover:bg-orange-700"
+					class="btn btn-ghost bg-orange-600 border-none text-slate-800 mt-2 h-14 text-lg hover:bg-orange-700 font-bold"
 				>
 					{price}<CurrencyDollar size={23} weight="bold" />
+				</button>
+				<button
+					class="btn btn-ghost border-none text-slate-800 mt-2  h-14 text-lg hover:bg-orange-700 font-bold"
+				>
+					Learn More <Info size={23} weight="bold" />
 				</button>
 			</div>
 		{:else}
