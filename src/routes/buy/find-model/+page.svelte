@@ -18,7 +18,7 @@
 				>
 					From family SUVs and Sedans to Sports Cars, we've got them all.
 				</p>
-				<div class="sm:flex sm:space-x-20 space-y-10 sm:space-y-0  ">
+				<div class="sm:flex sm:space-x-20 space-y-10 sm:space-y-0">
 					<div>
 						<h1
 							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
@@ -34,13 +34,13 @@
 							type="number"
 							bind:value={minValue}
 							placeholder="Minimum Budget"
-							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold"
+							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold font-bold text-slate-800"
 						/>
 					</div>
 
 					<div>
 						<h1
-							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
+							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10 "
 						>
 							To
 							{#if maxValue === null || maxValue === undefined}
@@ -53,7 +53,7 @@
 							type="number"
 							bind:value={maxValue}
 							placeholder="Maximum Budget"
-							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold "
+							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold font-bold text-slate-800"
 						/>
 					</div>
 				</div>
