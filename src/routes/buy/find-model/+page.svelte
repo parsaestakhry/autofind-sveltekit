@@ -1,7 +1,23 @@
 <script lang="ts">
 	import GLS from '../../../assets/images/gls.webp';
+	import type { Car } from '$lib/server/GetCars';
 	let minValue: number;
 	let maxValue: number;
+	let cars: Car[];
+	async function handleClick(min: number, max: number) {
+		min = minValue;
+		max = maxValue;
+		const response = await fetch('/api/find-model', {
+			method: 'POST',
+			body: JSON.stringify({ min, max }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
+		cars = await response.json()
+		console.log(cars)
+	}
 </script>
 
 <div>
@@ -40,7 +56,7 @@
 
 					<div>
 						<h1
-							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10 "
+							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
 						>
 							To
 							{#if maxValue === null || maxValue === undefined}
@@ -55,12 +71,18 @@
 							placeholder="Maximum Budget"
 							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold font-bold text-slate-800"
 						/>
+						<button
+							on:click={() => handleClick(minValue, maxValue)}
+							class="btn bg-orange-600 font-bold text-slate-800 sm:flex-none sm:mt-0"
+						>
+							Find
+						</button>
 					</div>
 				</div>
 			</div>
-			<div class="hidden lg:mt-0 lg:col-span-5 lg:flex p-8">
-				<img src={GLS} alt="mockup" />
-			</div>
+			<!-- <div class="hidden lg:mt-0 lg:col-span-5 lg:flex p-8">
+				
+			</div> -->
 		</div>
 	</section>
 </div>
