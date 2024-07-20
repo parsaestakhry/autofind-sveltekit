@@ -7,9 +7,10 @@
 	export let year_make;
 	export let price;
 	export let type;
+	export let transmission
 	let carImage: string;
 	import defaultJPG from '../assets/images/default.jpg';
-	import { Calendar, Car, CurrencyDollar, GasPump, Info, Palette, Phone, PhoneCall, RoadHorizon } from 'phosphor-svelte';
+	import { Calendar, Car, CurrencyDollar, GasPump, Gear, Info, Palette, Phone, PhoneCall, RoadHorizon } from 'phosphor-svelte';
 	// Dynamically import the image based on the make
 	// import(`../assets/images/${make}.jpg`)
 	// 	.then((image) => {
@@ -42,6 +43,9 @@
 			</div>
 			<div class="badge bg-slate-800 border-none text-slate-50 text-md badge-lg font-semibold p-4">
 				Type : {type} <Car class="ml-2" size={20} weight="bold" />
+			</div>
+			<div class="badge bg-slate-800 border-none text-slate-50 text-md badge-lg font-semibold p-4">
+				Transmission : {transmission} <Gear class="ml-2" size={20} weight="bold" />
 			</div>
 		</div>
 		{#if price}

@@ -674,6 +674,7 @@
 								fuel_type={car.fuel_type}
 								year_make={car.year_make}
 								price={car.price}
+								transmission={car.gearbox}
 							/>
 						</li>
 					{/each}

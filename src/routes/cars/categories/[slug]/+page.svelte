@@ -50,6 +50,7 @@
 						year_make={car.year_make}
 						price={car.price}
 						type={car.type}
+						transmission={car.gearbox}
 					/>
 				</li>
 			{/each}
