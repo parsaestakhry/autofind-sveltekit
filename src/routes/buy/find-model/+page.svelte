@@ -545,7 +545,7 @@
 				>
 					From family SUVs and Sedans to Sports Cars, we've got them all.
 				</p>
-				<div class="sm:flex sm:space-x-20 space-y-10 sm:space-y-0 items-end">
+				<div class="sm:flex sm:space-x-10 space-y-10 sm:space-y-0 items-end">
 					<div>
 						<h1
 							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
@@ -676,6 +676,7 @@
 							{/each}
 						</ul>
 					</div>
+					
 					<button
 						on:click={() => handleClick(minValue, maxValue, selectedTypes, selectedFuelTypes)}
 						class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
