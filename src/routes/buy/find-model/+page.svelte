@@ -7,7 +7,7 @@
 	import Card from '../../../components/Card.svelte';
 	let minValue: number;
 	let maxValue: number;
-	let cars: Car[];
+	let cars: Car[] = [];
 	let makeChoice = '';
 	let modelChoice = '';
 	let yearChoice = 0;
@@ -471,9 +471,11 @@
 			name: 'Zil'
 		}
 	];
-	async function handleClick(min: number, max: number) {
+	let showText = false;
+	async function handleClick(min: number, max: number, make: string) {
 		min = minValue;
 		max = maxValue;
+		showText = true;
 		const response = await fetch('/api/find-model', {
 			method: 'POST',
 			body: JSON.stringify({ min, max }),
@@ -481,24 +483,10 @@
 				'Content-Type': 'application/json'
 			}
 		});
-
 		cars = await response.json();
-		//console.log(cars)
 	}
 
-	async function handleMakeClick(make: string) {
-		makeChoice = make;
-		const response = await fetch('/api/make-model', {
-			method: 'POST',
-			body: JSON.stringify({ makeChoice }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-		cars = await response.json();
-		//console.log(data)
-		carModels = [...new Set(cars.map((car) => car.model))];
-	}
+	//console.log(cars)
 </script>
 
 <div>
@@ -515,7 +503,7 @@
 				>
 					From family SUVs and Sedans to Sports Cars, we've got them all.
 				</p>
-				<div class="sm:flex sm:space-x-20 space-y-10 sm:space-y-0">
+				<div class="sm:flex sm:space-x-20 space-y-10 sm:space-y-0 items-end">
 					<div>
 						<h1
 							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
@@ -552,19 +540,26 @@
 							placeholder="Maximum Budget"
 							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold font-bold text-slate-800"
 						/>
-						<button
+
+						
+					</div>
+					<button 
 							on:click={() => handleClick(minValue, maxValue)}
-							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
+							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 "
 						>
 							Find
 							<MagnifyingGlass size={22} weight="bold" />
 						</button>
-					</div>
 				</div>
+				{#if cars.length == 0 && showText === true}
+					<h4
+						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-wrap mt-5"
+					>
+						Sorry we currently don't have any cars by this price range
+						<h4>:(</h4>
+					</h4>
+				{/if}
 			</div>
-			{#if cars && cars.length > 0}
-				''
-			{/if}
 		</div>
 		<div class="sm:p-10 p-5">
 			{#if cars && cars.length > 0}
