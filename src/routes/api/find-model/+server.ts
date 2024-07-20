@@ -17,7 +17,7 @@ export async function POST(event: any) {
         query = `SELECT * FROM car WHERE price BETWEEN ? AND ?`;
         queryParams = [min, max];
     } else {
-        query = `SELECT * FROM car WHERE price IS NULL`;
+        query = `SELECT * FROM car`;
     }
 
     // Check if types are provided
