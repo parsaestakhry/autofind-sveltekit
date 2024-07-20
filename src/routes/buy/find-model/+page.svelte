@@ -488,13 +488,14 @@
 	
 
 	let showText = false;
-	async function handleClick(min: number, max: number, make: string) {
+	async function handleClick(min: number, max: number, types: string[]  ) {
 		min = minValue;
 		max = maxValue;
+		types = selectedTypes;
 		showText = true;
 		const response = await fetch('/api/find-model', {
 			method: 'POST',
-			body: JSON.stringify({ min, max }),
+			body: JSON.stringify({ min, max,types }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -506,7 +507,11 @@
 </script>
 
 <div>
-	
+	<!-- {#each selectedTypes as type }
+		<h1>
+			{type}
+		</h1>
+	{/each} -->
 	<section class="bg-white dark:bg-gray-900">
 		<div class="grid max-w-screen-xl px-8 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
 			<div class="mr-auto place-self-center lg:col-span-7">
@@ -574,13 +579,13 @@
 							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
 						>
 							{#each chasisList as type}
-								<li>
+								<li class="" >
 									<div class="form-control">
 										<label class="label cursor-pointer">
-											<span class="label-text">{type}</span>
+											<span class="label-text -my-10 w-16 font-bold text-md">{type}</span>
 											<input
 												type="checkbox"
-												class="toggle ml-10"
+												class="checkbox ml-10 bg-orange-600 " 
 												on:change={(event) => toggleType(event, type)}
 											/>
 										</label>
@@ -590,7 +595,7 @@
 						</ul>
 					</div>
 					<button
-						on:click={() => handleClick(minValue, maxValue)}
+						on:click={() => handleClick(minValue, maxValue,selectedTypes)}
 						class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
 					>
 						Find
