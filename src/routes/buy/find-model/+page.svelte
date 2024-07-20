@@ -5,6 +5,7 @@
 	import type { Car } from '$lib/server/GetCars';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
 	import Card from '../../../components/Card.svelte';
+	import { Car } from 'phosphor-svelte';
 	let minValue: number;
 	let maxValue: number;
 	let cars: Car[] = [];
@@ -13,6 +14,8 @@
 	let yearChoice = 0;
 	let carModels = [];
 	let carYears = [];
+	let checkboxValue = '';
+	const chasisList = ['HatchBack', 'Sedan', 'Coupe', 'Wagon', 'Truck'];
 	const makeList = [
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/09/abarth1.png',
@@ -471,6 +474,19 @@
 			name: 'Zil'
 		}
 	];
+
+	let selectedTypes = []
+
+	function toggleType(event, type) {
+		if (event.target.checked) {
+			selectedTypes = [...selectedTypes, type];
+		} else {
+			selectedTypes = selectedTypes.filter((item) => item !== type);
+		}
+	}
+
+	
+
 	let showText = false;
 	async function handleClick(min: number, max: number, make: string) {
 		min = minValue;
@@ -490,6 +506,7 @@
 </script>
 
 <div>
+	
 	<section class="bg-white dark:bg-gray-900">
 		<div class="grid max-w-screen-xl px-8 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
 			<div class="mr-auto place-self-center lg:col-span-7">
@@ -540,16 +557,45 @@
 							placeholder="Maximum Budget"
 							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold font-bold text-slate-800"
 						/>
-
-						
 					</div>
-					<button 
-							on:click={() => handleClick(minValue, maxValue)}
-							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 "
+					<div class="dropdown dropdown-bottom">
+						<div
+							tabindex="0"
+							role="button"
+							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex flex-nowrap text-nowrap"
 						>
-							Find
-							<MagnifyingGlass size={22} weight="bold" />
-						</button>
+							Vehicle Type : {checkboxValue}
+							<Car class="mt-1" size={22} weight="bold" />
+						</div>
+
+						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+						<ul
+							tabindex="0"
+							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
+						>
+							{#each chasisList as type}
+								<li>
+									<div class="form-control">
+										<label class="label cursor-pointer">
+											<span class="label-text">{type}</span>
+											<input
+												type="checkbox"
+												class="toggle ml-10"
+												on:change={(event) => toggleType(event, type)}
+											/>
+										</label>
+									</div>
+								</li>
+							{/each}
+						</ul>
+					</div>
+					<button
+						on:click={() => handleClick(minValue, maxValue)}
+						class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
+					>
+						Find
+						<MagnifyingGlass size={22} weight="bold" />
+					</button>
 				</div>
 				{#if cars.length == 0 && showText === true}
 					<h4
