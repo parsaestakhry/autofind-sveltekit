@@ -27,6 +27,7 @@
 	}
 
 	const cars: Car[] = data.cars;
+	
 </script>
 
 <div class="relative sm:h-64 h-80">
@@ -36,7 +37,7 @@
 	</div>
 </div>
 
-<div class="sm:mt-10 -mt-10 ">
+<div class="sm:mt-6 -mt-10 min-h-screen bg-gray-900">
 	{#if cars && cars.length > 0}
 		<ul class="flex flex-wrap justify-center mt-2 mb-5">
 			{#each cars as car}
