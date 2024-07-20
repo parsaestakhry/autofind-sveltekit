@@ -6,7 +6,8 @@ export async function POST(event: any) {
 	const body = await event.request.json();
     const min = body.min
     const max = body.max
-
+	const make = body.makeChoice
+	console.log(max,min,make)
     let results: Car[] | null = await connection
 			.query(`SELECT * FROM car WHERE price BETWEEN ${min} AND ${max} `)
 			.then(function ([rows, fields]) {
