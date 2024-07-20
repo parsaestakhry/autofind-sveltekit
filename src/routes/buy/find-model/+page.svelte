@@ -5,7 +5,7 @@
 	import type { Car } from '$lib/server/GetCars';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
 	import Card from '../../../components/Card.svelte';
-	import { Car, GasPump } from 'phosphor-svelte';
+	import { Car, GasPump,Gear } from 'phosphor-svelte';
 	let minValue: number;
 	let maxValue: number;
 	let cars: Car[] = [];
@@ -17,6 +17,8 @@
 	let checkboxValue = '';
 	const chasisList = ['HatchBack', 'Sedan', 'Coupe', 'Wagon', 'Truck'];
 	const fuelList = ['Gas', 'Diesel', 'Hybrid', 'Electric'];
+	const gearList = ['Automatic', 'Manual']
+
 	const makeList = [
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/09/abarth1.png',
@@ -478,7 +480,7 @@
 
 	let selectedTypes = [];
 	let selectedFuelTypes = [];
-
+	let selectedGears = [];
 	function toggleType(event, type) {
 		if (event.target.checked) {
 			selectedTypes = [...selectedTypes, type];
@@ -495,16 +497,25 @@
 		}
 	}
 
+	function toggleGear(event,gear){
+		if (event.target.checked) {
+			selectedGears = [...selectedGears, gear];
+		} else {
+			selectedGears = selectedGears.filter((item) => item !== gear);
+		}
+	}
+
 	let showText = false;
-	async function handleClick(min: number, max: number, types: string[], fuels: string[]) {
+	async function handleClick(min: number, max: number, types: string[], fuels: string[], gears: string[]) {
 		min = minValue;
 		max = maxValue;
 		types = selectedTypes;
 		fuels = selectedFuelTypes;
+		gears = selectedGears;
 		showText = true;
 		const response = await fetch('/api/find-model', {
 			method: 'POST',
-			body: JSON.stringify({ min, max, types, fuels }),
+			body: JSON.stringify({ min, max, types, fuels,gears }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -516,7 +527,7 @@
 </script>
 
 <div>
-	<!-- {#each selectedFuelTypes as type }
+	<!-- {#each selectedGears as type }
 		<h1>
 			{type}
 		</h1>
@@ -634,6 +645,37 @@
 							{/each}
 						</ul>
 					</div>
+					<div class="dropdown dropdown-bottom">
+						<div
+							tabindex="0"
+							role="button"
+							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex flex-nowrap text-nowrap"
+						>
+							Transmission
+							<Gear class="mt-1" size={22} weight="bold" />
+						</div>
+
+						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+						<ul
+							tabindex="0"
+							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
+						>
+							{#each gearList as gear}
+								<li class="">
+									<div class="form-control">
+										<label class="label cursor-pointer">
+											<span class="label-text -my-10 w-16 font-bold text-md">{gear}</span>
+											<input
+												type="checkbox"
+												class="checkbox ml-10 bg-orange-600"
+												on:change={(event) => toggleGear(event, gear)}
+											/>
+										</label>
+									</div>
+								</li>
+							{/each}
+						</ul>
+					</div>
 					<button
 						on:click={() => handleClick(minValue, maxValue, selectedTypes, selectedFuelTypes)}
 						class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
@@ -646,7 +688,7 @@
 					<h4
 						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-wrap mt-5"
 					>
-						Sorry we currently don't have any cars by this price range
+						Sorry we currently don't have the cars by this filter
 						<h4>:(</h4>
 					</h4>
 				{/if}

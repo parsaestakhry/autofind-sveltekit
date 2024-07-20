@@ -8,7 +8,7 @@ export async function POST(event: any) {
 	const max = body.max;
 	const types = body.types;
 	const fuels = body.fuels;
-	console.log(fuels);
+	const gears = body.gears;
 
 	// Initialize the base query
 	let query: string;
@@ -32,6 +32,12 @@ export async function POST(event: any) {
 	if (fuels && fuels.length > 0) {
 		const fuelsList = fuels.map((fuel: string) => `'${fuel}'`).join(', ');
 		query += ` AND fuel_type IN (${fuelsList})`;
+	}
+
+	// Check if gears are provided
+	if (gears && gears.length > 0) {
+		const gearsList = gears.map((gear: string) => `'${gear}'`).join(', ');
+		query += ` AND gearbox IN (${gearsList})`;
 	}
 
 	let results: Car[] | null = await connection.query(query, queryParams).then(function ([
