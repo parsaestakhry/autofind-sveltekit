@@ -21,7 +21,7 @@
 	// 	});
 </script>
 
-<div class="card sm:w-[28rem] w-81 bg-orange-600 mt-5 mx-5 mb-10 ">
+<div class="card sm:w-[27rem] w-81 bg-orange-600 mt-5 mx-5 mb-10 ">
 	<figure><img src={defaultJPG} alt={make} /></figure>
 	<div class="card-body">
 		<h2 class="card-title text-slate-800 text-2xl font-extrabold tracking-wide">{make}</h2>
