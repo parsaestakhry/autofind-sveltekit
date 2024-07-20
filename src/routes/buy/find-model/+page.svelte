@@ -5,7 +5,7 @@
 	import type { Car } from '$lib/server/GetCars';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
 	import Card from '../../../components/Card.svelte';
-	import { Car } from 'phosphor-svelte';
+	import { Car, GasPump } from 'phosphor-svelte';
 	let minValue: number;
 	let maxValue: number;
 	let cars: Car[] = [];
@@ -16,6 +16,7 @@
 	let carYears = [];
 	let checkboxValue = '';
 	const chasisList = ['HatchBack', 'Sedan', 'Coupe', 'Wagon', 'Truck'];
+	const fuelList = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
 	const makeList = [
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/09/abarth1.png',
@@ -475,7 +476,8 @@
 		}
 	];
 
-	let selectedTypes = []
+	let selectedTypes = [];
+	let selectedFuelTypes = [];
 
 	function toggleType(event, type) {
 		if (event.target.checked) {
@@ -485,17 +487,23 @@
 		}
 	}
 
-	
+	function toggleFuel(event, fuel) {
+		if (event.target.checked) {
+			selectedFuelTypes = [...selectedFuelTypes, fuel]
+		} else {
+			selectedFuelTypes = selectedFuelTypes.filter((item) => item !== fuel )
+		}
+	}
 
 	let showText = false;
-	async function handleClick(min: number, max: number, types: string[]  ) {
+	async function handleClick(min: number, max: number, types: string[]) {
 		min = minValue;
 		max = maxValue;
 		types = selectedTypes;
 		showText = true;
 		const response = await fetch('/api/find-model', {
 			method: 'POST',
-			body: JSON.stringify({ min, max,types }),
+			body: JSON.stringify({ min, max, types }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -507,7 +515,7 @@
 </script>
 
 <div>
-	<!-- {#each selectedTypes as type }
+	<!-- {#each selectedFuelTypes as type }
 		<h1>
 			{type}
 		</h1>
@@ -569,7 +577,7 @@
 							role="button"
 							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex flex-nowrap text-nowrap"
 						>
-							Vehicle Type : {checkboxValue}
+							Vehicle Type
 							<Car class="mt-1" size={22} weight="bold" />
 						</div>
 
@@ -579,13 +587,13 @@
 							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
 						>
 							{#each chasisList as type}
-								<li class="" >
+								<li class="">
 									<div class="form-control">
 										<label class="label cursor-pointer">
 											<span class="label-text -my-10 w-16 font-bold text-md">{type}</span>
 											<input
 												type="checkbox"
-												class="checkbox ml-10 bg-orange-600 " 
+												class="checkbox ml-10 bg-orange-600"
 												on:change={(event) => toggleType(event, type)}
 											/>
 										</label>
@@ -594,8 +602,39 @@
 							{/each}
 						</ul>
 					</div>
+					<div class="dropdown dropdown-bottom">
+						<div
+							tabindex="0"
+							role="button"
+							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex flex-nowrap text-nowrap"
+						>
+							Fuel Type
+							<GasPump class="mt-1" size={22} weight="bold" />
+						</div>
+
+						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+						<ul
+							tabindex="0"
+							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
+						>
+							{#each fuelList as fuel}
+								<li class="">
+									<div class="form-control">
+										<label class="label cursor-pointer">
+											<span class="label-text -my-10 w-16 font-bold text-md">{fuel}</span>
+											<input
+												type="checkbox"
+												class="checkbox ml-10 bg-orange-600"
+												on:change={(event) => toggleFuel(event, fuel)}
+											/>
+										</label>
+									</div>
+								</li>
+							{/each}
+						</ul>
+					</div>
 					<button
-						on:click={() => handleClick(minValue, maxValue,selectedTypes)}
+						on:click={() => handleClick(minValue, maxValue, selectedTypes)}
 						class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
 					>
 						Find
