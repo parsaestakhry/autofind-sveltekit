@@ -6,7 +6,7 @@
 	<input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col items-center justify-center">
 		<!-- Page content here -->
-		<label for="my-drawer-2" class="btn btn-ghost drawer-button "><List color="#f7f2f2" size={28}/></label>
+		<label for="my-drawer-2" class="btn btn-ghost drawer-button "><List color="" size={28}/></label>
 	</div>
 	<div class="drawer-side">
 		<label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
