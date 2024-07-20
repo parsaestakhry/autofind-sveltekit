@@ -19,25 +19,25 @@ export async function POST(event: any) {
 		query = `SELECT * FROM car WHERE price BETWEEN ? AND ?`;
 		queryParams = [min, max];
 	} else {
-		query = `SELECT * FROM car WHERE price IS NULL`;
+		query = `SELECT * FROM car `;
 	}
 
 	// Check if types are provided
 	if (types && types.length > 0) {
 		const typesList = types.map((type: string) => `'${type}'`).join(', ');
-		query += ` AND type IN (${typesList})`;
+		query += ` WHERE type IN (${typesList})`;
 	}
 
 	// Check if fuels are provided
 	if (fuels && fuels.length > 0) {
 		const fuelsList = fuels.map((fuel: string) => `'${fuel}'`).join(', ');
-		query += ` AND fuel_type IN (${fuelsList})`;
+		query += ` WHERE fuel_type IN (${fuelsList})`;
 	}
 
 	// Check if gears are provided
 	if (gears && gears.length > 0) {
 		const gearsList = gears.map((gear: string) => `'${gear}'`).join(', ');
-		query += ` AND gearbox IN (${gearsList})`;
+		query += ` WHERE gearbox IN (${gearsList})`;
 	}
 
 	let results: Car[] | null = await connection.query(query, queryParams).then(function ([
