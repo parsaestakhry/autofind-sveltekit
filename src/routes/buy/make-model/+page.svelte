@@ -545,13 +545,13 @@
 					onclick="my_modal_5.showModal()"
 					>Made By {makeChoice}
 				</button>
-				<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-					<div class="modal-box">
-						<h3 class="font-bold mb-5 text-2xl">Manufacturers List :</h3>
-						<ul class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2">
+				<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle ">
+					<div class="modal-box bg-gray-900  ">
+						<h3 class="font-bold mb-5 text-2xl  ">Manufacturers List :</h3>
+						<ul class="menu dropdown-content bg-gray-900 rounded-box z-[1] p-2 shadow space-y-2">
 							{#each makeList as make}
 								<button
-									class="btn text-lg text-slate-200 font-semibold"
+									class="btn text-lg text-slate-800 font-semibold bg-orange-700 hover:bg-orange-800 "
 									on:click={() => handleClickMake(make.name)}
 									onclick="my_modal_5.close()"
 								>
@@ -575,14 +575,14 @@
 						>The Model {modelChoice}
 					</button>
 					<dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
-						<div class="modal-box">
+						<div class="modal-box bg-gray-900 ">
 							<h3 class="font-bold mb-5 text-2xl">Models List :</h3>
 							<ul
-								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
+								class="menu dropdown-content bg-gray-900 rounded-box z-[1] p-2 shadow space-y-2"
 							>
 								{#each carModels as model}
 									<button
-										class="btn text-lg text-slate-200 font-semibold"
+										class="btn text-lg text-slate-800 font-semibold bg-orange-700 hover:bg-orange-800 "
 										onclick="my_modal_6.close()"
 										on:click={() => HandleClickModel(model)}
 									>
@@ -606,15 +606,15 @@
 						onclick="my_modal_7.showModal()"
 						>The Year {yearChoice}
 					</button>
-					<dialog id="my_modal_7" class="modal modal-bottom sm:modal-middle">
-						<div class="modal-box">
-							<h3 class="font-bold mb-5 text-2xl">Enter year :</h3>
+					<dialog id="my_modal_7" class="modal modal-bottom sm:modal-middle ">
+						<div class="modal-box bg-gray-900">
+							<h3 class="font-bold mb-5 text-2xl ">Enter year :</h3>
 							<ul
-								class="menu dropdown-content bg-orange-600 rounded-box z-[1] p-2 shadow space-y-2"
+								class="menu dropdown-content bg-gray-900 rounded-box z-[1] p-2 shadow space-y-2"
 							>
 								{#each carYears as year}
 									<button
-										class="btn text-lg text-slate-200 font-semibold"
+										class="btn text-lg text-slate-800 font-semibold bg-orange-700 hover:bg-orange-800 "
 										onclick="my_modal_7.close()"
 										on:click={() => HandleClickYear(year)}
 									>
