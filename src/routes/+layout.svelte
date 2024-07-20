@@ -4,7 +4,7 @@
 	export let data;
 </script>
 
-<div class="bg-gray-900">
+<div >
 	<NavBar username={data.username} />
 	<slot />
 </div>
