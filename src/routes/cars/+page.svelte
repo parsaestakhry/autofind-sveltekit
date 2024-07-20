@@ -5,19 +5,25 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const carArray: Car[] | undefined = data.props?.data;
-    
 </script>
 
-
-
 {#if carArray && carArray.length > 0}
-    <ul class="flex flex-wrap justify-center mt-2">
-        {#each carArray as car}
-            <li>
-                <Card model={car.model} make={car.make} milage={car.milage} color={car.Color} fuel_type={car.fuel_type} year_make={car.year_make} price={car.price}/>
-            </li>
-        {/each}
-    </ul>
+	<ul class="flex flex-wrap justify-center mt-2">
+		{#each carArray as car}
+			<li>
+				<Card
+					model={car.model}
+					make={car.make}
+					milage={car.milage}
+					color={car.Color}
+					fuel_type={car.fuel_type}
+					year_make={car.year_make}
+					price={car.price}
+                    type={car.type}
+				/>
+			</li>
+		{/each}
+	</ul>
 {:else}
-    <p>No cars available.</p>
+	<p>No cars available.</p>
 {/if}
