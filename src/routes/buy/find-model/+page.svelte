@@ -16,7 +16,7 @@
 	let carYears = [];
 	let checkboxValue = '';
 	const chasisList = ['HatchBack', 'Sedan', 'Coupe', 'Wagon', 'Truck'];
-	const fuelList = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
+	const fuelList = ['Gas', 'Diesel', 'Hybrid', 'Electric'];
 	const makeList = [
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/09/abarth1.png',
@@ -489,21 +489,22 @@
 
 	function toggleFuel(event, fuel) {
 		if (event.target.checked) {
-			selectedFuelTypes = [...selectedFuelTypes, fuel]
+			selectedFuelTypes = [...selectedFuelTypes, fuel];
 		} else {
-			selectedFuelTypes = selectedFuelTypes.filter((item) => item !== fuel )
+			selectedFuelTypes = selectedFuelTypes.filter((item) => item !== fuel);
 		}
 	}
 
 	let showText = false;
-	async function handleClick(min: number, max: number, types: string[]) {
+	async function handleClick(min: number, max: number, types: string[], fuels: string[]) {
 		min = minValue;
 		max = maxValue;
 		types = selectedTypes;
+		fuels = selectedFuelTypes;
 		showText = true;
 		const response = await fetch('/api/find-model', {
 			method: 'POST',
-			body: JSON.stringify({ min, max, types }),
+			body: JSON.stringify({ min, max, types, fuels }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -634,7 +635,7 @@
 						</ul>
 					</div>
 					<button
-						on:click={() => handleClick(minValue, maxValue, selectedTypes)}
+						on:click={() => handleClick(minValue, maxValue, selectedTypes, selectedFuelTypes)}
 						class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
 					>
 						Find
