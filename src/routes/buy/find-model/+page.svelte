@@ -5,7 +5,7 @@
 	import type { Car } from '$lib/server/GetCars';
 	import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
 	import Card from '../../../components/Card.svelte';
-	import { Car, GasPump,Gear } from 'phosphor-svelte';
+	import { Car, GasPump, Gear } from 'phosphor-svelte';
 	let minValue: number;
 	let maxValue: number;
 	let cars: Car[] = [];
@@ -17,7 +17,7 @@
 	let checkboxValue = '';
 	const chasisList = ['HatchBack', 'Sedan', 'Coupe', 'Wagon', 'Truck'];
 	const fuelList = ['Gas', 'Diesel', 'Hybrid', 'Electric'];
-	const gearList = ['Automatic', 'Manual']
+	const gearList = ['Automatic', 'Manual'];
 
 	const makeList = [
 		{
@@ -497,7 +497,7 @@
 		}
 	}
 
-	function toggleGear(event,gear){
+	function toggleGear(event, gear) {
 		if (event.target.checked) {
 			selectedGears = [...selectedGears, gear];
 		} else {
@@ -506,7 +506,13 @@
 	}
 
 	let showText = false;
-	async function handleClick(min: number, max: number, types: string[], fuels: string[], gears: string[]) {
+	async function handleClick(
+		min: number,
+		max: number,
+		types: string[],
+		fuels: string[],
+		gears: string[]
+	) {
 		min = minValue;
 		max = maxValue;
 		types = selectedTypes;
@@ -515,7 +521,7 @@
 		showText = true;
 		const response = await fetch('/api/find-model', {
 			method: 'POST',
-			body: JSON.stringify({ min, max, types, fuels,gears }),
+			body: JSON.stringify({ min, max, types, fuels, gears }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -533,7 +539,7 @@
 		</h1>
 	{/each} -->
 	<section class="bg-white dark:bg-gray-900">
-		<div class="grid max-w-screen-xl px-8 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+		<div class="grid max-w-screen-xl py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
 			<div class="mr-auto place-self-center lg:col-span-7">
 				<h1
 					class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
@@ -550,7 +556,7 @@
 						<h1
 							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
 						>
-							From
+							Price From
 							{#if minValue === null || minValue === undefined}
 								{''}
 							{:else}
@@ -676,7 +682,7 @@
 							{/each}
 						</ul>
 					</div>
-					
+
 					<button
 						on:click={() => handleClick(minValue, maxValue, selectedTypes, selectedFuelTypes)}
 						class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700"
