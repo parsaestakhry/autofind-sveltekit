@@ -6,5 +6,5 @@
 
 <div >
 	<NavBar username={data.username} />
-	<slot />
+	<slot data={data.username} />
 </div>
