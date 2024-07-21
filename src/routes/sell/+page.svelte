@@ -465,316 +465,352 @@
 	async function handleClickMake(make: string) {
 		makeChoice = make;
 	}
+	export let data;
 </script>
 
-<section class="bg-white dark:bg-gray-900 min-h-screen">
-	<div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-		<h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add Your Car</h2>
-		<form method="POST" enctype="multipart/form-data">
-			<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-				<div class="sm:col-span-2">
-					<label for="make" class="block mb-2 text-3xl text-gray-900 dark:text-white font-extrabold"
-						>Manufacturer
-					</label>
-					<select
-						id="make"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-					>
-						<option selected={false}>Select category</option>
-						{#each makeList as make}
-							<option>{make.name}</option>
-						{/each}
-					</select>
-				</div>
-				<div class="w-full">
-					<label
-						for="model"
-						class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white">Model</label
-					>
-					<input
-						type="text"
-						name="model"
-						id="model"
-						class="bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-						placeholder="Product brand"
-						required={true}
-					/>
-				</div>
-				<div class="w-full">
-					<label
-						for="price"
-						class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
-					>
-						Initial Price</label
-					>
-					<input
-						type="number"
-						name="price"
-						id="price"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-						placeholder="$2999"
-						required={true}
-					/>
-				</div>
-				<div class="w-full">
-					<label
-						for="color"
-						class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white">Color</label
-					>
-					<input
-						type="text"
-						name="color"
-						id="color"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-						placeholder="Blue"
-						required={true}
-					/>
-				</div>
-				<div>
-					<label for="type" class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
-						>Chasis Type</label
-					>
-					<select
-						id="type"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-					>
-						<option selected={false}>Select category</option>
-						<option value="Hatchback">Hatchback</option>
-						<option value="Sedan">Sedan</option>
-						<option value="Coupe">Coupe</option>
-						<option value="Wagon">Wagon</option>
-						<option value="Truck">Truck</option>
-					</select>
-				</div>
-				<div>
-					<label for="fuel" class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
-						>Fuel Type</label
-					>
-					<select
-						id="fuel"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-					>
-						<option selected={false}>Select category</option>
-						<option value="Gas">Gas</option>
-						<option value="Diesel">Diesel</option>
-						<option value="Hybrid">Hybrid</option>
-						<option value="Electric">Electric</option>
-					</select>
-				</div>
-				<div>
-					<label
-						for="engine"
-						class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
-						>Engine Model</label
-					>
-					<select
-						id="engine"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-					>
-						<option selected={false}>Select category</option>
-						<option value="I3">Inline-3</option>
-						<option value="I4">Inline-4</option>
-						<option value="I5">Inline-5</option>
-						<option value="I6">Inline-6</option>
-						<option value="V6">V6</option>
-						<option value="V8">V8</option>
-						<option value="V10">V10</option>
-						<option value="V12">V12</option>
-						<option value="W12">W12</option>
-						<option value="W16">W16</option>
-					</select>
-				</div>
-				<div>
-					<label
-						for="milage"
-						class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white">Milage</label
-					>
-					<input
-						type="number"
-						name="milage"
-						id="milage"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-						placeholder="1000"
-						required={false}
-					/>
-				</div>
-				<div>
-					<label
-						for="year-make"
-						class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
-						>Year Make</label
-					>
-					<input
-						type="number"
-						name="year-make"
-						id="year-make"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-						placeholder="2012"
-						required={false}
-					/>
-				</div>
-				<div class="sm:col-span-2">
-					<label
-						for="transmission"
-						class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
-						>Transmission</label
-					>
-					<select
-						id="transmission"
-						class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-					>
-						<option selected={false}>Select category</option>
-						<option value="I3">Manual</option>
-						<option value="I4">Automatic</option>
-					</select>
-					<label
-						for="description"
-						class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white mt-8"
-						>Description</label
-					>
-					<textarea
-						id="description"
-						rows="8"
-						class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-						placeholder="Your description here"
-					></textarea>
+<div class="" >
+	{#if data.username}
+		<section class="bg-white dark:bg-gray-900 min-h-screen">
+			<div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+				<h2 class="mb-4 text-5xl font-bold text-gray-900 dark:text-white text-nowrap">
+					Please Add Your Car
+				</h2>
+				<form method="POST" enctype="multipart/form-data">
+					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+						<div class="sm:col-span-2">
+							<label
+								for="make"
+								class="block mb-2 text-3xl text-gray-900 dark:text-white font-extrabold"
+								>Manufacturer
+							</label>
+							<select
+								id="make"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+							>
+								<option selected={false}>Select category</option>
+								{#each makeList as make}
+									<option>{make.name}</option>
+								{/each}
+							</select>
+						</div>
+						<div class="w-full">
+							<label
+								for="model"
+								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								>Model</label
+							>
+							<input
+								type="text"
+								name="model"
+								id="model"
+								class="bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="Product brand"
+								required={true}
+							/>
+						</div>
+						<div class="w-full">
+							<label
+								for="price"
+								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+							>
+								Initial Price</label
+							>
+							<input
+								type="number"
+								name="price"
+								id="price"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="$2999"
+								required={true}
+							/>
+						</div>
+						<div class="w-full">
+							<label
+								for="color"
+								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								>Color</label
+							>
+							<input
+								type="text"
+								name="color"
+								id="color"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="Blue"
+								required={true}
+							/>
+						</div>
+						<div>
+							<label
+								for="type"
+								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								>Chasis Type</label
+							>
+							<select
+								id="type"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+							>
+								<option selected={false}>Select category</option>
+								<option value="Hatchback">Hatchback</option>
+								<option value="Sedan">Sedan</option>
+								<option value="Coupe">Coupe</option>
+								<option value="Wagon">Wagon</option>
+								<option value="Truck">Truck</option>
+							</select>
+						</div>
+						<div>
+							<label
+								for="fuel"
+								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								>Fuel Type</label
+							>
+							<select
+								id="fuel"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+							>
+								<option selected={false}>Select category</option>
+								<option value="Gas">Gas</option>
+								<option value="Diesel">Diesel</option>
+								<option value="Hybrid">Hybrid</option>
+								<option value="Electric">Electric</option>
+							</select>
+						</div>
+						<div>
+							<label
+								for="engine"
+								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								>Engine Model</label
+							>
+							<select
+								id="engine"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+							>
+								<option selected={false}>Select category</option>
+								<option value="I3">Inline-3</option>
+								<option value="I4">Inline-4</option>
+								<option value="I5">Inline-5</option>
+								<option value="I6">Inline-6</option>
+								<option value="V6">V6</option>
+								<option value="V8">V8</option>
+								<option value="V10">V10</option>
+								<option value="V12">V12</option>
+								<option value="W12">W12</option>
+								<option value="W16">W16</option>
+							</select>
+						</div>
+						<div>
+							<label
+								for="milage"
+								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								>Milage</label
+							>
+							<input
+								type="number"
+								name="milage"
+								id="milage"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="1000"
+								required={false}
+							/>
+						</div>
+						<div>
+							<label
+								for="year-make"
+								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								>Year Make</label
+							>
+							<input
+								type="number"
+								name="year-make"
+								id="year-make"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="2012"
+								required={false}
+							/>
+						</div>
+						<div class="sm:col-span-2">
+							<label
+								for="transmission"
+								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								>Transmission</label
+							>
+							<select
+								id="transmission"
+								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+							>
+								<option selected={false}>Select category</option>
+								<option value="I3">Manual</option>
+								<option value="I4">Automatic</option>
+							</select>
+							<label
+								for="description"
+								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white mt-8"
+								>Description</label
+							>
+							<textarea
+								id="description"
+								rows="8"
+								class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="Your description here"
+							></textarea>
 
-					<div class="flex items-center justify-center w-full mt-10 ">
-						<label
-							for="dropzone-file"
-							class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-						>
-							Front Side Image
-							<div class="flex flex-col items-center justify-center pt-5 pb-6">
-								<svg
-									class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 20 16"
+							<div class="flex items-center justify-center w-full mt-10">
+								<label
+									for="dropzone-file"
+									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
-									<path
-										stroke="currentColor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-									/>
-								</svg>
-								<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-									<span class="font-semibold">Click to upload</span> or drag and drop
-								</p>
-								<p class="text-xs text-gray-500 dark:text-gray-400">
-									SVG, PNG, JPG or GIF (MAX. 800x400px)
-								</p>
+									Front Side Image
+									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+										<svg
+											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											aria-hidden="true"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 20 16"
+										>
+											<path
+												stroke="currentColor"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+											/>
+										</svg>
+										<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+											<span class="font-semibold">Click to upload</span> or drag and drop
+										</p>
+										<p class="text-xs text-gray-500 dark:text-gray-400">
+											SVG, PNG, JPG (MAX. 800x400px)
+										</p>
+									</div>
+									<input id="dropzone-file" type="file" class="hidden" />
+								</label>
 							</div>
-							<input id="dropzone-file" type="file" class="hidden" />
-						</label>
-					</div>
-					<div class="flex items-center justify-center w-full mt-10 ">
-						<label
-							for="dropzone-file"
-							class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-						>
-							Back Side Image
-							<div class="flex flex-col items-center justify-center pt-5 pb-6">
-								<svg
-									class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 20 16"
+							<div class="flex items-center justify-center w-full mt-10">
+								<label
+									for="dropzone-file"
+									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
-									<path
-										stroke="currentColor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-									/>
-								</svg>
-								<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-									<span class="font-semibold">Click to upload</span> or drag and drop
-								</p>
-								<p class="text-xs text-gray-500 dark:text-gray-400">
-									SVG, PNG, JPG or GIF (MAX. 800x400px)
-								</p>
+									Rear Side Image
+									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+										<svg
+											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											aria-hidden="true"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 20 16"
+										>
+											<path
+												stroke="currentColor"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+											/>
+										</svg>
+										<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+											<span class="font-semibold">Click to upload</span> or drag and drop
+										</p>
+										<p class="text-xs text-gray-500 dark:text-gray-400">
+											SVG, PNG, JPG (MAX. 800x400px)
+										</p>
+									</div>
+									<input id="dropzone-file" type="file" class="hidden" />
+								</label>
 							</div>
-							<input id="dropzone-file" type="file" class="hidden" />
-						</label>
-					</div>
-					<div class="flex items-center justify-center w-full mt-10 ">
-						<label
-							for="dropzone-file"
-							class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-						>
-							Driver Side Image
-							<div class="flex flex-col items-center justify-center pt-5 pb-6">
-								<svg
-									class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 20 16"
+							<div class="flex items-center justify-center w-full mt-10">
+								<label
+									for="dropzone-file"
+									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
-									<path
-										stroke="currentColor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-									/>
-								</svg>
-								<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-									<span class="font-semibold">Click to upload</span> or drag and drop
-								</p>
-								<p class="text-xs text-gray-500 dark:text-gray-400">
-									SVG, PNG, JPG or GIF (MAX. 800x400px)
-								</p>
+									Driver Side Image
+									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+										<svg
+											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											aria-hidden="true"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 20 16"
+										>
+											<path
+												stroke="currentColor"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+											/>
+										</svg>
+										<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+											<span class="font-semibold">Click to upload</span> or drag and drop
+										</p>
+										<p class="text-xs text-gray-500 dark:text-gray-400">
+											SVG, PNG, JPG (MAX. 800x400px)
+										</p>
+									</div>
+									<input id="dropzone-file" type="file" class="hidden" />
+								</label>
 							</div>
-							<input id="dropzone-file" type="file" class="hidden" />
-						</label>
-					</div>
-					<div class="flex items-center justify-center w-full mt-10 ">
-						<label
-							for="dropzone-file"
-							class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-						>
-							Passenger Side Image
-							<div class="flex flex-col items-center justify-center pt-5 pb-6">
-								<svg
-									class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 20 16"
+							<div class="flex items-center justify-center w-full mt-10">
+								<label
+									for="dropzone-file"
+									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
-									<path
-										stroke="currentColor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-									/>
-								</svg>
-								<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-									<span class="font-semibold">Click to upload</span> or drag and drop
-								</p>
-								<p class="text-xs text-gray-500 dark:text-gray-400">
-									SVG, PNG, JPG or GIF (MAX. 800x400px)
-								</p>
+									Passenger Side Image
+									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+										<svg
+											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											aria-hidden="true"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 20 16"
+										>
+											<path
+												stroke="currentColor"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+											/>
+										</svg>
+										<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+											<span class="font-semibold">Click to upload</span> or drag and drop
+										</p>
+										<p class="text-xs text-gray-500 dark:text-gray-400">
+											SVG, PNG, JPG (MAX. 800x400px)
+										</p>
+									</div>
+									<input id="dropzone-file" type="file" class="hidden" />
+								</label>
 							</div>
-							<input id="dropzone-file" type="file" class="hidden" />
-						</label>
+						</div>
 					</div>
-				</div>
+					<button
+						type="submit"
+						class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-2xl font-extrabold text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+					>
+						Add product
+					</button>
+				</form>
 			</div>
-			<button
-				type="submit"
-				class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-2xl font-extrabold text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+		</section>
+	{:else}
+		<div role="alert" class="alert min-h-screen text-5xl ">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				class="stroke-info h-10 w-10 shrink-0"
 			>
-				Add product
-			</button>
-		</form>
-	</div>
-</section>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+				></path>
+			</svg>
+			<span>Please Login in order to Submit your vehicle </span>
+			<div>
+				<a href="/login" class="btn btn-sm btn-primary">Login</a>
+			</div>
+		</div>
+	{/if}
+</div>
