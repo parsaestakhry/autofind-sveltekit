@@ -21,24 +21,26 @@
 				>
 					Buy a Car
 				</a>
-				<button
+				<a
+					href="/sell"
 					class="btn text-slate-900 text-xl bg-orange-600 hover:bg-orange-600 border-none font-bold"
 				>
 					Sell My Car
-				</button>
+				</a>
 			</div>
 			<div class="sm:flex justify-end flex-col items-end mr-20 -mt-10 space-y-3 hidden">
-				<button
-					on:click={goTo}
+				<a
+					href="/buy"
 					class="btn w-48 h-18 text-slate-900 text-2xl bg-orange-600 hover:bg-orange-700 border-none font-bold"
 				>
 					Buy a Car
-				</button>
-				<button
+				</a>
+				<a
+					href="/sell"
 					class="btn w-48 h-18 text-slate-900 text-2xl bg-orange-600 hover:bg-orange-700 border-none font-bold"
 				>
 					Sell my Car
-				</button>
+				</a>
 			</div>
 		</div>
 	</div>
