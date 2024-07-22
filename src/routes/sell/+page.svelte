@@ -1,6 +1,8 @@
 <script lang="ts">
 	// @ts-nocheck
 
+	export let data;
+
 	const makeList = [
 		{
 			logo: 'https://www.car-logos.org/wp-content/uploads/2011/09/abarth1.png',
@@ -459,33 +461,55 @@
 			name: 'Zil'
 		}
 	];
-
-	let makeChoice = '';
-
-	async function handleClickMake(make: string) {
-		makeChoice = make;
-	}
-	export let data;
 </script>
 
-<div class="" >
+<div class="">
 	{#if data.username}
 		<section class="bg-white dark:bg-gray-900 min-h-screen">
 			<div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-				
-				<form method="POST" enctype="multipart/form-data">
+				<form method="POST" enctype="multipart/form-data" novalidate>
 					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 						<div class="sm:col-span-2">
+							
+							<label
+								for="model"
+								class="block text-2xl font-extrabold text-gray-900 dark:text-white mb-2"
+								>Username</label
+							>
+							<input
+								type="text"
+								name="username"
+								id="username"
+								class="mb-5 bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="username"
+								value={data.username}
+								required={false}
+							/>
+							<label
+								for="model"
+								class="block text-2xl font-extrabold text-gray-900 dark:text-white mb-2"
+								>Registration</label
+							>
+							<input
+								type="text"
+								name="registration"
+								id="registration"
+								class="mb-5 bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								placeholder="username"
+								
+								required={false}
+							/>
 							<label
 								for="make"
 								class="block mb-2 text-3xl text-gray-900 dark:text-white font-extrabold"
 								>Manufacturer
 							</label>
 							<select
+								name="make"
 								id="make"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 							>
-								<option selected={false}>Select category</option>
+								<option>Select category</option>
 								{#each makeList as make}
 									<option>{make.name}</option>
 								{/each}
@@ -503,7 +527,7 @@
 								id="model"
 								class="bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="Product brand"
-								required={true}
+								required={false}
 							/>
 						</div>
 						<div class="w-full">
@@ -519,7 +543,7 @@
 								id="price"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="$2999"
-								required={true}
+								required={false}
 							/>
 						</div>
 						<div class="w-full">
@@ -534,7 +558,7 @@
 								id="color"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="Blue"
-								required={true}
+								required={false}
 							/>
 						</div>
 						<div>
@@ -544,6 +568,7 @@
 								>Chasis Type</label
 							>
 							<select
+								name="chasis"
 								id="type"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 							>
@@ -562,6 +587,7 @@
 								>Fuel Type</label
 							>
 							<select
+								name="fuel"
 								id="fuel"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 							>
@@ -579,6 +605,7 @@
 								>Engine Model</label
 							>
 							<select
+								name="engine"
 								id="engine"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 							>
@@ -618,7 +645,7 @@
 							>
 							<input
 								type="number"
-								name="year-make"
+								name="year"
 								id="year-make"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="2012"
@@ -632,6 +659,7 @@
 								>Transmission</label
 							>
 							<select
+								name="transmission"
 								id="transmission"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 							>
@@ -645,6 +673,7 @@
 								>Description</label
 							>
 							<textarea
+								name="description"
 								id="description"
 								rows="8"
 								class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
@@ -660,7 +689,7 @@
 									<div class="flex flex-col items-center justify-center pt-5 pb-6">
 										<svg
 											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-											aria-hidden="true"
+											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
 											viewBox="0 0 20 16"
@@ -680,7 +709,7 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input id="dropzone-file" type="file" class="hidden" />
+									<input name="front-image"  id="dropzone-file" type="file" class="hidden" />
 								</label>
 							</div>
 							<div class="flex items-center justify-center w-full mt-10">
@@ -692,7 +721,7 @@
 									<div class="flex flex-col items-center justify-center pt-5 pb-6">
 										<svg
 											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-											aria-hidden="true"
+											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
 											viewBox="0 0 20 16"
@@ -712,7 +741,7 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input id="dropzone-file" type="file" class="hidden" />
+									<input name="rear-image" id="dropzone-file" type="file" accept=".jpg, .jpeg, .png, .webp" class="hidden"  required />
 								</label>
 							</div>
 							<div class="flex items-center justify-center w-full mt-10">
@@ -724,7 +753,7 @@
 									<div class="flex flex-col items-center justify-center pt-5 pb-6">
 										<svg
 											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-											aria-hidden="true"
+											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
 											viewBox="0 0 20 16"
@@ -744,7 +773,7 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input id="dropzone-file" type="file" class="hidden" />
+									<input name="driver-image" id="dropzone-file" type="file" class="hidden" />
 								</label>
 							</div>
 							<div class="flex items-center justify-center w-full mt-10">
@@ -756,7 +785,7 @@
 									<div class="flex flex-col items-center justify-center pt-5 pb-6">
 										<svg
 											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-											aria-hidden="true"
+											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
 											viewBox="0 0 20 16"
@@ -776,14 +805,15 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input id="dropzone-file" type="file" class="hidden" />
+									<input name="passenger-image" id="dropzone-file" type="file" class="hidden" />
 								</label>
 							</div>
+							<!-- <input type="file" id="file" name="fileToUpload" accept=".jpg, .jpeg, .png, .webp" /> -->
 						</div>
 					</div>
 					<button
 						type="submit"
-						class=" text-slate-800 bg-orange-600 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-2xl font-extrabold text-center  bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+						class=" text-slate-800 bg-orange-600 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-2xl font-extrabold text-center bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
 					>
 						Submit
 					</button>
@@ -791,7 +821,7 @@
 			</div>
 		</section>
 	{:else}
-		<div role="alert" class="alert min-h-screen text-5xl ">
+		<div role="alert" class="alert min-h-screen text-5xl">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
