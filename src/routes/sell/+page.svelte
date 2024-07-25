@@ -465,49 +465,47 @@
 
 <div class="">
 	{#if data.username}
-		<section class="bg-white dark:bg-gray-900 min-h-screen">
-			<div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-				<form method="POST" enctype="multipart/form-data" >
+		<section class="min-h-screen bg-white dark:bg-gray-900">
+			<div class="mx-auto max-w-2xl px-4 py-8 lg:py-16">
+				<form method="POST" enctype="multipart/form-data">
 					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 						<div class="sm:col-span-2">
-							
 							<label
 								for="model"
-								class="block text-2xl font-extrabold text-gray-900 dark:text-white mb-2"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Username</label
 							>
 							<input
 								type="text"
 								name="username"
 								id="username"
-								class="mb-5 bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 mb-5 block w-full rounded-lg bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="username"
 								value={data.username}
 								required={true}
 							/>
 							<label
 								for="model"
-								class="block text-2xl font-extrabold text-gray-900 dark:text-white mb-2"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Registration</label
 							>
 							<input
 								type="text"
 								name="registration"
 								id="registration"
-								class="mb-5 bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 mb-5 block w-full rounded-lg bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="registration"
-								
 								required={true}
 							/>
 							<label
 								for="make"
-								class="block mb-2 text-2xl text-gray-900 dark:text-white font-extrabold"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Manufacturer
 							</label>
 							<select
 								name="make"
 								id="make"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 							>
 								<option>Select category</option>
 								{#each makeList as make}
@@ -518,14 +516,14 @@
 						<div class="w-full">
 							<label
 								for="model"
-								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Model</label
 							>
 							<input
 								type="text"
 								name="model"
 								id="model"
-								class="bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="Product brand"
 								required={true}
 							/>
@@ -533,7 +531,7 @@
 						<div class="w-full">
 							<label
 								for="price"
-								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 							>
 								Initial Price</label
 							>
@@ -541,7 +539,7 @@
 								type="number"
 								name="price"
 								id="price"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="$2999"
 								required={false}
 							/>
@@ -549,14 +547,14 @@
 						<div class="w-full">
 							<label
 								for="color"
-								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Color</label
 							>
 							<input
 								type="text"
 								name="color"
 								id="color"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="Blue"
 								required={true}
 							/>
@@ -564,13 +562,13 @@
 						<div>
 							<label
 								for="type"
-								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Chasis Type</label
 							>
 							<select
 								name="chasis"
 								id="type"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 							>
 								<option selected={false}>Select category</option>
 								<option value="Hatchback">Hatchback</option>
@@ -583,13 +581,13 @@
 						<div>
 							<label
 								for="fuel"
-								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Fuel Type</label
 							>
 							<select
 								name="fuel"
 								id="fuel"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 							>
 								<option selected={false}>Select category</option>
 								<option value="Gas">Gas</option>
@@ -601,13 +599,13 @@
 						<div>
 							<label
 								for="engine"
-								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Engine Model</label
 							>
 							<select
 								name="engine"
 								id="engine"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 							>
 								<option selected={false}>Select category</option>
 								<option value="I3">Inline-3</option>
@@ -625,14 +623,14 @@
 						<div>
 							<label
 								for="milage"
-								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Milage</label
 							>
 							<input
 								type="number"
 								name="milage"
 								id="milage"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="1000"
 								required={true}
 							/>
@@ -640,14 +638,14 @@
 						<div>
 							<label
 								for="year-make"
-								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Year Make</label
 							>
 							<input
 								type="number"
 								name="year"
 								id="year-make"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="2012"
 								required={true}
 							/>
@@ -655,13 +653,13 @@
 						<div class="sm:col-span-2">
 							<label
 								for="transmission"
-								class="block font-extrabold mb-2 text-2xl text-gray-900 dark:text-white"
+								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Transmission</label
 							>
 							<select
 								name="transmission"
 								id="transmission"
-								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 							>
 								<option selected={false}>Select category</option>
 								<option value="Manual">Manual</option>
@@ -669,26 +667,26 @@
 							</select>
 							<label
 								for="description"
-								class="block mb-2 text-2xl font-extrabold text-gray-900 dark:text-white mt-8"
+								class="mb-2 mt-8 block text-2xl font-extrabold text-gray-900 dark:text-white"
 								>Description</label
 							>
 							<textarea
 								name="description"
 								id="description"
 								rows="8"
-								class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-none border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
+								class="border-none-gray-300 focus:ring-primary-500 focus:border-none-primary-500 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="Your description here"
 							></textarea>
 
-							<div class="flex items-center justify-center w-full mt-10">
+							<div class="mt-10 flex w-full items-center justify-center">
 								<label
 									for="dropzone-file"
-									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+									class=" flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-lg font-bold hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
 									Front Side Image
-									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+									<div class="flex flex-col items-center justify-center pb-6 pt-5">
 										<svg
-											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
 											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -709,18 +707,24 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input name="front-image"  id="dropzone-file" type="file" class="hidden" required />
+									<input
+										name="front-image"
+										id="dropzone-file"
+										type="file"
+										class="hidden"
+										required
+									/>
 								</label>
 							</div>
-							<div class="flex items-center justify-center w-full mt-10">
+							<div class="mt-10 flex w-full items-center justify-center">
 								<label
 									for="dropzone-file"
-									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+									class=" flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-lg font-bold hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
 									Rear Side Image
-									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+									<div class="flex flex-col items-center justify-center pb-6 pt-5">
 										<svg
-											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
 											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -741,18 +745,24 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input name="rear-image" id="dropzone-file" type="file" accept=".jpg, .jpeg, .png, .webp" class="hidden"  />
+									<input
+										name="rear-image"
+										id="dropzone-file"
+										type="file"
+										accept=".jpg, .jpeg, .png, .webp"
+										class="hidden"
+									/>
 								</label>
 							</div>
-							<div class="flex items-center justify-center w-full mt-10">
+							<div class="mt-10 flex w-full items-center justify-center">
 								<label
 									for="dropzone-file"
-									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+									class=" flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-lg font-bold hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
 									Driver Side Image
-									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+									<div class="flex flex-col items-center justify-center pb-6 pt-5">
 										<svg
-											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
 											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -776,15 +786,15 @@
 									<input name="driver-image" id="dropzone-file" type="file" class="hidden" />
 								</label>
 							</div>
-							<div class="flex items-center justify-center w-full mt-10">
+							<div class="mt-10 flex w-full items-center justify-center">
 								<label
 									for="dropzone-file"
-									class=" text-lg font-bold flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+									class=" flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-lg font-bold hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
 								>
 									Passenger Side Image
-									<div class="flex flex-col items-center justify-center pt-5 pb-6">
+									<div class="flex flex-col items-center justify-center pb-6 pt-5">
 										<svg
-											class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+											class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
 											aria-hidden="false"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -813,7 +823,7 @@
 					</div>
 					<button
 						type="submit"
-						class=" text-slate-800 bg-orange-600 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-2xl font-extrabold text-center bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+						class=" bg-primary-700 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 mt-4 inline-flex items-center rounded-lg bg-orange-600 px-5 py-2.5 text-center text-2xl font-extrabold text-slate-800 focus:ring-4 sm:mt-6"
 					>
 						Submit
 					</button>
@@ -826,7 +836,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
 				viewBox="0 0 24 24"
-				class="stroke-info h-10 w-10 shrink-0"
+				class="h-10 w-10 shrink-0 stroke-info"
 			>
 				<path
 					stroke-linecap="round"
@@ -837,7 +847,7 @@
 			</svg>
 			<span>Please Login in order to Submit your vehicle </span>
 			<div>
-				<a href="/login" class="btn btn-sm btn-primary">Login</a>
+				<a href="/login" class="btn btn-primary btn-sm">Login</a>
 			</div>
 		</div>
 	{/if}
