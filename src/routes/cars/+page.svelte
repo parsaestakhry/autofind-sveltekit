@@ -3,7 +3,8 @@
 	import type { Car } from '$lib/server/GetCars';
 	import Card from '../../components/Card.svelte';
 	import type { PageData } from './$types';
-	export let data: PageData;
+	export let data;
+	
 	const carArray: Car[] | undefined = data.props?.data;
 </script>
 
@@ -21,6 +22,8 @@
 					price={car.price}
                     type={car.type}
 					transmission={car.gearbox}
+					username={data.username}
+					registration = {car.registration}
 				/>
 			</li>
 		{/each}

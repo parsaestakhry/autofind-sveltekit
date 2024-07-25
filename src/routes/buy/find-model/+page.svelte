@@ -14,6 +14,7 @@
 	let yearChoice = 0;
 	let carModels = [];
 	let carYears = [];
+	export let data;
 	let checkboxValue = '';
 	const chasisList = ['HatchBack', 'Sedan', 'Coupe', 'Wagon', 'Truck'];
 	const fuelList = ['Gas', 'Diesel', 'Hybrid', 'Electric'];
@@ -716,6 +717,8 @@
 								price={car.price}
 								type={car.type}
 								transmission={car.gearbox}
+								username = {data.username}
+								registration = {car.registration}
 							/>
 						</li>
 					{/each}
