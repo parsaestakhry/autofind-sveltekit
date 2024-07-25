@@ -467,7 +467,7 @@
 	{#if data.username}
 		<section class="bg-white dark:bg-gray-900 min-h-screen">
 			<div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-				<form method="POST" enctype="multipart/form-data" novalidate>
+				<form method="POST" enctype="multipart/form-data" >
 					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 						<div class="sm:col-span-2">
 							
@@ -483,7 +483,7 @@
 								class="mb-5 bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="username"
 								value={data.username}
-								required={false}
+								required={true}
 							/>
 							<label
 								for="model"
@@ -495,13 +495,13 @@
 								name="registration"
 								id="registration"
 								class="mb-5 bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
-								placeholder="username"
+								placeholder="registration"
 								
-								required={false}
+								required={true}
 							/>
 							<label
 								for="make"
-								class="block mb-2 text-3xl text-gray-900 dark:text-white font-extrabold"
+								class="block mb-2 text-2xl text-gray-900 dark:text-white font-extrabold"
 								>Manufacturer
 							</label>
 							<select
@@ -527,7 +527,7 @@
 								id="model"
 								class="bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="Product brand"
-								required={false}
+								required={true}
 							/>
 						</div>
 						<div class="w-full">
@@ -558,7 +558,7 @@
 								id="color"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="Blue"
-								required={false}
+								required={true}
 							/>
 						</div>
 						<div>
@@ -634,7 +634,7 @@
 								id="milage"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="1000"
-								required={false}
+								required={true}
 							/>
 						</div>
 						<div>
@@ -649,7 +649,7 @@
 								id="year-make"
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-none-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 								placeholder="2012"
-								required={false}
+								required={true}
 							/>
 						</div>
 						<div class="sm:col-span-2">
@@ -664,8 +664,8 @@
 								class="bg-gray-50 border-none border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-none-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-none-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-none-primary-500"
 							>
 								<option selected={false}>Select category</option>
-								<option value="I3">Manual</option>
-								<option value="I4">Automatic</option>
+								<option value="Manual">Manual</option>
+								<option value="Automatic">Automatic</option>
 							</select>
 							<label
 								for="description"
@@ -709,7 +709,7 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input name="front-image"  id="dropzone-file" type="file" class="hidden" />
+									<input name="front-image"  id="dropzone-file" type="file" class="hidden" required />
 								</label>
 							</div>
 							<div class="flex items-center justify-center w-full mt-10">
@@ -741,7 +741,7 @@
 											SVG, PNG, JPG (MAX. 800x400px)
 										</p>
 									</div>
-									<input name="rear-image" id="dropzone-file" type="file" accept=".jpg, .jpeg, .png, .webp" class="hidden"  required />
+									<input name="rear-image" id="dropzone-file" type="file" accept=".jpg, .jpeg, .png, .webp" class="hidden"  />
 								</label>
 							</div>
 							<div class="flex items-center justify-center w-full mt-10">
