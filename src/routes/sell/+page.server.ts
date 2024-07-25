@@ -19,7 +19,7 @@ export const actions: Actions = {
 		const transmission = formData.get('transmission') as string | null;
 		const description = formData.get('description') as string | null;
 
-		function formatDate(date : Date) {
+		function formatDate(date: Date) {
 			var d = new Date(date),
 				month = '' + (d.getMonth() + 1),
 				day = '' + d.getDate(),
@@ -31,7 +31,6 @@ export const actions: Actions = {
 			return [year, month, day].join('-');
 		}
 
-
 		let results = await connection
 			.query(
 				` insert into car (type, Color, fuel_type, model, make, milage, year_make, engine_model, gearbox, price, registration, description, date_added) 
@@ -40,9 +39,9 @@ export const actions: Actions = {
 			.then(function ([rows, fields]) {
 				return rows;
 			});
-		console.log(results);
+		// console.log(results);
 
-		console.log(formData);
+		// console.log(formData);
 		if (!username) {
 			return {
 				status: 400,
@@ -52,6 +51,7 @@ export const actions: Actions = {
 			};
 		}
 
+		// Check if registration is provided
 		if (!registration) {
 			return {
 				status: 400,
@@ -61,11 +61,13 @@ export const actions: Actions = {
 			};
 		}
 
+		// Retrieve image files from the form data
 		const frontImage = formData.get('front-image') as File | null;
 		const rearImage = formData.get('rear-image') as File | null;
 		const driverImage = formData.get('driver-image') as File | null;
 		const passengerImage = formData.get('passenger-image') as File | null;
 
+		// Construct paths for the user's directory and car directory
 		const userDirectory = path.join('uploads', username);
 		const carDirectory = path.join(userDirectory, registration);
 
@@ -79,27 +81,33 @@ export const actions: Actions = {
 			fs.mkdirSync(carDirectory, { recursive: true });
 		}
 
-		const saveFile = async (file: File, fileName: string) => {
-			const filePath = path.join(carDirectory, fileName);
-			const arrayBuffer = await file.arrayBuffer();
-			const buffer = Buffer.from(arrayBuffer);
-			fs.writeFileSync(filePath, buffer);
+		// Function to save the file with a generated name
+		const saveFile = async (file: File, baseName: string) => {
+			const extension = path.extname(file.name); // Extract the file extension from the original name
+			const timestamp = Date.now(); // Generate a timestamp
+			const fileName = `${baseName}${extension}`; // Construct the new file name
+			const filePath = path.join(carDirectory, fileName); // Construct the full file path
+			const arrayBuffer = await file.arrayBuffer(); // Convert the file to an array buffer
+			const buffer = new Uint8Array(arrayBuffer); // Create a buffer from the array buffer
+			fs.writeFileSync(filePath, buffer); // Write the buffer to the file system
 		};
 
+		// Define the files to be saved along with their base names
 		const files = [
-			{ file: frontImage, name: 'front' },
-			{ file: rearImage, name: 'rear' },
-			{ file: driverImage, name: 'driver' },
-			{ file: passengerImage, name: 'passenger' }
+			{ file: frontImage, baseName: 'front' },
+			{ file: rearImage, baseName: 'rear' },
+			{ file: driverImage, baseName: 'driver' },
+			{ file: passengerImage, baseName: 'passenger' }
 		];
 
-		for (const { file, name } of files) {
+		// Iterate through each file and save it if it exists and has size
+		for (const { file, baseName } of files) {
 			if (file && file.size > 0) {
-				const fileName = `${Date.now()}-${name}-${file.name}`;
-				await saveFile(file, fileName);
+				await saveFile(file, baseName);
 			}
 		}
 
+		// Return a success response
 		return {
 			status: 200,
 			body: {
