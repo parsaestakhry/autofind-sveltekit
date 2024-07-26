@@ -41,9 +41,10 @@
 	loadCarImages();
 </script>
 
-<div class="w-81 card mx-5 mb-10 mt-5 bg-orange-600 sm:w-[27rem]">
+<div class="w-81 card mx-5 mb-10 sm:mt-5  bg-orange-600 sm:w-[29rem]">
 	<figure>
-		<img src={carImages.front} alt="Front side of the car" class="h-48 w-full object-cover" />
+		<img src={carImages.front} alt="Front side of the car" class="h-48 w-full object-cover" /> 
+		
 	</figure>
 
 	<div class="card-body">
