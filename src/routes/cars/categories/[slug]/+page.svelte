@@ -27,38 +27,39 @@
 	}
 
 	const cars: Car[] = data.cars;
-	
 </script>
 
-<div class="relative sm:h-64 h-80">
-	<img class="object-cover object-center w-screen h-56 sm:h-72" src={pic} alt="family-car" />
-	<div class="absolute inset-0 font-bold text-center mt-10">
-		<h1 class="text-white sm:text-7xl text-5xl mt-10 sm:mt-16">{data.slug.toUpperCase()}S</h1>
+<div class="bg-gray-900">
+	<div class="relative sm:h-64">
+		<img class="h-56 w-screen object-cover object-center sm:h-72" src={pic} alt="family-car" />
+		<div class="absolute inset-0 mt-10 text-center font-bold">
+			<h1 class="mt-10 text-5xl text-white sm:mt-16 sm:text-7xl">{data.slug.toUpperCase()}S</h1>
+		</div>
 	</div>
-</div>
 
-<div class="sm:mt-6 -mt-10 min-h-screen bg-gray-900">
-	{#if cars && cars.length > 0}
-		<ul class="flex flex-wrap justify-center mt-2 mb-5">
-			{#each cars as car}
-				<li>
-					<Card
-						model={car.model}
-						make={car.make}
-						milage={car.milage}
-						color={car.Color}
-						fuel_type={car.fuel_type}
-						year_make={car.year_make}
-						price={car.price}
-						type={car.type}
-						transmission={car.gearbox}
-						username = {data.username}
-						registration = {car.registration}
-					/>
-				</li>
-			{/each}
-		</ul>
-	{:else}
-		<p>No cars available.</p>
-	{/if}
+	<div class="min-h-screen  sm:mt-6">
+		{#if cars && cars.length > 0}
+			<ul class="mb-5 mt-2 flex flex-wrap justify-center">
+				{#each cars as car}
+					<li>
+						<Card
+							model={car.model}
+							make={car.make}
+							milage={car.milage}
+							color={car.Color}
+							fuel_type={car.fuel_type}
+							year_make={car.year_make}
+							price={car.price}
+							type={car.type}
+							transmission={car.gearbox}
+							username={data.username}
+							registration={car.registration}
+						/>
+					</li>
+				{/each}
+			</ul>
+		{:else}
+			<p>No cars available.</p>
+		{/if}
+	</div>
 </div>
