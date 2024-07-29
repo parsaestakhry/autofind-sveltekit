@@ -35,7 +35,7 @@
 
 <div class="bg-gray-900">
 	<div class="relative  sm:h-96">
-		<img class="h-56 w-screen object-cover object-center sm:h-96" src={pic} alt="family-car" />
+		<!-- <img class="h-56 w-screen object-cover object-center sm:h-96" src={pic} alt="family-car" /> -->
 		<div class="absolute inset-0 mt-10 text-center font-bold">
 			<h1 class="mt-10 text-5xl text-white  sm:text-7xl">{data.slug.toUpperCase()}S</h1>
 		</div>
