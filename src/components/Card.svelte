@@ -83,19 +83,21 @@
 				>
 					{price}<CurrencyDollar size={23} weight="bold" />
 				</button>
-				<button
+				<a 
+					href="/cars/{registration}"
 					class="btn btn-ghost mt-2 h-14 border-none text-lg font-bold text-slate-800 hover:bg-orange-700"
 				>
 					Learn More <Info size={23} weight="bold" />
-				</button>
+				</a>
 			</div>
 		{:else}
 			<div class="card-actions justify-center">
-				<button
+				<a
+					href="/cars/{registration}"
 					class="btn btn-ghost h-14 border-none text-lg font-bold text-slate-800 hover:bg-orange-700"
 				>
 					Learn More <Info size={23} weight="bold" />
-				</button>
+				</a>
 				<button
 					class="btn btn-ghost h-14 border-none text-lg font-bold text-slate-800 hover:bg-orange-700"
 				>
