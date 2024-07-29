@@ -9,7 +9,7 @@
 			<div
 				class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400"
 			>
-				<a href="#" class="flex items-center justify-center">
+				<a href="/cars/makes/bmw" class="flex items-center justify-center">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -23,7 +23,7 @@
 						></path>
 					</svg>
 				</a>
-				<a href="#" class="flex items-center justify-center">
+				<a href="/cars/makes/volkswagen" class="flex items-center justify-center">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -37,7 +37,7 @@
 						></path>
 					</svg>
 				</a>
-				<a href="#" class="flex items-center justify-center">
+				<a href="/cars/makes/alfa romeo" class="flex items-center justify-center">
 					<svg
 						class=""
 						xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@
 					</svg>
 				</a>
 
-				<a href="#" class="flex items-center justify-center">
+				<a href="/cars/makes/toyota" class="flex items-center justify-center">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -67,7 +67,7 @@
 						></path>
 					</svg>
 				</a>
-				<a href="#" class="flex items-center justify-center">
+				<a href="/cars/makes/mitsubishi" class="flex items-center justify-center">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -81,7 +81,7 @@
 						></path>
 					</svg>
 				</a>
-				<a href="#" class="flex items-center justify-center">
+				<a href="/cars/makes/renault" class="flex items-center justify-center">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
