@@ -10,7 +10,7 @@ export const load = async ({ params }) => {
 	let newParam = capitalizeFirstLetter(params.slug);
 
 	let results = await connection
-		.query(`SELECT * FROM car WHERE type = "${newParam}"`)
+		.query(`SELECT * FROM car WHERE registration = "${newParam}"`)
 		.then(function ([rows, fields]) {
 			return rows as Car[];
 		});
