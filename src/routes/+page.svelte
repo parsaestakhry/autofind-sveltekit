@@ -2,57 +2,49 @@
 	import intropic from '../assets/images/intro-pic.jpg';
 	import Carousel from '../components/Carousel.svelte';
 	import CarProfile from 'phosphor-svelte/lib/CarProfile';
-	import { goto } from '$app/navigation';
-
-	function goTo() {
-		goto('/buy');
-	}
 </script>
 
-<div class="min-h-screen" >
-	<div class="relative sm:h-64 h-80">
-		<img class="object-cover object-center w-screen h-full" src={intropic} alt="family-car" />
-		<div class="absolute inset-0 font-bold items-center justify-start ml-5">
-			<h1 class="text-white sm:text-7xl sm:mt-14 text-6xl mt-16">Your Next Car is Here.</h1>
-			<div class="sm:hidden justify-end flex-col items-end mr-20 mt-3 space-y-2">
+<div class="min-h-screen ">
+	<div class="relative h-80 sm:h-80">
+		<img class="h-full w-screen object-cover object-right " src={intropic} alt="family-car" />
+		<div class="absolute inset-0 ml-5 items-center justify-start font-bold">
+			<h1 class="mt-16 text-6xl  text-slate-50 sm:mt-20 sm:text-7xl">
+				Your Next Car is Here.</h1>
+			<div class="mr-20 mt-3 flex-col items-end justify-end space-y-2 sm:hidden">
 				<a
 					href="/buy"
-					class="btn text-slate-900 text-xl bg-orange-600 hover:bg-orange-600 border-none font-bold"
+					class="btn border-none bg-orange-600 text-xl font-bold text-slate-900 hover:bg-orange-600"
 				>
 					Buy a Car
 				</a>
 				<a
 					href="/sell"
-					class="btn text-slate-900 text-xl bg-orange-600 hover:bg-orange-600 border-none font-bold"
+					class="btn border-none bg-orange-600 text-xl font-bold text-slate-900 hover:bg-orange-600"
 				>
 					Sell My Car
 				</a>
 			</div>
-			<div class="sm:flex justify-end flex-col items-end mr-20 -mt-10 space-y-3 hidden">
+			<div class="-mt-10 mr-20 hidden flex-col items-end justify-end space-y-3 sm:flex">
 				<a
 					href="/buy"
-					class="btn w-48 h-18 text-slate-900 text-2xl bg-orange-600 hover:bg-orange-700 border-none font-bold"
+					class="h-18 btn w-48 border-none bg-orange-600 text-2xl font-bold text-slate-900 hover:bg-orange-700"
 				>
 					Buy a Car
 				</a>
 				<a
 					href="/sell"
-					class="btn w-48 h-18 text-slate-900 text-2xl bg-orange-600 hover:bg-orange-700 border-none font-bold"
+					class="h-18 btn w-48 border-none bg-orange-600 text-2xl font-bold text-slate-900 hover:bg-orange-700"
 				>
 					Sell my Car
 				</a>
 			</div>
 		</div>
 	</div>
-	<div class="flex justify-center items-center mt-6 sm:space-x-4">
-		<div class="text-center sm:mr-10 justify-center mx-10">
+	<div class="mt-6 flex items-center justify-center sm:space-x-4">
+		<div class="mx-10 justify-center text-center sm:mr-10">
 			<CarProfile class="mx-auto" size={72} color="#fafafa" />
-			<h2 class="text-3xl font-bold mb-3 text-slate-50">We have what you are looking are for.</h2>
-			<p></p>
+			<h2 class="mb-3 text-3xl font-bold text-slate-50">We have what you are looking  for.</h2>
 		</div>
 	</div>
-
-	<div class="" >
-		<Carousel />
-	</div>
+	<Carousel />
 </div>
