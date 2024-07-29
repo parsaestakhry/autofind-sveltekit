@@ -1,5 +1,6 @@
 <script>
 	import intropic from '../assets/images/intro-pic.jpg';
+	import CarLogos from '../components/CarLogos.svelte';
 	import Carousel from '../components/Carousel.svelte';
 	import CarProfile from 'phosphor-svelte/lib/CarProfile';
 </script>
@@ -47,4 +48,5 @@
 		</div>
 	</div>
 	<Carousel />
+	<CarLogos/>
 </div>
