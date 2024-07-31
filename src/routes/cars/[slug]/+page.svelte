@@ -15,9 +15,7 @@
 	import Info from 'phosphor-svelte/lib/Info'
 	const carArray: Car[] | undefined = data.cars;
 	let flag = false;
-	function bookmark() {
-		flag = !flag;
-	}
+	
 	let carImages = {
 		front: '',
 		rear: '',
