@@ -13,6 +13,7 @@ export type Car = {
 	gearbox: string;
 	price : number
 	registration : string
+	description : string
 };
 export const GetCars = async () => {
 	let results: Car[] = await connection.query('SELECT * FROM car LIMIT 10').then(function ([rows, fields]) {
