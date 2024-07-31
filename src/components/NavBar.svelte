@@ -9,7 +9,7 @@
 	<div class="flex-none"></div>
 	<div class="flex-1">
 		<a href="/" class="btn btn-ghost text-2xl font-bold text-slate-800 ml-4"
-			>Autofind <CarBattery size={25} class="mt-1" />
+			>Caruns.com <CarBattery size={25} class="mt-1" />
 			<div></div>
 		</a>
 	</div>
