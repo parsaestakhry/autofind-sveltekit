@@ -13,9 +13,9 @@
 			<div></div>
 		</a>
 	</div>
-	<button class="btn hidden sm:flex font-bold text-2xl text-slate-800 btn-ghost"
+	<a href="/user/{username}" class="btn hidden sm:flex font-bold text-2xl text-slate-800 btn-ghost"
 		>Welcome {username}
-	</button>
+	</a>
 	<div class="flex-none">
 		{#if username === ''}
 			<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
