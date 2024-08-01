@@ -24,7 +24,7 @@
 	};
 	const loadCarImages = () => {
 		// Assuming your files are stored with names like "front-image.jpg" in "uploads/username/registration"
-		const basePath = `../../../../uploads/${data.username}/${carArray[0].registration}`;
+		const basePath = `../../../../static/uploads/${carArray[0].registration}`;
 		carImages.front = `${basePath}/front.jpg`;
 		carImages.rear = `${basePath}/rear.jpg`;
 		carImages.driver = `${basePath}/driver.jpg`;
