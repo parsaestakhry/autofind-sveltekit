@@ -5,7 +5,7 @@ export default defineConfig({
 	plugins: [sveltekit(), enhancedImages()],
 	server: {
 		fs: {
-			allow: ['uploads']
+			allow: ['uploads','static']
 		}
 	}
 });
