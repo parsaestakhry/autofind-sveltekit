@@ -68,13 +68,7 @@ export const actions: Actions = {
 		const passengerImage = formData.get('passenger-image') as File | null;
 
 		// Construct paths for the user's directory and car directory
-		const userDirectory = path.join('uploads', username);
-		const carDirectory = path.join(userDirectory, registration);
-
-		// Ensure the user's directory exists
-		if (!fs.existsSync(userDirectory)) {
-			fs.mkdirSync(userDirectory, { recursive: true });
-		}
+		const carDirectory = path.join('static', 'uploads', registration);
 
 		// Ensure the car's directory exists
 		if (!fs.existsSync(carDirectory)) {
@@ -84,12 +78,15 @@ export const actions: Actions = {
 		// Function to save the file with a generated name
 		const saveFile = async (file: File, baseName: string) => {
 			const extension = path.extname(file.name); // Extract the file extension from the original name
-			const timestamp = Date.now(); // Generate a timestamp
-			const fileName = `${baseName}${extension}`; // Construct the new file name
+			const fileName = `${baseName}${extension}`; // Construct the new file name without timestamp
 			const filePath = path.join(carDirectory, fileName); // Construct the full file path
-			const arrayBuffer = await file.arrayBuffer(); // Convert the file to an array buffer
-			const buffer = new Uint8Array(arrayBuffer); // Create a buffer from the array buffer
-			fs.writeFileSync(filePath, buffer); // Write the buffer to the file system
+
+			// Convert the file to an array buffer and then to a buffer
+			const arrayBuffer = await file.arrayBuffer();
+			const buffer = new Uint8Array(arrayBuffer); // Use Uint8Array for compatibility
+
+			// Write the buffer to the file system
+			fs.writeFileSync(filePath, buffer);
 		};
 
 		// Define the files to be saved along with their base names
