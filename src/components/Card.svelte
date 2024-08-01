@@ -8,7 +8,6 @@
 	export let price: number | null;
 	export let type: string;
 	export let transmission: string;
-	export let username: string | null;
 	export let registration: string;
 	import {
 		Calendar,
@@ -31,7 +30,7 @@
 
 	const loadCarImages = () => {
 		// Assuming your files are stored with names like "front-image.jpg" in "uploads/username/registration"
-		const basePath = `../../uploads/${username}/${registration}`;
+		const basePath = `../../static/uploads/${registration}`;
 		carImages.front = `${basePath}/front.jpg`;
 		carImages.rear = `${basePath}/${Date.now()}-rear.jpg`;
 		carImages.driver = `${basePath}/${Date.now()}-driver.jpg`;
