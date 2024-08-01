@@ -7,15 +7,15 @@
 	import PencilSimpleLine from 'phosphor-svelte/lib/PencilSimpleLine';
 	import Engine from 'phosphor-svelte/lib/Engine';
 	import CarSimple from 'phosphor-svelte/lib/CarSimple';
-	import Palette from 'phosphor-svelte/lib/Palette'
-	import GasPump from 'phosphor-svelte/lib/GasPump'
-	import Gauge from 'phosphor-svelte/lib/Gauge'
-	import Calendar from 'phosphor-svelte/lib/Calendar'
-	import GearSix from 'phosphor-svelte/lib/GearSix'
-	import Info from 'phosphor-svelte/lib/Info'
+	import Palette from 'phosphor-svelte/lib/Palette';
+	import GasPump from 'phosphor-svelte/lib/GasPump';
+	import Gauge from 'phosphor-svelte/lib/Gauge';
+	import Calendar from 'phosphor-svelte/lib/Calendar';
+	import GearSix from 'phosphor-svelte/lib/GearSix';
+	import Info from 'phosphor-svelte/lib/Info';
 	const carArray: Car[] | undefined = data.cars;
 	let flag = false;
-	
+
 	let carImages = {
 		front: '',
 		rear: '',
@@ -35,14 +35,19 @@
 
 	let isOpen = false;
 
-	// Function to toggle the visibility of the content
-	function toggleCollapse() {
-		isOpen = !isOpen;
+	async function saveCar(registration: string, username: string | null ) {
+		const response = await fetch('/api/save-car', {
+			method: 'POST',
+			body: JSON.stringify({ registration,username }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
 	}
 </script>
 
 <div>
-	
 	<div class="bg-gray-900">
 		<div class="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
 			<!-- Product -->
@@ -82,19 +87,48 @@
 							class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-700 px-8 py-3 text-base font-extrabold text-slate-100 hover:bg-indigo-100 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
 							>Bid <PencilSimpleLine size={22} class="ml-2" weight="bold" />
 						</button>
+						<button
+							on:click={() => saveCar(carArray[0].registration, data.username)}
+							type="button"
+							class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-extrabold text-slate-100 hover:bg-indigo-100 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+							>Save <BookMarkSimple size={25} class="ml-2" weight="bold" />
+						</button>
 					</div>
 
 					<div class="mt-10 border-t border-gray-200 pt-7">
-						<h3 class="text-xl font-extrabold text-slate-100 flex ">Basic Information <Info size={25} class="ml-2 mt-1" weight="bold"  /> </h3>
+						<h3 class="flex text-xl font-extrabold text-slate-100">
+							Basic Information <Info size={25} class="ml-2 mt-1" weight="bold" />
+						</h3>
 						<div class=" mt-4 text-lg font-bold text-slate-100">
-							<ul role="list"  >
-								<li class="flex" >Engine : {carArray[0].engine_model} <Engine size={25} class="ml-2 mb-2" weight="bold"  /> </li>
-								<li class="flex" >Type : {carArray[0].type} <CarSimple size={25} class="ml-2 mb-2" weight="bold" /> </li>
-								<li class="flex" >Color : {carArray[0].Color} <Palette size={25} class="ml-2 mb-2" weight="bold" /> </li>
-								<li class="flex" >Fuel : {carArray[0].fuel_type} <GasPump size={25} class="ml-2 mb-2" weight="bold" /> </li>
-								<li class="flex" >Milage : {carArray[0].milage} <Gauge size={25} class="ml-2 mb-2" weight="bold" /> </li>
-								<li class="flex" >Year : {carArray[0].year_make} <Calendar size={25} class="ml-2 mb-2" weight="bold" /> </li>
-								<li class="flex" >Transmission : {carArray[0].gearbox} <GearSix size={25} class="ml-2 mb-2" weight="bold" /> </li>
+							<ul role="list">
+								<li class="flex">
+									Engine : {carArray[0].engine_model}
+									<Engine size={25} class="mb-2 ml-2" weight="bold" />
+								</li>
+								<li class="flex">
+									Type : {carArray[0].type}
+									<CarSimple size={25} class="mb-2 ml-2" weight="bold" />
+								</li>
+								<li class="flex">
+									Color : {carArray[0].Color}
+									<Palette size={25} class="mb-2 ml-2" weight="bold" />
+								</li>
+								<li class="flex">
+									Fuel : {carArray[0].fuel_type}
+									<GasPump size={25} class="mb-2 ml-2" weight="bold" />
+								</li>
+								<li class="flex">
+									Milage : {carArray[0].milage}
+									<Gauge size={25} class="mb-2 ml-2" weight="bold" />
+								</li>
+								<li class="flex">
+									Year : {carArray[0].year_make}
+									<Calendar size={25} class="mb-2 ml-2" weight="bold" />
+								</li>
+								<li class="flex">
+									Transmission : {carArray[0].gearbox}
+									<GearSix size={25} class="mb-2 ml-2" weight="bold" />
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -102,9 +136,9 @@
 					<div class="mt-10 border-t border-gray-200 pt-10">
 						<h3 class="text-sm font-medium text-slate-100">License</h3>
 						<p class="mt-4 text-sm text-gray-500">
-							This Car has been uploaded and verified by Caruns.com for more information please read the  <a
-								href="/"
-								class="font-medium text-indigo-600 hover:text-indigo-500">Read full license</a
+							This Car has been uploaded and verified by Caruns.com for more information please read
+							the <a href="/" class="font-medium text-indigo-600 hover:text-indigo-500"
+								>Read full license</a
 							>
 						</p>
 					</div>
