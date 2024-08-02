@@ -68,7 +68,7 @@ export const actions: Actions = {
 		const passengerImage = formData.get('passenger-image') as File | null;
 
 		// Construct paths for the user's directory and car directory
-		const carDirectory = path.join('static', 'uploads', registration);
+		const carDirectory = path.join('uploads', registration);
 
 		// Ensure the car's directory exists
 		if (!fs.existsSync(carDirectory)) {
