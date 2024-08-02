@@ -24,7 +24,7 @@
 	};
 	const loadCarImages = () => {
 		// Assuming your files are stored with names like "front-image.jpg" in "uploads/username/registration"
-		const basePath = `../../../../static/uploads/${carArray[0].registration}`;
+		const basePath = `../../../../uploads/${carArray[0].registration}`;
 		carImages.front = `${basePath}/front.jpg`;
 		carImages.rear = `${basePath}/rear.jpg`;
 		carImages.driver = `${basePath}/driver.jpg`;
@@ -34,16 +34,18 @@
 	loadCarImages();
 
 	let isOpen = false;
+	let fill = false;
 
-	async function saveCar(registration: string, username: string | null ) {
+	async function saveCar(registration: string, username: string | null) {
 		const response = await fetch('/api/save-car', {
 			method: 'POST',
-			body: JSON.stringify({ registration,username }),
+			body: JSON.stringify({ registration, username, fill }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		});
-
+		fill = !fill
+		console.log(await response.json())
 	}
 </script>
 
@@ -87,12 +89,21 @@
 							class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-700 px-8 py-3 text-base font-extrabold text-slate-100 hover:bg-indigo-100 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
 							>Bid <PencilSimpleLine size={22} class="ml-2" weight="bold" />
 						</button>
-						<button
-							on:click={() => saveCar(carArray[0].registration, data.username)}
-							type="button"
-							class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-extrabold text-slate-100 hover:bg-indigo-100 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-							>Save <BookMarkSimple size={25} class="ml-2" weight="bold" />
-						</button>
+						{#if fill === false}
+							<button
+								on:click={() => saveCar(carArray[0].registration, data.username)}
+								type="button"
+								class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-extrabold text-slate-100 hover:bg-indigo-100 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+								>Save <BookMarkSimple size={25} class="ml-2" weight="bold" />
+							</button>
+						{:else}
+							<button
+								on:click={() => saveCar(carArray[0].registration, data.username)}
+								type="button"
+								class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-extrabold text-slate-100 hover:bg-indigo-100 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+								>Saved <BookMarkSimple size={25} class="ml-2" weight="fill" />
+							</button>
+						{/if}
 					</div>
 
 					<div class="mt-10 border-t border-gray-200 pt-7">
