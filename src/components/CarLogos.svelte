@@ -2,7 +2,7 @@
 	<section class="">
 		<div class="mx-auto max-w-screen-xl px-4 py-8 lg:py-16">
 			<h2
-				class="mb-8 text-center text-5xl font-extrabold leading-tight tracking-tight text-gray-900 md:text-5xl lg:mb-16 dark:text-white"
+				class="mb-8 text-center sm:text-5xl text-4xl font-extrabold leading-tight tracking-tight text-gray-900 md:text-5xl lg:mb-16 dark:text-white"
 			>
 				We have the brands you love!
 			</h2>
