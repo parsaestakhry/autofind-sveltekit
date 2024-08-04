@@ -1,5 +1,4 @@
 <script lang="ts">
-	export let data;
 	import hatchback from '../../../../assets/images/longhatch.jpg';
 	import sedan from '../../../../assets/images/longsedan.jpg';
 	import coupe from '../../../../assets/images/longcoupe.jpg';
@@ -8,6 +7,7 @@
 	import suv from '../../../../assets/images/landcruiser.jpg';
 	import type { Car } from '$lib/server/GetCars.js';
 	import Card from '../../../../components/Card.svelte';
+	export let data;
 	let pic = '';
 	switch (data.slug) {
 		case 'hatchback':
@@ -31,19 +31,16 @@
 	}
 
 	const cars: Car[] = data.cars;
+	
 </script>
 
-<div class="bg-gray-900">
-	<div class="relative  sm:h-96">
-		<!-- <img class="h-56 w-screen object-cover object-center sm:h-96" src={pic} alt="family-car" /> -->
-		<div class="absolute inset-0 mt-10 text-center font-bold">
-			<h1 class="mt-10 text-5xl text-white  sm:text-7xl">{data.slug.toUpperCase()}S</h1>
+<div class="bg-gray-900 min-h-screen">
+	<div class="">
+		<div class="text-center font-bold">
+			<h1 class="text-5xl text-white font-extrabold  sm:text-7xl p-10 ">{data.slug.toUpperCase()}S</h1>
 		</div>
-	</div>
-
-	<div class="min-h-screen sm:mt-6">
 		{#if cars && cars.length > 0}
-			<ul class="mb-5 mt-2 flex flex-wrap justify-center">
+			<ul class="mt-2 flex flex-wrap justify-center">
 				{#each cars as car}
 					<li>
 						<Card
@@ -56,7 +53,6 @@
 							price={car.price}
 							type={car.type}
 							transmission={car.gearbox}
-							username={data.username}
 							registration={car.registration}
 						/>
 					</li>
