@@ -29,7 +29,6 @@
 							price={car.price}
 							type={car.type}
 							transmission={car.gearbox}
-							username={data.username}
 							registration={car.registration}
 						/>
 					</li>
