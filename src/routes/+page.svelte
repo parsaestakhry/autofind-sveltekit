@@ -1,18 +1,28 @@
 <script>
-	import { Key } from 'phosphor-svelte';
-import intropic from '../assets/images/intro-pic.jpg';
+	import { Garage, GasPump, Key } from 'phosphor-svelte';
+	import intropic from '../assets/images/intro-pic.jpg';
 	import CarLogos from '../components/CarLogos.svelte';
 	import Carousel from '../components/Carousel.svelte';
 	import CarProfile from 'phosphor-svelte/lib/CarProfile';
+	import CarouselCard from '../components/CarouselCard.svelte';
+	import FuelCarousel from '../components/FuelCarousel.svelte';
 </script>
 
 <div class="min-h-screen bg-gray-900">
 	<div class="relative h-80 sm:h-80">
 		<!-- <img class="h-full w-screen object-cover object-right " src={intropic} alt="family-car" /> -->
-		<div class="absolute inset-0 text-center text-wrap  items-center justify-start font-extrabold">
-			<h1 class="mt-16 text-6xl mx-10 text-slate-50 sm:mt-20 sm:text-7xl flex justify-center items-center ">
-				Your Next Car Is Here.</h1>
-			<div class="mt-6 space-x-2 flex-col items-center justify-center space-y-2 sm:hidden">
+		<div class="absolute inset-0 items-center justify-start text-wrap text-center font-extrabold">
+			<h1
+				class="mx-10 mt-16 flex items-center justify-center sm:text-7xl text-slate-50 sm:mt-20 text-5xl"
+			>
+				Your Next Car Is Here.
+			</h1>
+			<h3
+				class="mx-10 mt-5 flex items-center justify-center text-2xl text-slate-50 sm:mt-10 sm:text-4xl"
+			>
+				Waiting to be in your garage
+			</h3>
+			<div class="mt-6 flex-col items-center justify-center space-x-2 space-y-2 sm:hidden">
 				<a
 					href="/buy"
 					class="btn border-none bg-orange-600 text-xl font-extrabold text-slate-900 hover:bg-orange-600"
@@ -42,12 +52,19 @@ import intropic from '../assets/images/intro-pic.jpg';
 			</div>
 		</div>
 	</div>
-	<div class="sm:mt-10 flex items-center justify-center sm:space-x-4">
+	<div class="flex items-center justify-center sm:mt-10 sm:space-x-4">
 		<div class="mx-10 justify-center text-center sm:mr-10">
-			<CarProfile class="mx-auto" size={80} color="#fafafa" />
-			<h2 class="mb-3 text-5xl font-extrabold text-slate-50">We have what you are looking for.</h2>
+			<CarProfile class="mx-auto mt-2" size={70} color="#fafafa" />
+			<h2 class="mb-3 text-4xl sm:text-5xl font-extrabold text-slate-50">We have what you are looking for.</h2>
 		</div>
 	</div>
 	<Carousel />
-	<CarLogos/>
+	<CarLogos />
+	<div class="mx-10 justify-center text-center sm:mr-10 mt-20 ">
+		<h2 class="mb-3 sm:text-5xl text-4xl  font-extrabold text-slate-50">With your way of Fueling your Car <GasPump class="mx-auto mt-5 " size={80} color="#fafafa" /> </h2>
+	</div>
+	<div class="flex justify-center" >
+		<FuelCarousel/>
+	</div>
+	
 </div>
