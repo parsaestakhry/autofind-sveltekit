@@ -1,4 +1,5 @@
 <script>
+	import { SignOut, User, UserPlus } from 'phosphor-svelte';
 	import Drawer from './Drawer.svelte';
 	import CarBattery from 'phosphor-svelte/lib/CarBattery';
 	import SignIn from 'phosphor-svelte/lib/SignIn';
@@ -29,16 +30,32 @@
 			class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
 			>Electric
 		</a>
-	</div>
-	<a
-		href="/user/{username}"
-		class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
-		>Welcome {username}
-	</a>
-	<div class="flex-none">
-		{#if username === ''}
-			<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
+		{#if username !== ''}
+			<a
+				data-sveltekit-reload
+				href="/user/{username}"
+				class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
+				>Account <User size={25} weight="bold" />
+			</a>
+
+			<button
+				data-sveltekit-reload
+				class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
+				>SignOut <SignOut size={25} weight="bold" />
+			</button>
+		{:else}
+			<a
+				href="/login"
+				data-sveltekit-reload
+				class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
+				>SignIn <SignIn size={25} weight="bold" />
+			</a>
+			<a
+				href="/register"
+				data-sveltekit-reload
+				class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
+				>SignUp <UserPlus size={25} weight="bold" />
+			</a>
 		{/if}
-		<Drawer username={username} />
 	</div>
 </div>
