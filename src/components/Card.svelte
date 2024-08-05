@@ -9,6 +9,7 @@
 	export let type: string;
 	export let transmission: string;
 	export let registration: string;
+	export let usage : string;
 	import {
 		Calendar,
 		Car,
@@ -18,7 +19,10 @@
 		Info,
 		Palette,
 		PhoneCall,
-		RoadHorizon
+		RoadHorizon,
+
+		Speedometer
+
 	} from 'phosphor-svelte';
 
 	let carImages = {
@@ -73,6 +77,10 @@
 			<div class="text-md badge badge-lg border-none bg-slate-800 p-4 font-semibold text-slate-50">
 				Transmission: {transmission}
 				<Gear class="ml-2" size={20} weight="bold" />
+			</div>
+			<div class="text-md badge badge-lg border-none bg-slate-800 p-4 font-semibold text-slate-50">
+				Usage: {usage}
+				<Speedometer class="ml-2" size={20} weight="bold" />
 			</div>
 		</div>
 		{#if price}

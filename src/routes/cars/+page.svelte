@@ -23,6 +23,7 @@
                     type={car.type}
 					transmission={car.gearbox}
 					registration = {car.registration}
+					usage={car.usage}
 				/>
 			</li>
 		{/each}

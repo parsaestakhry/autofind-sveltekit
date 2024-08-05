@@ -719,6 +719,7 @@
 								transmission={car.gearbox}
 								username = {data.username}
 								registration = {car.registration}
+								usage={car.usage}
 							/>
 						</li>
 					{/each}

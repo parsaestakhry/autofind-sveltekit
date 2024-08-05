@@ -675,8 +675,8 @@
 								year_make={car.year_make}
 								price={car.price}
 								transmission={car.gearbox}
-								username = {data.username}
 								registration = {car.registration}
+								usage={car.usage}
 							/>
 						</li>
 					{/each}
