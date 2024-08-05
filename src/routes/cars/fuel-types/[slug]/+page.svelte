@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	{#if carArray && carArray.length > 0}
-		<ul class=" flex flex-wrap justify-center p-5">
+		<ul class=" flex flex-wrap justify-center p-5  ">
 			{#each carArray as car}
 				<li>
 					<Card
