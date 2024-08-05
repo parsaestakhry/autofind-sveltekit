@@ -1,9 +1,12 @@
-<script>
+<script lang="ts">
 	import { SignOut, User, UserPlus } from 'phosphor-svelte';
 	import Drawer from './Drawer.svelte';
 	import CarBattery from 'phosphor-svelte/lib/CarBattery';
 	import SignIn from 'phosphor-svelte/lib/SignIn';
-	export let username;
+	export let username : string;
+
+	
+
 </script>
 
 <div class="navbar bg-orange-600">
@@ -38,11 +41,12 @@
 				>Account <User size={25} weight="bold" />
 			</a>
 
-			<button
+			<a
+				href="/sign-out"
 				data-sveltekit-reload
 				class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
 				>SignOut <SignOut size={25} weight="bold" />
-			</button>
+			</a>
 		{:else}
 			<a
 				href="/login"
@@ -57,5 +61,8 @@
 				>SignUp <UserPlus size={25} weight="bold" />
 			</a>
 		{/if}
+	</div>
+	<div>
+		<Drawer username={username} />
 	</div>
 </div>
