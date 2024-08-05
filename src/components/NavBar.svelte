@@ -32,13 +32,13 @@
 	</div>
 	<a
 		href="/user/{username}"
-		class="btn btn-ghost hidden text-2xl font-extrabold text-slate-800 sm:flex"
+		class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
 		>Welcome {username}
 	</a>
 	<div class="flex-none">
 		{#if username === ''}
 			<a class="btn btn-ghost" href="/login"><SignIn weight="bold" color="#f7f2f2" size={27} /></a>
 		{/if}
-		<Drawer />
+		<Drawer username={username} />
 	</div>
 </div>
