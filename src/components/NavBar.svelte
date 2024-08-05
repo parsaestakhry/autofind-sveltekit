@@ -5,20 +5,28 @@
 	export let username;
 </script>
 
-<div class="navbar bg-orange-600 ">
+<div class="navbar bg-orange-600">
 	<div class="flex-none"></div>
 	<div class="flex-1">
-		<a href="/" class="btn btn-ghost text-2xl font-extrabold text-slate-800 ml-4"
-			>Caruns.com <CarBattery size={28} weight='bold' class="mt-1" />
+		<a href="/" class="btn btn-ghost ml-4 text-2xl font-extrabold text-slate-800"
+			>Caruns.com <CarBattery size={28} weight="bold" class="mt-1" />
 		</a>
-		<a href="/cars/usage/new" class="btn bg-gray-900 text-slate-50 text-lg  rounded-2xl hidden sm:flex font-extrabold  ml-4"
+		<a
+			data-sveltekit-reload
+			href="/cars/usage/new"
+			class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
 			>New
 		</a>
-		<a href="/cars/usage/used" class="btn bg-gray-900 text-slate-50 text-lg  rounded-2xl hidden sm:flex font-extrabold  ml-4"
+		<a
+			data-sveltekit-reload
+			href="/cars/usage/used"
+			class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
 			>Used
 		</a>
 	</div>
-	<a href="/user/{username}" class="btn hidden sm:flex font-extrabold text-2xl text-slate-800 btn-ghost"
+	<a
+		href="/user/{username}"
+		class="btn btn-ghost hidden text-2xl font-extrabold text-slate-800 sm:flex"
 		>Welcome {username}
 	</a>
 	<div class="flex-none">
@@ -28,6 +36,3 @@
 		<Drawer />
 	</div>
 </div>
-
-
-
