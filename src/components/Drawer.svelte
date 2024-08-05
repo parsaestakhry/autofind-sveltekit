@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { BookmarkSimple, SignIn, User, UserCirclePlus } from 'phosphor-svelte';
 	import List from 'phosphor-svelte/lib/List';
 	export let username;
 </script>
@@ -15,20 +16,28 @@
 			<!-- Sidebar content here -->
 			<li>
 				<a
+					data-sveltekit-reload
+					href="/saved"
 					class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
-					href="/register">Register</a
+					>Saved <BookmarkSimple size={25} weight="bold" />
+				</a>
+			</li>
+			<li>
+				<a
+					class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
+					href="/register">Register <UserCirclePlus size={25} weight="bold" /> </a
 				>
 			</li>
 			<li>
 				<a
 					class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
-					href="/login">Login</a
+					href="/login">Login <SignIn size={25} weight="bold" />  </a
 				>
 			</li>
 			<li>
 				<a
 					class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
-					href="/user/{username}">Account</a
+					href="/user/{username}">Account <User size={25} weight="bold" />  </a
 				>
 			</li>
 			<li>
