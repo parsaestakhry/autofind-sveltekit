@@ -10,7 +10,12 @@
 	<div class="flex-1">
 		<a href="/" class="btn btn-ghost text-2xl font-extrabold text-slate-800 ml-4"
 			>Caruns.com <CarBattery size={28} weight='bold' class="mt-1" />
-			<div></div>
+		</a>
+		<a href="/cars/usage/new" class="btn bg-gray-900 text-slate-50 text-lg  rounded-2xl hidden sm:flex font-extrabold  ml-4"
+			>New
+		</a>
+		<a href="/cars/usage/used" class="btn bg-gray-900 text-slate-50 text-lg  rounded-2xl hidden sm:flex font-extrabold  ml-4"
+			>Used
 		</a>
 	</div>
 	<a href="/user/{username}" class="btn hidden sm:flex font-extrabold text-2xl text-slate-800 btn-ghost"
