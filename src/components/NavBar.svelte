@@ -23,6 +23,12 @@
 			class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
 			>Used
 		</a>
+		<a
+			data-sveltekit-reload
+			href="/cars/fuel-types/electric"
+			class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
+			>Electric
+		</a>
 	</div>
 	<a
 		href="/user/{username}"
