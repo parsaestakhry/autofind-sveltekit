@@ -37,6 +37,7 @@ export const actions = {
 
 					const userObject = { username: userName };
 					const accessToken = jwt.sign(userObject, tokenSecret, { expiresIn: '30d' });
+					//console.log(userObject)
 					event.cookies.set('access_token', accessToken, {
 						httpOnly: true, // To prevent XSS attacks
 						secure: process.env.NODE_ENV === 'production', // Use secure cookies in production

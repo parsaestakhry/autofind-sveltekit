@@ -519,7 +519,7 @@
 			}
 		});
 		cars = await response.json();
-		console.log(carYears);
+		//console.log(carYears);
 	}
 </script>
 
