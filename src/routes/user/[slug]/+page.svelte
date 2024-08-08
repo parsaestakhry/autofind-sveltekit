@@ -9,7 +9,7 @@
 	<div class=" py-10 text-center text-7xl font-extrabold text-slate-50">
 		Hello {data.username}
 	</div>
-	<div class="flex justify-center mt-20 space-x-10" >
+	<div class="flex justify-center mt-20 sm:space-x-10 flex-wrap  py-10 " >
 		<AccountCard image={panamera} headText={"Add your own car"} paragraph={'so it can join our variety of cars'} button={'Add Now'} link={'/sell'} />
 		<AccountCard image={rs} headText={"Find your next car"} paragraph={'so it can join your garage'} button={'Buy Now'} link={'/buy'} />
 	</div>
