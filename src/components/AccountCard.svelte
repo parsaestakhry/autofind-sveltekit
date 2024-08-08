@@ -6,7 +6,7 @@
     export let image;
 </script>
 
-<div class="card w-96 bg-inherit border-4 border-orange-600 shadow-xl">
+<div class="card w-96 bg-inherit border-4 border-orange-600 shadow-xl mb-5 ">
 	<figure class="px-5 pt-5">
 		<img
 			src={image}
