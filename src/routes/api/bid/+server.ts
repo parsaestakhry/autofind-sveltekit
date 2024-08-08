@@ -16,7 +16,7 @@ export async function POST(event: any) {
 	const id = user.body[0].id;
 	await connection
 		.query(
-			` insert into bid (user_id, registration, amount) 
+			` insert into bid (user_id, registration, bid_amount) 
               values ("${id}", "${registration}", "${amount}");`
 		)
 		.then(function ([rows, fields]) {
