@@ -14,12 +14,18 @@
 	import GearSix from 'phosphor-svelte/lib/GearSix';
 	import Info from 'phosphor-svelte/lib/Info';
 	import PhoneOutGoing from 'phosphor-svelte/lib/PhoneOutgoing';
+	import BidCard from '../../../components/BidCard.svelte';
+	import { onMount } from 'svelte';
+	interface bidItem {
+		username: string;
+		bid_amount: string;
+	}
 	const carArray: Car[] | undefined = data.cars;
 	let bidValue: number;
 	const username = data.username;
 	const registration = carArray[0].registration;
 	let flag = false;
-
+	let bidArray: bidItem[] = [];
 	let carImages = {
 		front: '',
 		rear: '',
@@ -61,6 +67,22 @@
 			}
 		});
 	}
+
+	onMount(() => {
+		async function getBids() {
+			const response = await fetch('/api/get-bids', {
+				method: 'POST',
+				body: JSON.stringify({ registration }),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+
+			bidArray = await response.json();
+			//console.log(bidArray[0].bid_amount)
+		}	
+		getBids();
+	});
 </script>
 
 <div>
@@ -168,8 +190,9 @@
 					<div class="mt-10 border-t border-gray-200 pt-10">
 						<h3 class="text-sm font-medium text-slate-100">License</h3>
 						<p class="mt-4 text-sm text-gray-500">
-							This Car has been uploaded and verified by Caruns.com for more information please <a href="/" class="font-medium text-indigo-600 hover:text-indigo-500"
-								>Read full license</a
+							This Car has been uploaded and verified by Caruns.com for more information please <a
+								href="/"
+								class="font-medium text-indigo-600 hover:text-indigo-500">Read full license</a
 							>
 						</p>
 					</div>
@@ -225,8 +248,10 @@
 				</div>
 
 				<div class="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
-					<div>
-						
+					<div class="">
+						{#each bidArray as item}
+							<BidCard userBid={item.username} amount={item.bid_amount} />
+						{/each}
 					</div>
 				</div>
 			</div>
