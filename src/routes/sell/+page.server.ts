@@ -2,10 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import type { Actions } from '@sveltejs/kit';
 import { connection } from '$lib/db/mysql';
+import { getUserFromDb } from '$lib/server/GetUserDb';
 export const actions: Actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData();
-		const username = formData.get('username') as string | null;
+		const username = formData.get('username') as string;
 		const registration = formData.get('registration') as string | null;
 		const make = formData.get('make') as string | null;
 		const model = formData.get('model') as string | null;
@@ -18,7 +19,14 @@ export const actions: Actions = {
 		const engine = formData.get('engine') as string | null;
 		const transmission = formData.get('transmission') as string | null;
 		const description = formData.get('description') as string | null;
+		const user: any = await getUserFromDb(username);
+		//console.log()
+		// Check if user is found and handle the scenario where the user might not exist
+		if (!user || !user.body || user.body.length === 0) {
+			throw new Error('User not found');
+		}
 
+		const id = user.body[0].id;
 		function formatDate(date: Date) {
 			var d = new Date(date),
 				month = '' + (d.getMonth() + 1),
@@ -40,6 +48,14 @@ export const actions: Actions = {
 				return rows;
 			});
 		// console.log(results);
+		let newResults = await connection
+			.query(
+				` insert into sell (user_id, registration) 
+              values ("${id}", "${registration}");`
+			)
+			.then(function ([rows, fields]) {
+				return rows;
+			});
 
 		// console.log(formData);
 		if (!username) {
