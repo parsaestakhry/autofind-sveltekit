@@ -12,7 +12,7 @@
 <div class="navbar bg-orange-600">
 	<div class="flex-none"></div>
 	<div class="flex-1">
-		<a href="/" class="btn btn-ghost ml-4 text-2xl font-extrabold text-slate-800"
+		<a data-sveltekit-reload href="/" class="btn btn-ghost ml-4 text-2xl font-extrabold text-slate-800"
 			>Caruns.com <CarBattery size={28} weight="bold" class="mt-1" />
 		</a>
 		<a
