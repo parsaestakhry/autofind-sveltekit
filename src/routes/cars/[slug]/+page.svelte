@@ -13,7 +13,11 @@
 	import Calendar from 'phosphor-svelte/lib/Calendar';
 	import GearSix from 'phosphor-svelte/lib/GearSix';
 	import Info from 'phosphor-svelte/lib/Info';
+	import PhoneOutGoing from 'phosphor-svelte/lib/PhoneOutgoing';
 	const carArray: Car[] | undefined = data.cars;
+	let bidValue: number;
+	const username = data.username;
+	const registration = carArray[0].registration;
 	let flag = false;
 
 	let carImages = {
@@ -44,8 +48,18 @@
 				'Content-Type': 'application/json'
 			}
 		});
-		fill = !fill
+		fill = !fill;
 		//console.log(await response.json())
+	}
+
+	async function submitBid() {
+		const response = await fetch('/api/bid', {
+			method: 'POST',
+			body: JSON.stringify({ bidValue, username, registration }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 	}
 </script>
 
@@ -77,18 +91,25 @@
 					<p class="mt-6 text-gray-500">
 						{carArray[0].description}
 					</p>
-
+					<input
+						bind:value={bidValue}
+						type="number"
+						placeholder="Enter Bid Here:"
+						class="input input-lg input-bordered w-full max-w-xs bg-black placeholder:text-2xl"
+					/>
 					<div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
 						<button
 							type="button"
 							class="flex w-full items-center justify-center rounded-md border border-transparent bg-orange-600 px-8 py-3 text-base font-extrabold text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-							>Buy <Money size={25} weight="bold" class="ml-2 mt-1" />
+							>Contact Seller <PhoneOutGoing size={25} weight="bold" class="ml-2 mt-1" />
 						</button>
 						<button
+							on:click={() => submitBid()}
 							type="button"
 							class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-700 px-8 py-3 text-base font-extrabold text-slate-100 hover:bg-indigo-100 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
 							>Bid <PencilSimpleLine size={22} class="ml-2" weight="bold" />
 						</button>
+
 						{#if fill === false}
 							<button
 								on:click={() => saveCar(carArray[0].registration, data.username)}
