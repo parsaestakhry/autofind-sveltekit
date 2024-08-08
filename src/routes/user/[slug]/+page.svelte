@@ -1,45 +1,16 @@
-<script lang="ts">
-	import type { Car } from '$lib/server/GetCars.js';
-	import { onMount } from 'svelte';
-	import Card from '../../../components/Card.svelte'
+<script>
+	import AccountCard from "../../../components/AccountCard.svelte";
+	import panamera from '../../../assets/images/panamera.jpg'
+	import rs from '../../../assets/images/rs.jpg'
 	export let data;
-	const username = data.username;
-	let cars: Car[] = [];
-	onMount(() => {
-		async function getSavedCars() {
-			const response = await fetch('/api/get-saved-cars', {
-				method: 'POST',
-				body: JSON.stringify({ username }),
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			});
-			cars = await response.json();
-		}
-		getSavedCars();
-	});
 </script>
 
-<div class="bg-gray-900 min-h-screen" >
-	{#if cars && cars.length > 0}
-		<ul class="flex flex-wrap justify-center">
-			{#each cars as car}
-				<li>
-					<Card
-						model={car.model}
-						make={car.make}
-						milage={car.milage}
-						color={car.Color}
-						fuel_type={car.fuel_type}
-						year_make={car.year_make}
-						price={car.price}
-						type={car.type}
-						transmission={car.gearbox}
-						registration={car.registration}
-						usage={car.usage}
-					/>
-				</li>
-			{/each}
-		</ul>
-	{/if}
+<div class="min-h-screen bg-gray-900">
+	<div class=" py-10 text-center text-7xl font-extrabold text-slate-50">
+		Hello {data.username}
+	</div>
+	<div class="flex justify-center mt-20 space-x-10" >
+		<AccountCard image={panamera} headText={"Add your own car"} paragraph={'so it can join our variety of cars'} button={'Add Now'} link={'/sell'} />
+		<AccountCard image={rs} headText={"Find your next car"} paragraph={'so it can join your garage'} button={'Buy Now'} link={'/buy'} />
+	</div>
 </div>
