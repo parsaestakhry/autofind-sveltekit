@@ -12,7 +12,7 @@
 	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
 		<a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white my-10">
 			<CarBattery size={38} class="mx-2" />
-			Autofind
+			Caruns
 		</a>
 		<div
 			class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mb-10"
