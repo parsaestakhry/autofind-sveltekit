@@ -704,7 +704,7 @@
 											<span class="font-semibold">Click to upload</span> or drag and drop
 										</p>
 										<p class="text-xs text-gray-500 dark:text-gray-400">
-											SVG, PNG, JPG (MAX. 800x400px)
+											JPG (MAX. 500KB)
 										</p>
 									</div>
 									<input
@@ -713,6 +713,8 @@
 										type="file"
 										class="hidden"
 										required
+										accept=".jpg"
+										
 									/>
 								</label>
 							</div>
