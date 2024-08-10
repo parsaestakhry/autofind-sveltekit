@@ -26,22 +26,14 @@
 	const registration = carArray[0].registration;
 	let flag = false;
 	let bidArray: bidItem[] = [];
-	let carImages = {
-		front: '',
-		rear: '',
-		driver: '',
-		passenger: ''
-	};
-	const loadCarImages = () => {
-		// Assuming your files are stored with names like "front-image.jpg" in "uploads/username/registration"
-		const basePath = `../../../../uploads/${carArray[0].registration}`;
-		carImages.front = `${basePath}/front.jpg`;
-		carImages.rear = `${basePath}/rear.jpg`;
-		carImages.driver = `${basePath}/driver.jpg`;
-		carImages.passenger = `${basePath}/passenger.jpg`;
-	};
+	let image : any
 
-	loadCarImages();
+	const sleep = (ms: number | undefined) => new Promise(f => setTimeout(f, ms));
+	
+	onMount(async () => {
+		await sleep(500); // simulate network delay
+		image = (await import(`../../../../uploads/${registration}/front.jpg`)).default;
+	});
 
 	let isOpen = false;
 	let fill = false;
@@ -93,7 +85,7 @@
 				<!-- Product image -->
 				<div class="lg:col-span-4 lg:row-end-1">
 					<div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100">
-						<img src={carImages.front} alt={carArray[0].model} class="object-cover object-center" />
+						<img src={image} alt={carArray[0].model} class="object-cover object-center" />
 					</div>
 				</div>
 
