@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let model: string;
 	export let make: string;
-	export let milage: number;
+	export let mileage: number;
 	export let color: string;
 	export let fuel_type: string;
 	export let year_make: number;
@@ -24,15 +24,13 @@
 		RoadHorizon,
 		Speedometer
 	} from 'phosphor-svelte';
-	
-	const sleep = (ms: number | undefined) => new Promise(f => setTimeout(f, ms));
-	
+
+	const sleep = (ms: number | undefined) => new Promise((f) => setTimeout(f, ms));
+
 	onMount(async () => {
 		await sleep(500); // simulate network delay
 		image = (await import(`../../uploads/${registration}/front.jpg`)).default;
 	});
-
-
 </script>
 
 <div class="w-81 card mx-5 mb-10 bg-orange-600 sm:mt-5 sm:w-[29rem]">
@@ -45,7 +43,7 @@
 		<h3 class="text-xl font-bold text-slate-800">{model}</h3>
 		<div class="space-y-1">
 			<div class="text-md badge badge-lg border-none bg-slate-800 p-4 font-semibold text-slate-50">
-				Milage: {milage}
+				Mileage: {mileage}
 				<RoadHorizon class="ml-3" size={20} weight="bold" />
 			</div>
 			<div class="text-md badge badge-lg border-none bg-slate-800 p-4 font-semibold text-slate-50">

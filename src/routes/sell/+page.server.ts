@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import type { Actions } from '@sveltejs/kit';
-import { connection } from '$lib/db/mysql';
+import { connection } from '$lib/db/postgres';
 import { getUserFromDb } from '$lib/server/GetUserDb';
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -12,7 +12,7 @@ export const actions: Actions = {
 		const model = formData.get('model') as string | null;
 		const price = formData.get('price') as number | null;
 		const color = formData.get('color') as string | null;
-		const milage = formData.get('milage') as number | null;
+		const mileage = formData.get('mileage') as number | null;
 		const year = formData.get('year') as number | null;
 		const type = formData.get('chasis') as string | null;
 		const fuel = formData.get('fuel') as string | null;
@@ -39,23 +39,33 @@ export const actions: Actions = {
 			return [year, month, day].join('-');
 		}
 
-		let results = await connection
-			.query(
-				` insert into car (type, Color, fuel_type, model, make, milage, year_make, engine_model, gearbox, price, registration, description, date_added) 
-              values ("${type}", "${color}", "${fuel}", "${model}", "${make}" , "${milage}",  "${year}" , "${engine}" , "${transmission}" , "${price}" , "${registration}" , "${description}", "2024-01-01" );`
-			)
-			.then(function ([rows, fields]) {
-				return rows;
-			});
-		// console.log(results);
-		let newResults = await connection
-			.query(
-				` insert into sell (user_id, registration) 
-              values ("${id}", "${registration}");`
-			)
-			.then(function ([rows, fields]) {
-				return rows;
-			});
+		// Insert into car table
+		await connection.query(
+			`INSERT INTO car (type, color, fuel_type, model, make, mileage, year_make, engine_model, gearbox, price, registration, description, date_added) 
+			VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+			[
+				type,
+				color,
+				fuel,
+				model,
+				make,
+				mileage,
+				year,
+				engine,
+				transmission,
+				price,
+				registration,
+				description,
+				'2024-01-01'
+			]
+		);
+
+		// Insert into sell table
+		await connection.query(
+			`INSERT INTO sell (user_id, registration) 
+			VALUES ($1, $2)`,
+			[id, registration]
+		);
 
 		// console.log(formData);
 		if (!username) {

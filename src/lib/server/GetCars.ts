@@ -1,26 +1,27 @@
-import { connection } from '$lib/db/mysql';
+import { connection } from '$lib/db/postgres';
 export type Car = {
 	type: string;
-	Color: string;
+	color: string;
 	fuel_type: string;
 	id: number;
 	model: string;
 	make: string;
-	milage: number;
+	mileage: number;
 	year_make: number;
 	date_added: Date;
 	engine_model: string;
 	gearbox: string;
-	price : number
-	registration : string
-	description : string
-	usage : string
+	price: number;
+	registration: string;
+	description: string;
+	usage: string;
 };
-export const GetCars = async () => {
-	let results: Car[] = await connection.query('SELECT * FROM car LIMIT 10').then(function ([rows, fields]) {
-        //console.log(rows)
-		return rows as Car[];
-	});
+export const GetCars = async (): Promise<{ results: Car[] }> => {
+	let results: Car[] = await connection
+		.query('SELECT * FROM "car" LIMIT 10') // Ensure table name is correctly quoted
+		.then((result) => {
+			return result.rows as Car[]; // Access the rows array directly
+		});
 
 	return {
 		results

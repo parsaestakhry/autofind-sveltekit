@@ -29,7 +29,8 @@ export const actions = {
 
 				if (compareResult) {
 					console.log('Correct password');
-					const tokenSecret = process.env.ACCESS_TOKEN_SECRET;
+					const tokenSecret =
+						'7c1ffc27e734b0a64a3cb8c0cc0e1a9c91b7bea8ac598e6ea6bf9f3f53a5db5820c6375c6627ebfea829b877140d055b41e186a4a473cd361f31365c0e97cc19';
 
 					if (!tokenSecret) {
 						throw new Error('Access token secret not defined');

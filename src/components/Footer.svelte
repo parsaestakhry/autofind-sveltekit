@@ -14,10 +14,10 @@
 	</aside>
 	<nav>
 		<div class="grid grid-flow-col gap-4">
-			<a>
+			<a href="/" >
 				<XLogo size={50} />
 			</a>
-			<a>
+			<a href="/" >
 				<InstagramLogo size={50} />
 			</a>
 		</div>

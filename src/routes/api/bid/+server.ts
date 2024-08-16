@@ -1,4 +1,4 @@
-import { connection } from '$lib/db/mysql';
+import { connection } from '$lib/db/postgres';
 import { getUserFromDb } from '$lib/server/GetUserDb';
 export async function POST(event: any) {
 	const body = await event.request.json();
@@ -16,11 +16,12 @@ export async function POST(event: any) {
 	const id = user.body[0].id;
 	await connection
 		.query(
-			` insert into bid (user_id, registration, bid_amount) 
-              values ("${id}", "${registration}", "${amount}");`
+			`INSERT INTO bid (user_id, registration, bid_amount) 
+         VALUES ($1, $2, $3)`,
+			[id, registration, amount] // Pass the values as parameters
 		)
-		.then(function ([rows, fields]) {
-			return rows;
+		.then(function (result) {
+			return result; // Optionally return the result or handle it as needed
 		});
 
 	return new Response(JSON.stringify(body));

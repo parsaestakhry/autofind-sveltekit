@@ -1,4 +1,4 @@
-import { connection } from '$lib/db/mysql.js';
+import { connection } from '$lib/db/postgres.js';
 import type { Car } from '$lib/server/GetCars.js';
 export const load = async ({ params }) => {
 	function capitalizeFirstLetter(string: string) {

@@ -7,12 +7,10 @@
 
 	let text = '';
 	if (data.slug === 'new') {
-		text = 'With no milage';
+		text = 'With no mileage';
 	} else {
 		text = 'Used Cars';
 	}
-
-	
 </script>
 
 <div class="min-h-screen bg-gray-900">
@@ -30,8 +28,8 @@
 						<Card
 							model={car.model}
 							make={car.make}
-							milage={car.milage}
-							color={car.Color}
+							mileage={car.mileage}
+							color={car.color}
 							fuel_type={car.fuel_type}
 							year_make={car.year_make}
 							price={car.price}

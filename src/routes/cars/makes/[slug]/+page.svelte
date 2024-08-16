@@ -7,10 +7,12 @@
 	const cars: Car[] = data.cars;
 </script>
 
-<div class="bg-gray-900 min-h-screen ">
+<div class="min-h-screen bg-gray-900">
 	<div class="relative sm:h-96">
 		<div class="absolute inset-0 mt-10 text-center font-bold">
-			<h1 class="mt-10 text-5xl text-white sm:text-7xl font-extrabold ">Made by {data.slug.toUpperCase()}</h1>
+			<h1 class="mt-10 text-5xl font-extrabold text-white sm:text-7xl">
+				Made by {data.slug.toUpperCase()}
+			</h1>
 		</div>
 	</div>
 
@@ -22,8 +24,8 @@
 						<Card
 							model={car.model}
 							make={car.make}
-							milage={car.milage}
-							color={car.Color}
+							mileage={car.mileage}
+							color={car.color}
 							fuel_type={car.fuel_type}
 							year_make={car.year_make}
 							price={car.price}
@@ -40,4 +42,3 @@
 		{/if}
 	</div>
 </div>
-

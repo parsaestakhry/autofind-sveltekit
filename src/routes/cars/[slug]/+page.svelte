@@ -26,10 +26,10 @@
 	const registration = carArray[0].registration;
 	let flag = false;
 	let bidArray: bidItem[] = [];
-	let image : any
+	let image: any;
 
-	const sleep = (ms: number | undefined) => new Promise(f => setTimeout(f, ms));
-	
+	const sleep = (ms: number | undefined) => new Promise((f) => setTimeout(f, ms));
+
 	onMount(async () => {
 		await sleep(500); // simulate network delay
 		image = (await import(`../../../../uploads/${registration}/front.jpg`)).default;
@@ -72,7 +72,7 @@
 
 			bidArray = await response.json();
 			//console.log(bidArray[0].bid_amount)
-		}	
+		}
 		getBids();
 	});
 </script>
@@ -164,7 +164,7 @@
 									<GasPump size={25} class="mb-2 ml-2" weight="bold" />
 								</li>
 								<li class="flex">
-									Milage : {carArray[0].milage}
+									mileage : {carArray[0].mileage}
 									<Gauge size={25} class="mb-2 ml-2" weight="bold" />
 								</li>
 								<li class="flex">

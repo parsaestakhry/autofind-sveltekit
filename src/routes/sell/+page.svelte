@@ -622,14 +622,14 @@
 						</div>
 						<div>
 							<label
-								for="milage"
+								for="mileage"
 								class="mb-2 block text-2xl font-extrabold text-gray-900 dark:text-white"
-								>Milage</label
+								>mileage</label
 							>
 							<input
 								type="number"
-								name="milage"
-								id="milage"
+								name="mileage"
+								id="mileage"
 								class="border-none-gray-300 focus:ring-primary-600 focus:border-none-primary-600 dark:border-none-gray-600 dark:focus:ring-primary-500 dark:focus:border-none-primary-500 block w-full rounded-lg border-none bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
 								placeholder="1000"
 								required={true}
@@ -703,9 +703,7 @@
 										<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
 											<span class="font-semibold">Click to upload</span> or drag and drop
 										</p>
-										<p class="text-xs text-gray-500 dark:text-gray-400">
-											JPG (MAX. 500KB)
-										</p>
+										<p class="text-xs text-gray-500 dark:text-gray-400">JPG (MAX. 500KB)</p>
 									</div>
 									<input
 										name="front-image"
@@ -714,7 +712,6 @@
 										class="hidden"
 										required
 										accept=".jpg"
-										
 									/>
 								</label>
 							</div>

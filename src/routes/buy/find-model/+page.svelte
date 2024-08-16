@@ -539,23 +539,23 @@
 			{type}
 		</h1>
 	{/each} -->
-	<section class="bg-white dark:bg-gray-900 min-h-screen ">
-		<div class="grid max-w-screen-xl px-8  py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+	<section class="min-h-screen bg-white dark:bg-gray-900">
+		<div class="mx-auto grid max-w-screen-xl px-8 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
 			<div class="mr-auto place-self-center lg:col-span-7">
 				<h1
-					class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
+					class="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white"
 				>
 					We can find the car you'll love !
 				</h1>
 				<p
-					class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
+					class="mb-6 max-w-2xl font-light text-gray-500 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-400"
 				>
 					From family SUVs and Sedans to Sports Cars, we've got them all.
 				</p>
-				<div class="sm:flex sm:space-x-10 space-y-10 sm:space-y-0 items-end">
+				<div class="items-end space-y-10 sm:flex sm:space-x-10 sm:space-y-0">
 					<div>
 						<h1
-							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
+							class=" mb-10 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white"
 						>
 							Price From
 							{#if minValue === null || minValue === undefined}
@@ -568,13 +568,13 @@
 							type="number"
 							bind:value={minValue}
 							placeholder="Minimum Budget"
-							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold font-bold text-slate-800"
+							class=" input input-bordered w-48 bg-orange-600 font-bold text-slate-800 placeholder:font-bold placeholder:text-slate-800"
 						/>
 					</div>
 
 					<div>
 						<h1
-							class=" text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white mb-10"
+							class=" mb-10 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white"
 						>
 							To
 							{#if maxValue === null || maxValue === undefined}
@@ -587,14 +587,14 @@
 							type="number"
 							bind:value={maxValue}
 							placeholder="Maximum Budget"
-							class=" bg-orange-600 input input-bordered w-48 placeholder:text-slate-800 placeholder:font-bold font-bold text-slate-800"
+							class=" input input-bordered w-48 bg-orange-600 font-bold text-slate-800 placeholder:font-bold placeholder:text-slate-800"
 						/>
 					</div>
 					<div class="dropdown dropdown-bottom">
 						<div
 							tabindex="0"
 							role="button"
-							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex flex-nowrap text-nowrap"
+							class="btn flex flex-nowrap text-nowrap bg-orange-600 text-lg font-bold text-slate-800 hover:bg-orange-700 sm:mt-0 sm:flex-none"
 						>
 							Vehicle Type
 							<Car class="mt-1" size={22} weight="bold" />
@@ -603,13 +603,13 @@
 						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 						<ul
 							tabindex="0"
-							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
+							class="menu dropdown-content z-[1] mt-2 w-52 rounded-box bg-gray-800 p-2 shadow"
 						>
 							{#each chasisList as type}
 								<li class="">
 									<div class="form-control">
 										<label class="label cursor-pointer">
-											<span class="label-text -my-10 w-16 font-bold text-md">{type}</span>
+											<span class="text-md label-text -my-10 w-16 font-bold">{type}</span>
 											<input
 												type="checkbox"
 												class="checkbox ml-10 bg-orange-600"
@@ -625,7 +625,7 @@
 						<div
 							tabindex="0"
 							role="button"
-							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex flex-nowrap text-nowrap"
+							class="btn flex flex-nowrap text-nowrap bg-orange-600 text-lg font-bold text-slate-800 hover:bg-orange-700 sm:mt-0 sm:flex-none"
 						>
 							Fuel Type
 							<GasPump class="mt-1" size={22} weight="bold" />
@@ -634,13 +634,13 @@
 						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 						<ul
 							tabindex="0"
-							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
+							class="menu dropdown-content z-[1] mt-2 w-52 rounded-box bg-gray-800 p-2 shadow"
 						>
 							{#each fuelList as fuel}
 								<li class="">
 									<div class="form-control">
 										<label class="label cursor-pointer">
-											<span class="label-text -my-10 w-16 font-bold text-md">{fuel}</span>
+											<span class="text-md label-text -my-10 w-16 font-bold">{fuel}</span>
 											<input
 												type="checkbox"
 												class="checkbox ml-10 bg-orange-600"
@@ -656,7 +656,7 @@
 						<div
 							tabindex="0"
 							role="button"
-							class="btn bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex flex-nowrap text-nowrap"
+							class="btn flex flex-nowrap text-nowrap bg-orange-600 text-lg font-bold text-slate-800 hover:bg-orange-700 sm:mt-0 sm:flex-none"
 						>
 							Transmission
 							<Gear class="mt-1" size={22} weight="bold" />
@@ -665,13 +665,13 @@
 						<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 						<ul
 							tabindex="0"
-							class="dropdown-content menu bg-gray-800 mt-2 rounded-box z-[1] w-52 p-2 shadow"
+							class="menu dropdown-content z-[1] mt-2 w-52 rounded-box bg-gray-800 p-2 shadow"
 						>
 							{#each gearList as gear}
 								<li class="">
 									<div class="form-control">
 										<label class="label cursor-pointer">
-											<span class="label-text -my-10 w-16 font-bold text-md">{gear}</span>
+											<span class="text-md label-text -my-10 w-16 font-bold">{gear}</span>
 											<input
 												type="checkbox"
 												class="checkbox ml-10 bg-orange-600"
@@ -686,15 +686,14 @@
 
 					<button
 						on:click={() => handleClick(minValue, maxValue, selectedTypes, selectedFuelTypes)}
-						class="btn btn-circle  bg-orange-600 font-bold text-slate-800 text-lg sm:flex-none sm:mt-0 hover:bg-orange-700 flex "
+						class="btn btn-circle flex bg-orange-600 text-lg font-bold text-slate-800 hover:bg-orange-700 sm:mt-0 sm:flex-none"
 					>
-						
 						<MagnifyingGlass size={22} weight="bold" />
 					</button>
 				</div>
 				{#if cars.length == 0 && showText === true}
 					<h4
-						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-wrap mt-5"
+						class="mb-4 mt-5 max-w-2xl text-3xl font-extrabold leading-none tracking-tight sm:text-wrap md:text-5xl xl:text-6xl dark:text-white"
 					>
 						Sorry we currently don't have the cars by this filter
 						<h4>:(</h4>
@@ -702,7 +701,7 @@
 				{/if}
 			</div>
 		</div>
-		<div class="sm:p-10 p-5">
+		<div class="p-5 sm:p-10">
 			{#if cars && cars.length > 0}
 				<ul class="flex flex-wrap justify-center">
 					{#each cars as car}
@@ -710,15 +709,15 @@
 							<Card
 								model={car.model}
 								make={car.make}
-								milage={car.milage}
-								color={car.Color}
+								mileage={car.mileage}
+								color={car.color}
 								fuel_type={car.fuel_type}
 								year_make={car.year_make}
 								price={car.price}
 								type={car.type}
 								transmission={car.gearbox}
-								username = {data.username}
-								registration = {car.registration}
+								username={data.username}
+								registration={car.registration}
 								usage={car.usage}
 							/>
 						</li>

@@ -1,4 +1,4 @@
-import { connection } from '$lib/db/mysql';
+import { connection } from '$lib/db/postgres';
 import type { Car } from '$lib/server/GetCars';
 import { getUserFromDb } from '$lib/server/GetUserDb';
 
@@ -14,11 +14,18 @@ export async function POST(event: any) {
 
 	const id = user.body[0].id;
 
-	const query = `SELECT * FROM car WHERE registration = (SELECT registration FROM sell WHERE user_id = ${id})`;
+	const query = `
+		SELECT * FROM car
+		WHERE registration = (
+			SELECT registration FROM sell WHERE user_id = $1
+		)
+	`;
 
-	let results = await connection.query(query).then(function ([rows, fields]) {
-		return rows as Car[];
-	});
+	let results = await connection
+		.query(query, [id]) // Use parameterized query with $1
+		.then((result) => {
+			return result.rows as Car[]; // Access the rows directly
+		});
 	//console.log(results);
 	return new Response(JSON.stringify(results));
 }

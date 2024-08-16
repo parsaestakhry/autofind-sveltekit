@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Car } from '$lib/server/GetCars.js';
 	import { onMount } from 'svelte';
-	import Card from '../../components/Card.svelte'
+	import Card from '../../components/Card.svelte';
 	export let data;
 	const username = data.username;
 	let cars: Car[] = [];
@@ -20,7 +20,7 @@
 	});
 </script>
 
-<div class="bg-gray-900 min-h-screen" >
+<div class="min-h-screen bg-gray-900">
 	{#if cars && cars.length > 0}
 		<ul class="flex flex-wrap justify-center">
 			{#each cars as car}
@@ -28,8 +28,8 @@
 					<Card
 						model={car.model}
 						make={car.make}
-						milage={car.milage}
-						color={car.Color}
+						mileage={car.mileage}
+						color={car.color}
 						fuel_type={car.fuel_type}
 						year_make={car.year_make}
 						price={car.price}

@@ -492,8 +492,8 @@
 		cars = await response.json();
 		//console.log(data)
 		carModels = [...new Set(cars.map((car) => car.model))];
-		modelChoice = ''
-		yearChoice = ''
+		modelChoice = '';
+		yearChoice = '';
 	}
 
 	async function HandleClickModel(model: string) {
@@ -524,16 +524,16 @@
 </script>
 
 <div>
-	<section class="bg-white dark:bg-gray-900 min-h-screen">
-		<div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+	<section class="min-h-screen bg-white dark:bg-gray-900">
+		<div class="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
 			<div class="mr-auto place-self-center lg:col-span-7">
 				<h1
-					class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
+					class="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white"
 				>
 					Choose the make and the model
 				</h1>
 				<p
-					class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
+					class="mb-6 max-w-2xl font-light text-gray-500 md:text-lg lg:mb-8 lg:text-xl dark:text-gray-400"
 				>
 					you can also specify the year and the engine and more!
 				</p>
@@ -541,17 +541,17 @@
 				<!-- Open the modal using ID.showModal() method -->
 
 				<button
-					class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
+					class="btn m-1 bg-orange-600 text-xl font-bold text-slate-800 hover:bg-orange-700"
 					onclick="my_modal_5.showModal()"
 					>Made By {makeChoice}
 				</button>
-				<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle ">
-					<div class="modal-box bg-gray-900  ">
-						<h3 class="font-bold mb-5 text-2xl  ">Manufacturers List :</h3>
-						<ul class="menu dropdown-content bg-gray-900 rounded-box z-[1] p-2 shadow space-y-2">
+				<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+					<div class="modal-box bg-gray-900">
+						<h3 class="mb-5 text-2xl font-bold">Manufacturers List :</h3>
+						<ul class="menu dropdown-content z-[1] space-y-2 rounded-box bg-gray-900 p-2 shadow">
 							{#each makeList as make}
 								<button
-									class="btn text-lg text-slate-800 font-semibold bg-orange-700 hover:bg-orange-800 "
+									class="btn bg-orange-700 text-lg font-semibold text-slate-800 hover:bg-orange-800"
 									on:click={() => handleClickMake(make.name)}
 									onclick="my_modal_5.close()"
 								>
@@ -570,19 +570,17 @@
 				</dialog>
 				{#if cars.length > 0}
 					<button
-						class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
+						class="btn m-1 bg-orange-600 text-xl font-bold text-slate-800 hover:bg-orange-700"
 						onclick="my_modal_6.showModal()"
 						>The Model {modelChoice}
 					</button>
 					<dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
-						<div class="modal-box bg-gray-900 ">
-							<h3 class="font-bold mb-5 text-2xl">Models List :</h3>
-							<ul
-								class="menu dropdown-content bg-gray-900 rounded-box z-[1] p-2 shadow space-y-2"
-							>
+						<div class="modal-box bg-gray-900">
+							<h3 class="mb-5 text-2xl font-bold">Models List :</h3>
+							<ul class="menu dropdown-content z-[1] space-y-2 rounded-box bg-gray-900 p-2 shadow">
 								{#each carModels as model}
 									<button
-										class="btn text-lg text-slate-800 font-semibold bg-orange-700 hover:bg-orange-800 "
+										class="btn bg-orange-700 text-lg font-semibold text-slate-800 hover:bg-orange-800"
 										onclick="my_modal_6.close()"
 										on:click={() => HandleClickModel(model)}
 									>
@@ -602,19 +600,17 @@
 				{/if}
 				{#if carYears.length > 0}
 					<button
-						class="btn m-1 bg-orange-600 text-slate-800 text-xl font-bold hover:bg-orange-700"
+						class="btn m-1 bg-orange-600 text-xl font-bold text-slate-800 hover:bg-orange-700"
 						onclick="my_modal_7.showModal()"
 						>The Year {yearChoice}
 					</button>
-					<dialog id="my_modal_7" class="modal modal-bottom sm:modal-middle ">
+					<dialog id="my_modal_7" class="modal modal-bottom sm:modal-middle">
 						<div class="modal-box bg-gray-900">
-							<h3 class="font-bold mb-5 text-2xl ">Enter year :</h3>
-							<ul
-								class="menu dropdown-content bg-gray-900 rounded-box z-[1] p-2 shadow space-y-2"
-							>
+							<h3 class="mb-5 text-2xl font-bold">Enter year :</h3>
+							<ul class="menu dropdown-content z-[1] space-y-2 rounded-box bg-gray-900 p-2 shadow">
 								{#each carYears as year}
 									<button
-										class="btn text-lg text-slate-800 font-semibold bg-orange-700 hover:bg-orange-800 "
+										class="btn bg-orange-700 text-lg font-semibold text-slate-800 hover:bg-orange-800"
 										onclick="my_modal_7.close()"
 										on:click={() => HandleClickYear(year)}
 									>
@@ -633,20 +629,20 @@
 					</dialog>
 				{/if}
 			</div>
-			<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+			<div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
 				<img src={M5} alt="mockup" />
 			</div>
 			{#if showText && cars.length > 0}
 				{#if modelChoice !== ''}
 					<h4
-						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5"
+						class="mb-4 mt-5 max-w-2xl text-3xl font-extrabold leading-none tracking-tight sm:text-nowrap md:text-5xl xl:text-6xl dark:text-white"
 					>
 						{makeChoice}'s
 						{modelChoice}s are here!
 					</h4>
 				{:else}
 					<h4
-						class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-nowrap mt-5"
+						class="mb-4 mt-5 max-w-2xl text-3xl font-extrabold leading-none tracking-tight sm:text-nowrap md:text-5xl xl:text-6xl dark:text-white"
 					>
 						All the cars made by {makeChoice}
 					</h4>
@@ -654,14 +650,14 @@
 			{/if}
 			{#if cars.length == 0 && showText == true}
 				<h4
-					class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white sm:text-wrap mt-5"
+					class="mb-4 mt-5 max-w-2xl text-3xl font-extrabold leading-none tracking-tight sm:text-wrap md:text-5xl xl:text-6xl dark:text-white"
 				>
 					Sorry we currently don't have any cars made by {makeChoice}
 					<h4>:(</h4>
 				</h4>
 			{/if}
 		</div>
-		<div class="sm:p-10 p-5">
+		<div class="p-5 sm:p-10">
 			{#if cars && cars.length > 0}
 				<ul class="flex flex-wrap justify-center">
 					{#each cars as car}
@@ -669,13 +665,13 @@
 							<Card
 								model={car.model}
 								make={car.make}
-								milage={car.milage}
-								color={car.Color}
+								mileage={car.mileage}
+								color={car.color}
 								fuel_type={car.fuel_type}
 								year_make={car.year_make}
 								price={car.price}
 								transmission={car.gearbox}
-								registration = {car.registration}
+								registration={car.registration}
 								usage={car.usage}
 							/>
 						</li>
