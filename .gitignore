@@ -9,3 +9,4 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 C:\Users\parsa\Desktop\autofind-sveltekit\src\lib\db
+.vercel
