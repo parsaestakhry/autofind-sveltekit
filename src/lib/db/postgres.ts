@@ -1,5 +1,5 @@
 import pg from 'pg';
-import { POSTGRES_USER } from '$env/static/private'
+import { POSTGRES_USER } from '$env/static/private';
 import { POSTGRES_PASSWORD } from '$env/static/private';
 import { POSTGRES_HOST } from '$env/static/private';
 import { POSTGRES_DATABASE } from '$env/static/private';
@@ -9,6 +9,6 @@ export const connection = new Client({
 	password: POSTGRES_PASSWORD,
 	host: POSTGRES_HOST,
 	database: POSTGRES_DATABASE,
-	ssl:true
+	ssl: true
 });
 await connection.connect();
