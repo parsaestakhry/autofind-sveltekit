@@ -156,7 +156,7 @@
 									<CarSimple size={25} class="mb-2 ml-2" weight="bold" />
 								</li>
 								<li class="flex">
-									Color : {carArray[0].Color}
+									Color : {carArray[0].color}
 									<Palette size={25} class="mb-2 ml-2" weight="bold" />
 								</li>
 								<li class="flex">
