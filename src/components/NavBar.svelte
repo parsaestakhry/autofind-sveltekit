@@ -3,7 +3,7 @@
 	import Drawer from './Drawer.svelte';
 	import CarBattery from 'phosphor-svelte/lib/CarBattery';
 	import SignIn from 'phosphor-svelte/lib/SignIn';
-	export let username : string;
+	export let username : string | null;
 
 	
 
@@ -13,7 +13,7 @@
 	<div class="flex-none"></div>
 	<div class="flex-1">
 		<a data-sveltekit-reload href="/" class="btn btn-ghost ml-4 text-2xl font-extrabold text-slate-800"
-			>Caruns.com <CarBattery size={28} weight="bold" class="mt-1" />
+			>caruns (beta)<CarBattery size={28} weight="bold" class="mt-1" />
 		</a>
 		<a
 			data-sveltekit-reload
