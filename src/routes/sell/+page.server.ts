@@ -8,7 +8,7 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const username = formData.get('username') as string;
 		const registration = formData.get('registration') as string | null;
-		const make = formData.get('make') as string | null;
+		let make = formData.get('make') as string ;
 		const model = formData.get('model') as string | null;
 		const price = formData.get('price') as number | null;
 		const color = formData.get('color') as string | null;
@@ -20,6 +20,7 @@ export const actions: Actions = {
 		const transmission = formData.get('transmission') as string | null;
 		const description = formData.get('description') as string | null;
 		const user: any = await getUserFromDb(username);
+		make = make.toUpperCase()
 		//console.log()
 		// Check if user is found and handle the scenario where the user might not exist
 		if (!user || !user.body || user.body.length === 0) {
