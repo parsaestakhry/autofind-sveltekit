@@ -12,6 +12,8 @@
 	export let usage: string;
 	let image: any;
 	import { onMount } from 'svelte';
+	import { createClient } from '@supabase/supabase-js';
+	
 	import {
 		Calendar,
 		Car,
@@ -26,6 +28,8 @@
 	} from 'phosphor-svelte';
 
 	const sleep = (ms: number | undefined) => new Promise((f) => setTimeout(f, ms));
+	
+	
 
 	onMount(async () => {
 		await sleep(500); // simulate network delay
