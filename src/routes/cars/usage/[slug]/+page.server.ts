@@ -8,8 +8,8 @@ export const load = async ({ params }) => {
 	let newParam = capitalizeFirstLetter(params.slug);
 	let results = await connection
 		.query(`SELECT * FROM car WHERE status = "${newParam}"`)
-		.then(function ([rows, fields]) {
-			return rows as Car[];
+		.then(function (rows) {
+			return rows as unknown as Car[];
 		});
 	//console.log(results)
 	return {
