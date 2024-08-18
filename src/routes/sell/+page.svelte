@@ -1,5 +1,6 @@
 <script lang="ts">
 	// @ts-nocheck
+	import { enhance } from '$app/forms';
 
 	export let data;
 
@@ -461,13 +462,14 @@
 			name: 'Zil'
 		}
 	];
+	
 </script>
 
 <div class="">
 	{#if data.username}
 		<section class="min-h-screen bg-white dark:bg-gray-900">
 			<div class="mx-auto max-w-2xl px-4 py-8 lg:py-16">
-				<form method="POST" enctype="multipart/form-data">
+				<form method="POST" enctype="multipart/form-data" use:enhance >
 					<div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 						<div class="sm:col-span-2">
 							<label
@@ -709,7 +711,7 @@
 										name="front-image"
 										id="dropzone-file"
 										type="file"
-										class="hidden"
+										
 										required
 										accept=".jpg"
 									/>
