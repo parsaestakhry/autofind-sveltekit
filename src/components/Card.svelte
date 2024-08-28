@@ -10,10 +10,9 @@
 	export let transmission: string;
 	export let registration: string;
 	export let usage: string;
-	let image: any;
+	import image from '../31V56815.jpg';
 	import { onMount } from 'svelte';
-	import { createClient } from '@supabase/supabase-js';
-	
+	let imageSrc: any;
 	import {
 		Calendar,
 		Car,
@@ -28,18 +27,28 @@
 	} from 'phosphor-svelte';
 
 	const sleep = (ms: number | undefined) => new Promise((f) => setTimeout(f, ms));
-	
-	
-
 	onMount(async () => {
-		await sleep(500); // simulate network delay
-		image = (await import(`../../uploads/${registration}/front.jpg`)).default;
+		const response = await fetch('/api/handle-image', {
+			method: 'POST',
+			body: JSON.stringify({ registration }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		if (response.ok) {
+			// Create a URL from the image blob
+			const blob = await response.blob();
+			imageSrc = URL.createObjectURL(blob)
+			console.log(imageSrc);
+		}
 	});
+
+	//console.log(registration);
 </script>
 
 <div class="w-81 card mx-5 mb-10 bg-orange-600 sm:mt-5 sm:w-[29rem]">
 	<figure>
-		<img src={image} alt="Front side of the car" class="h-48 w-full object-cover" />
+		<img src={imageSrc} alt="Front side of the car" class="h-48 w-full object-cover" />
 	</figure>
 
 	<div class="card-body">
