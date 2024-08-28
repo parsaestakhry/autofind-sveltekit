@@ -28,17 +28,7 @@ export const actions: Actions = {
 		}
 
 		const id = user.body[0].id;
-		function formatDate(date: Date) {
-			var d = new Date(date),
-				month = '' + (d.getMonth() + 1),
-				day = '' + d.getDate(),
-				year = d.getFullYear();
-
-			if (month.length < 2) month = '0' + month;
-			if (day.length < 2) day = '0' + day;
-
-			return [year, month, day].join('-');
-		}
+		
 
 		// Insert into car table
 		await connection.query(
@@ -90,12 +80,10 @@ export const actions: Actions = {
 
 		// Retrieve image files from the form data
 		const frontImage = formData.get('front-image') as File | null;
-		const rearImage = formData.get('rear-image') as File | null;
-		const driverImage = formData.get('driver-image') as File | null;
-		const passengerImage = formData.get('passenger-image') as File | null;
+		
 
 		// Construct paths for the user's directory and car directory
-		const carDirectory = path.join('uploads', registration);
+		const carDirectory = path.join('src');
 
 		// Ensure the car's directory exists
 		if (!fs.existsSync(carDirectory)) {
@@ -105,7 +93,7 @@ export const actions: Actions = {
 		// Function to save the file with a generated name
 		const saveFile = async (file: File, baseName: string) => {
 			const extension = path.extname(file.name); // Extract the file extension from the original name
-			const fileName = `${baseName}${extension}`; // Construct the new file name without timestamp
+			const fileName = `${registration}${extension}`; // Construct the new file name without timestamp
 			const filePath = path.join(carDirectory, fileName); // Construct the full file path
 
 			// Convert the file to an array buffer and then to a buffer
@@ -119,9 +107,7 @@ export const actions: Actions = {
 		// Define the files to be saved along with their base names
 		const files = [
 			{ file: frontImage, baseName: 'front' },
-			{ file: rearImage, baseName: 'rear' },
-			{ file: driverImage, baseName: 'driver' },
-			{ file: passengerImage, baseName: 'passenger' }
+			
 		];
 
 		// Iterate through each file and save it if it exists and has size
