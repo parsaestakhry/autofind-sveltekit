@@ -27,11 +27,10 @@
 	let flag = false;
 	let bidArray: bidItem[] = [];
 	let image: any;
-	let imageSrc:any;
+	let imageSrc: any;
 	const sleep = (ms: number | undefined) => new Promise((f) => setTimeout(f, ms));
-	
+
 	onMount(async () => {
-		onMount(async () => {
 		const response = await fetch('/api/handle-image', {
 			method: 'POST',
 			body: JSON.stringify({ registration }),
@@ -42,10 +41,9 @@
 		if (response.ok) {
 			// Create a URL from the image blob
 			const blob = await response.blob();
-			imageSrc = URL.createObjectURL(blob)
+			imageSrc = URL.createObjectURL(blob);
 			console.log(imageSrc);
 		}
-	});
 	});
 
 	let isOpen = false;
@@ -98,7 +96,7 @@
 				<!-- Product image -->
 				<div class="lg:col-span-4 lg:row-end-1">
 					<div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100">
-						<img src={image} alt={carArray[0].model} class="object-cover object-center" />
+						<img src={imageSrc} alt={carArray[0].model} class="object-cover object-center" />
 					</div>
 				</div>
 
