@@ -27,12 +27,25 @@
 	let flag = false;
 	let bidArray: bidItem[] = [];
 	let image: any;
-
+	let imageSrc:any;
 	const sleep = (ms: number | undefined) => new Promise((f) => setTimeout(f, ms));
-
+	
 	onMount(async () => {
-		await sleep(500); // simulate network delay
-		image = (await import(`../../../../uploads/${registration}/front.jpg`)).default;
+		onMount(async () => {
+		const response = await fetch('/api/handle-image', {
+			method: 'POST',
+			body: JSON.stringify({ registration }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		if (response.ok) {
+			// Create a URL from the image blob
+			const blob = await response.blob();
+			imageSrc = URL.createObjectURL(blob)
+			console.log(imageSrc);
+		}
+	});
 	});
 
 	let isOpen = false;
