@@ -6,11 +6,14 @@
 	import CarProfile from 'phosphor-svelte/lib/CarProfile';
 	import CarouselCard from '../components/CarouselCard.svelte';
 	import FuelCarousel from '../components/FuelCarousel.svelte';
+	import DemoHero from '../components/DemoHero.svelte';
 </script>
 
 <div class="min-h-screen bg-gray-900">
+	<DemoHero/>
 	<div class="relative h-80 sm:h-80">
-		<!-- <img class="h-full w-screen object-cover object-right " src={intropic} alt="family-car" /> -->
+		
+		<!-- <img class="h-full w-screen object-cover object-right " src={intropic} alt="family-car" />
 		<div class="absolute inset-0 items-center justify-start text-wrap text-center font-extrabold">
 			<h1
 				class="mx-10 mt-16 flex items-center justify-center sm:text-7xl text-slate-50 sm:mt-20 text-5xl"
@@ -50,8 +53,9 @@
 					Sell a Car
 				</a>
 			</div>
-		</div>
+		</div> -->
 	</div>
+
 	<div class="flex items-center justify-center sm:mt-10 sm:space-x-4">
 		<div class="mx-10 justify-center text-center sm:mr-10">
 			<CarProfile class="mx-auto mt-2" size={70} color="#fafafa" />
