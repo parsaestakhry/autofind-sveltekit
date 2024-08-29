@@ -22,24 +22,33 @@
 					>Saved <BookmarkSimple size={25} weight="bold" />
 				</a>
 			</li>
-			<li>
-				<a
-					class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
-					href="/register">Register <UserCirclePlus size={25} weight="bold" /> </a
-				>
-			</li>
-			<li>
-				<a
-					class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
-					href="/login">Login <SignIn size={25} weight="bold" />  </a
-				>
-			</li>
-			<li>
-				<a
-					class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
-					href="/user/{username}">Account <User size={25} weight="bold" />  </a
-				>
-			</li>
+
+			{#if username === ''}
+				<li>
+					<a
+						class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
+						href="/register"
+						>Register <UserCirclePlus size={25} weight="bold" />
+					</a>
+				</li>
+				<li>
+					<a
+						class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
+						href="/login"
+						>Login <SignIn size={25} weight="bold" />
+					</a>
+				</li>
+			{/if}
+			{#if username !== ''}
+				<li>
+					<a
+						class="button btn-ghost bg-orange-600 text-xl font-extrabold text-slate-800 hover:bg-orange-700"
+						href="/user/{username}"
+						>Account <User size={25} weight="bold" />
+					</a>
+				</li>
+			{/if}
+
 			<li>
 				<a
 					data-sveltekit-reload
