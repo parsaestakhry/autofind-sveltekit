@@ -6,6 +6,8 @@ import { POSTGRES_DATABASE } from '$env/static/private';
 const { Pool } = pg;
 
 export const connection = new Pool({
-	connectionString: POSTGRES_URL
+	connectionString: POSTGRES_URL,
+	idleTimeoutMillis:20000,
+	port:5432
 });
 connection.connect();
