@@ -7,7 +7,7 @@
 				We have the brands you love!
 			</h2>
 			<div
-				class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400"
+				class="grid grid-cols-2 gap-2 text-gray-500  md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400"
 			>
 				<a href="/cars/makes/bmw" class="flex items-center justify-center">
 					<svg
