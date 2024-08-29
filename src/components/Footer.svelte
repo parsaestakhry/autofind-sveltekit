@@ -2,7 +2,7 @@
 	import { CarBattery, InstagramLogo, XLogo } from 'phosphor-svelte';
 </script>
 
-<footer class="footer footer-center bg-orange-600 p-10 text-primary-content">
+<footer class="footer  footer-center bg-orange-700 p-10 text-primary-content ">
 	<aside>
 		<CarBattery size={80} />
 		<p class="font-bold">
