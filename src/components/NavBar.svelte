@@ -56,14 +56,14 @@
 			<a
 				href="/login"
 				data-sveltekit-reload
-				class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
-				>SignIn <SignIn size={25} weight="bold" />
+				class="ml-4 hidden  text-slate-800 text-2xl font-extrabold sm:flex hover:underline hover:underline-offset-4"
+				>Login 
 			</a>
 			<a
 				href="/register"
 				data-sveltekit-reload
-				class="btn ml-4 hidden rounded-2xl bg-gray-900 text-lg font-extrabold text-slate-50 sm:flex"
-				>SignUp <UserPlus size={25} weight="bold" />
+				class="ml-4 hidden  text-slate-800 text-2xl font-extrabold sm:flex hover:underline hover:underline-offset-4"
+				>Register 
 			</a>
 			
 		{/if}
